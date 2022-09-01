@@ -1,0 +1,17 @@
+{   
+    "_id": "int",
+    "preguntas":[
+        {    
+            "categoria":"string",
+            "tipo_Pregunta":"string",
+            "dificultad":"int",
+            "pregunta":"string",
+            "respuesta_Correcta":"string",
+            "respuestas_Incorrectas":[
+                "array",
+                "array",
+                "array"
+            ]
+        }
+    ]
+}
