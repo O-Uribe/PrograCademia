@@ -11,7 +11,7 @@ function App() {
   const [preguntaActual, setPreguntaActual] = useState(0);
   const [puntuación, setPuntuación] = useState(0);
   const [juegoterminado, setjuegoterminado] = useState(false);
-  const [tiempoRestante, setTiempoRestante] = useState(15);
+  const [tiempoRestante, setTiempoRestante] = useState(10);
   const [desactivar, setdesactivar] = useState(false);
 
 
