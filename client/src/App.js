@@ -14,6 +14,23 @@ function App() {
   const [tiempoRestante, setTiempoRestante] = useState(10);
   const [desactivar, setdesactivar] = useState(false);
 
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([{
+    body : 'Bienvenido al chat',
+    from: 'Usuario 1'   
+  }]);
+
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    socket.emit('message', message);
+    const newMessage = {
+      body: message,
+      from: 'Yo'
+    };
+    setMessage([...messages, newMessage]);
+    setMessage('');
+  };
 
 
   function Siguientepregunta(isCorrect, e) {
@@ -35,9 +52,23 @@ function App() {
       if (tiempoRestante > 0) setTiempoRestante((prev) => prev - 1);
       if (tiempoRestante === 0) setdesactivar(true);
     }, 1000);
-
-    return () => clearInterval(intervalo);
+  return () => clearInterval(intervalo);
   }, [tiempoRestante]);
+
+  
+  useEffect(() => {
+    const receiveMessage = (message) => {
+      setMessages([...messages, message]);   
+    };
+
+    socket.on('message', receiveMessage);
+
+    return () => {
+      socket.off('message', receiveMessage);       
+  };}, []);
+
+
+
 
   if (juegoterminado)
     return (
@@ -97,6 +128,19 @@ function App() {
           {respuesta.textoRespuesta}
         </button>
       ))}
+    </div>
+
+
+    <div className="Chat">
+        <form onSubmit={handleSubmit}>
+          <input type="text" onChange={e=>setMessage(e.target.value)} value={message}/>
+          <button>Enviar</button>
+        </form>
+        {messages.map((message, index) => (
+          <div key={index}>
+            <p>{message.from} : {message.body}</p>
+          </div>
+        ))}
     </div>
   </main>
   );

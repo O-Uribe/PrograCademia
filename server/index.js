@@ -20,7 +20,12 @@ app.use(cors());
 app.use(morgan('dev'));
 
 io.on('connection', (socket) => {
-    console.log('cliente conetado su ID es', socket.id);
+    socket.on('message', (message) => {
+        socket.broadcast.emit('message', {
+            body: message,
+            from: socket.id            
+        });     
+    });
 });
 
 
