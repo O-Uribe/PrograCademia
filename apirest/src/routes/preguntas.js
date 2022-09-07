@@ -2,21 +2,20 @@ const { Router } = require('express');
 const router = Router();
 const _ = require('underscore');
 
-const movies = require('../sample.json');
-//console.log(movies);
+const preguntas = require('../alternativas.json');
 
 router.get('/',(req,res) => {
-    res.json(movies);
+    res.json(preguntas);
 });
 
 //agregar datos
 router.post('/', (req, res) =>{
-    const { title, director, year, rating } = req.body;
-    if(title && director && year && rating){
-        const _id = movies.length + 1;
-        const newMovie = {_id ,...req.body};
-        movies.push(newMovie);
-        res.json(movies);
+    const { categoria, tipo_Pregunta, dificultad, pregunta, respuesta } = req.body;
+    if(categoria && tipo_Pregunta && dificultad && pregunta && respuesta){
+        const _id = preguntas.length + 1;
+        const newPre = {_id ,...req.body};
+        preguntas.push(newPre);
+        res.json(preguntas);
     }else{
         res.status(500).json({error: 'Hubo un error.'});
     }
@@ -25,17 +24,18 @@ router.post('/', (req, res) =>{
 //Actualizar datos
 router.put('/:id', (req, res) => {
     const {id} = req.params;
-    const { title, director, year, rating } = req.body;
-    if(title && director && year && rating){
-        _.each(movies, (movie, i) =>{
-            if(movie._id == id){
-                movie.title = title;
-                movie.director = director;
-                movie.year = year;
-                movie.rating = rating;
+    const { categoria, tipo_Pregunta, dificultad, pregunta, respuesta } = req.body;
+    if(categoria && tipo_Pregunta && dificultad && pregunta && respuesta){
+        _.each(preguntas, (preg, i) =>{
+            if(preg._id == id){
+                preg.categoria = categoria;
+                preg.tipo_Pregunta = tipo_Pregunta;
+                preg.dificultad = dificultad;
+                preg.pregunta = pregunta;
+                preg.respuesta = respuesta
             }
         });
-        res.json(movies);
+        res.json(preguntas);
     }else{
         res.status(500).json({error: 'hubo un error.'})
     }
@@ -45,12 +45,12 @@ router.put('/:id', (req, res) => {
 // Borrar datos
 router.delete('/:id', (req,res) => {
     const { id } = req.params;
-    _.each(movies, (movie, i) => {
-        if(movie._id == id){
-            movies.splice(i,1);
+    _.each(preguntas, (preg, i) => {
+        if(preg._id == id){
+            preguntas.splice(i,1);
         }
     });
-    res.send(movies);
+    res.send(preguntas);
 });
 
 module.exports = router;

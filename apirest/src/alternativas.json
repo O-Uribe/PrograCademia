@@ -1,0 +1,30 @@
+[
+  {
+    "_id": 1,
+    "categoria": "Science:Computers",
+    "tipo_Pregunta": "multiple",
+    "dificultad": "easy",
+    "pregunta": "¿Cual de las siguientes es una variable de tipo int?",
+    "Alternativas":[
+      "12.3",
+      "18",
+      "0.004753948",
+      "true"
+    ],
+    "respuesta": "18"
+  },
+  {
+    "_id": 2,
+    "categoria": "Science:Computers",
+    "tipo_Pregunta":"multiple",
+    "dificultad": "easy",
+    "pregunta": "¿cual de las siguientes es una variable de tipo float?",
+    "Alternativas":[
+      "true",
+      "0.004753948",
+      "18",
+      "12.3"
+    ],
+    "respuesta":"0.004753948"
+  }
+]

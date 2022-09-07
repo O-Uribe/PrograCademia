@@ -13,7 +13,7 @@ app.use(express.json());
 
 //Rutas
 app.use(require('./routes/index'));
-app.use('/api/movies',require('./routes/movies'));
+app.use('/api/preguntas',require('./routes/preguntas'));
 
 // empezando el servidor
 app.listen(app.get('port'),() => {
