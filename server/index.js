@@ -17,7 +17,7 @@ const io = new SocketServer(server, {
 
 
 app.use(cors());
-app.use(morgan('dev'));
+app.use(morgan('dev')); 
 
 io.on('connection', (socket) => {
     socket.on('message', (message) => {
