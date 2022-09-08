@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "\"nombre del sitio\" es un sitio web creado con nodejs y socket io para ayudar a futuros programadores a que aprendan de una forma didactica, simple e interactiva a entender los conceptos basicos de la programacion, ya sea en distintos lenguajes como:\r - pseudocodigo\r - html\r - python\r - etc",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon server/index.js"
@@ -22,6 +22,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "mongoose": "^6.5.5",
     "morgan": "^1.10.0",
     "socket.io": "^4.5.1"
   },
