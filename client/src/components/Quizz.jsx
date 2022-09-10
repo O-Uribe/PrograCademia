@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useState, useEffect } from "react";
 
-import preguntas from "../prueba/preguntas.js"
+import preguntas from "./QuizzApp/actions/preguntas";
 
 
 
@@ -78,7 +78,6 @@ const Quizz = () => {
 										setPreguntaActual(preguntaActual + 1);
 									}
 								}}
-								className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
 								>
 								Continuar
 							</button>
@@ -92,7 +91,6 @@ const Quizz = () => {
 						disabled={desactivar}
 						key={respuesta.textoRespuesta}
 						onClick={(e) => Siguientepregunta(respuesta.isCorrect, e)}
-						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
 					>
 					{respuesta.textoRespuesta}
 					</button>
