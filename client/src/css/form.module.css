@@ -1,0 +1,74 @@
+/*Css for a form*/
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.field input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color: #f5f5f5;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.field input:focus {
+  outline: none;
+}
+.field button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #f5f5f5;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.field button:focus {
+  outline: none;
+}
+.field button:hover {
+  cursor: pointer;
+}
+.field select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #f5f5f5;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.field select:focus {
+  outline: none;
+}
+.field select:hover {
+  cursor: pointer;
+}
+.field label {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.field label:hover {
+  cursor: pointer;
+}

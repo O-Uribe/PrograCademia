@@ -5,7 +5,7 @@ import Inicio from './components/Inicio';
 import Chat from './components/Chat';
 import Quizz from './components/Quizz';
 import Login from './components/Login';
-
+import Register from './components/Register';
 
 
 
@@ -20,6 +20,7 @@ function App() {
 			<Switch>
 				<Route exact path="/" component={Inicio} />
 				<Route exact path="/login" component={Login} />
+				<Route exact path="/register" component={Register} />
 				<Route exact path="/chat" component={Chat} />
 				<Route exact path="/quizz" component={Quizz} />
 			</Switch>
