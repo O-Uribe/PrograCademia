@@ -1,8 +1,9 @@
-const http =require('http')
-const cors=require('cors')
-const express = require('express')
-const morgan = require('morgan')
-const SocketServer= require('socket.io')
+require('dotenv').config();
+const http =require('http');
+const cors=require('cors');
+const express = require('express');
+const morgan = require('morgan');
+const SocketServer= require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
@@ -28,15 +29,13 @@ io.on('connection', (socket) => {
 
 //conexion base de datos
 const mongoose = require('mongoose')
-
-const uri = `mongodb+srv://nico2:nico123@cluster0.oxwjx.mongodb.net/Integra_test`;
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSW}@cluster0.oxwjx.mongodb.net/${process.env.DB}`;
 mongoose.connect(uri,
   {useNewUrlParser: true, useUnifiedTopology: true }
 )
   .then(() => console.log('Base de datos conectada'))
   .catch(e => console.log(e))
 
-
     
-server.listen(4000, () => {console.log('Servidor iniciado en el puerto', 4000);});
+server.listen(process.env.PORT, () => {console.log('Servidor iniciado en el puerto ', process.env.PORT);});
 
