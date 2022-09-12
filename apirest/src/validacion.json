@@ -1,0 +1,17 @@
+{
+    "id": 210089470,
+    "nombre": "Pablo",
+    "apellido": "Solari",
+    "rol":"Estudiante",
+    "email":"psolari2020@alu.uct.cl",
+    "age": 22,
+    "cursos_inscritos": {
+        "a_tiempo": [
+            "Ecuaciones Diferenciales"
+        ],
+        "sin_prerequisito": [
+            "Programacion III"
+        ]
+    },
+    "año_ingreso":2020
+}
