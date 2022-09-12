@@ -1,5 +1,5 @@
 import React from "react";
-import Formulario from "./Form/Formulario";
+import Formulario from "./Form/Formulario_register";
 import styles from "../css/register.module.css";
 
 const Register = () => {

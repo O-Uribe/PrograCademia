@@ -4,17 +4,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  height: 155%;
+  width: 150%;
   background-color: #7393A7;
+  border-radius: 15px;
 }
 .input {
-  width: 300px;
-  height: 40px;
+  width: 150px;
+  height: 30px;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 0 10px;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.input:focus {
+  outline: none;
+  border: 1px solid #000;
 }
 .buttonSubmit{
     width: 100%;
@@ -28,6 +35,7 @@
     color: #000;
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
+    display: flex;
 }
 .label {
   font-size: 1.5rem;
@@ -38,7 +46,36 @@
 }
 .error {
   color: red;
-  font-size: 1.5rem;
+  font-size: 0.7rem;
   font-weight: 600;
+  margin-bottom: 10px;
+}
+h2{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 10px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #7393A7;
+  border-radius: 15px;
+}
+.link{
+  font-size: 0.9rem;
+  font-weight: 550;
+  color: #000;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  display: flex;
+  text-decoration: none;
+  
+}
+.nonRegister {
   margin-bottom: 10px;
 }

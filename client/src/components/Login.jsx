@@ -1,10 +1,11 @@
 import React from "react";
+import Formulario from "./Form/Formulario_login";
 
 const Login = () => {
     return (
         <>
             <div className="login">
-                <h1>Login</h1>
+                <Formulario/>
             </div>
         </>
     )
