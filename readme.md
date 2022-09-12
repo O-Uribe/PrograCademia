@@ -13,7 +13,34 @@ en progracademia nos enfocamos en los estudiantes que recien estan comenzando en
 - JavaScript
 - Python
 
+## Como instalar
 
+primero que todo se necesita clonar el repositorio de git.
+
+```bash
+git clone https://github.com/ouribe2020/Taller_Integracion_III.git
+```
+
+luego abrir la carpeta raiz y instalar los modulos
+
+```bash
+cd 
+npm i
+```
+para luego inciar el servidor
+
+```bash
+npm run dev
+```
+luego iniciamos el cliente y instalamos sus modulos
+```bash
+cd client
+npm i
+```
+y lo iniciamos
+```bash
+npm start
+```
 
 
 
