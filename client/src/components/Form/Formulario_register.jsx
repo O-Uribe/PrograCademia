@@ -21,7 +21,7 @@ import styles from "../../css/form.module.css";
 const Formulario =() => {
 
     const formOptions = { resolver: yupResolver(formSchema) }
-    const { /* watch ,*/ register, handleSubmit, formState: { errors } } = useForm(formOptions)
+    const {  register, handleSubmit, formState: { errors } } = useForm(formOptions)
 
     const onSubmit = (data) => {
         console.log(data);

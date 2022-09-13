@@ -30,7 +30,6 @@ const formSchema = Yup.object().shape({
   rut: Yup.number()
     .required('RUT requerido')
     .min(1000000, 'RUT inválido')
-    .max(99999999, 'RUT inválido')
     .positive().integer(),
   rol: Yup.string()
     .required('Rol requerido'),

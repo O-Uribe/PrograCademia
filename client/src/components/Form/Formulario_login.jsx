@@ -1,3 +1,7 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import styles from "../../css/form.module.css";
+
 /* 
     
         CAMPOS FORM:
@@ -5,16 +9,9 @@
         - Contraseña
     
     */
-import React from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import { formSchema } from "./actions/validator";
-import styles from "../../css/form.module.css";
 
 const Formulario = () => {
-
-    const formOptions = { resolver: yupResolver(formSchema) }
-    const {  register, handleSubmit, formState: { errors } } = useForm(formOptions)
+    const {  register, handleSubmit, formState: { errors } } = useForm()
 
     const onSubmit = (data) => {
         console.log(data);
@@ -22,29 +19,22 @@ const Formulario = () => {
 
     return (
         <div className={styles.container}>
-            <h2>Inicia sesión</h2>
+            <h2>Login</h2>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label className={styles.label}>Email</label>
-                    <input type="text" name="email" className={styles.input}
-                    {... register("email")} />
-                    {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+                    <input type="email" name="email" className={styles.input} {...register("email")} />
                 </div>
                 <div>
                     <label className={styles.label}>Contraseña</label>
-                    <input type="password" name="contraseña" className={styles.input} 
-                    {...register("contraseña")} />
-                    {errors.contraseña && <p className={styles.error}>{errors.contraseña.message}</p>}
+                    <input type="password" name="contraseña" className={styles.input} {...register("contraseña")}/>
                 </div>
-                {/*Por alguna razon el submit no pesca #SOLUCIONAR */}
                 <div>
-                    <button type="submit" className={styles.button}>Iniciar sesión</button>
+                    <button type="submit" className={styles.button}>Enviar</button>
                 </div>
             </form>
-
-            {/*href: ¿Aun no te registras?*/}
-            <div className={styles.noRegister}>
-                <a href="/register" className={styles.link}>¿Aun no te registras?</a>
+            <div>
+                <a href="/register">Registrate acá!</a>
             </div>
         </div>
     )
