@@ -1,20 +1,21 @@
 require('dotenv').config();
+
+const path = require('path');
 const http =require('http');
-const cors=require('cors');
 const express = require('express');
-const morgan = require('morgan');
 const SocketServer= require('socket.io');
+
+const morgan = require('morgan');
+
+
+const publicPath = path.join(__dirname, '../public');
 
 const app = express();
 const server = http.createServer(app);
-const io =   SocketServer(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-    }
-});
+const io = SocketServer(server);
 
 
-app.use(cors());
+app.use(express.static(publicPath));
 app.use(morgan('dev')); 
 
 io.on('connection', (socket) => {
