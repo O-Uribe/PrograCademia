@@ -1,3 +1,6 @@
+/*Paleta de colores*/
+/*#00b4a3, #68c9ab, #fdf4d8, #e0e616, #d4c700*/
+
 /* importing google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
@@ -8,8 +11,109 @@
 }
 
 body{
-    background: #fc7d1c;
+    background: #00b4a3;
 }
+
+
+#title{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+}
+#name{
+    width: 50%;
+    padding: 12px 0px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #fdf4d8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+    text-align: center;
+}
+#pin{
+    width: 50%;
+    padding: 12px 0px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #fdf4d8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+    text-align: center;
+}
+#label{
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+#host{
+    color: white;
+    text-decoration: none;
+}
+#host:hover{
+    text-decoration:underline;
+}
+#joinButton{
+    width: 50%;
+    background-color: #d4c700;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+    background-color: #3A3B3A;
+    font-family: 'Raleway', sans-serif;
+}
+
+.boxes{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+
+
+.boxes button {
+    display: block;
+    position: relative;
+    left: 25%;
+    width: 50%;
+    padding: 15px;
+    border: none;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    background: #d4c700;
+    color: #fdf4d8;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+   
+.boxes button:hover {
+    background: #fdf4d8;
+    color: gold;
+}   
 
 .btn_jugar{
     position: absolute;
@@ -54,13 +158,14 @@ body{
 button{
     font-size: 25px;
     font-weight: 500;
-    color: #fc7d1c;
+    color: #68c9ab;
     padding: 15px 30px;
     outline: none;
     border: none;
     border-radius: 5px;
-    background: #fff;
+    background: #fdf4d8;
     cursor: pointer;
 }
+
 
 

@@ -1,3 +1,6 @@
+/*Paleta de colores*/
+/*#00b4a3, #68c9ab, #fdf4d8, #e0e616, #d4c700*/
+
 /* importing google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
@@ -8,12 +11,12 @@
 }
 
 body{
-    background: #fc7d1c;
+    background: #00b4a3;
 }
 
 ::selection{
     color: #fff;
-    background: #fc7d1c;
+    background: #68c9ab;
 }
 
 .start_btn,
@@ -39,18 +42,18 @@ body{
 .start_btn button{
     font-size: 25px;
     font-weight: 500;
-    color: #fc7d1c;
+    color: #e0e616;
     padding: 15px 30px;
     outline: none;
     border: none;
     border-radius: 5px;
-    background: #fff;
+    background: #fdf4d8;
     cursor: pointer;
 }
 
 .info_box{
     width: 540px;
-    background: #fff;
+    background: #fdf4d8;
     border-radius: 5px;
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
@@ -81,7 +84,7 @@ body{
 
 .info-list .info span{
     font-weight: 600;
-    color: #fc7d1c;
+    color: #e0e616;
 }
 .buttons{
     height: 60px;
@@ -101,13 +104,13 @@ body{
     border: none;
     outline: none;
     border-radius: 5px;
-    border: 1px solid #fc7d1c;
+    border: 1px solid #e0e616;
     transition: all 0.3s ease;
 }
 
 .quiz_box{
     width: 550px;
-    background: #fff;
+    background: #fdf4d8;
     border-radius: 5px;
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
@@ -120,7 +123,7 @@ body{
     z-index: 2;
     height: 70px;
     padding: 0 30px;
-    background: #fff;
+    background: #fdf4d8;
     border-radius: 5px 5px 0 0;
     display: flex;
     align-items: center;
@@ -157,7 +160,7 @@ body{
     font-weight: 500;
     height: 30px;
     width: 45px;
-    color: #fff;
+    color: #fdf4d8;
     border-radius: 5px;
     line-height: 30px;
     text-align: center;
@@ -171,12 +174,12 @@ body{
     bottom: 0px;
     left: 0px;
     height: 3px;
-    background: #fc7d1c;
+    background: #e0e616;
 }
 
 section{
     padding: 25px 30px 20px 30px;
-    background: #fff;
+    background: #fdf4d8;
 }
 
 section .que_text{
@@ -283,10 +286,10 @@ footer button{
     cursor: pointer;
     border: none;
     outline: none;
-    color: #fff;
+    color: #fdf4d8;
     border-radius: 5px;
-    background: #fc7d1c;
-    border: 1px solid #fc7d1c;
+    background: #e0e616;
+    border: 1px solid #e0e616;
     line-height: 10px;
     opacity: 0;
     pointer-events: none;
@@ -305,7 +308,7 @@ footer button.show{
 }
 
 .result_box{
-    background: #fff;
+    background: #fdf4d8;
     border-radius: 5px;
     display: flex;
     padding: 25px 30px;
@@ -321,7 +324,7 @@ footer button.show{
 
 .result_box .icon{
     font-size: 100px;
-    color: #fc7d1c;
+    color: #e0e616;
     margin-bottom: 10px;
 }
 
@@ -357,13 +360,13 @@ footer button.show{
     border: none;
     outline: none;
     border-radius: 5px;
-    border: 1px solid #fc7d1c;
+    border: 1px solid #e0e616;
     transition: all 0.3s ease;
 }
 
 .buttons button.restart{
-    color: #fff;
-    background: #fc7d1c;
+    color: #fdf4d8;
+    background: #e0e616;
 }
 
 .buttons button.restart:hover{
@@ -371,11 +374,11 @@ footer button.show{
 }
 
 .buttons button.quit{
-    color: #fc7d1c;
+    color: #e0e616;
     background: #fff;
 }
 
 .buttons button.quit:hover{
-    color: #fff;
-    background: #fc7d1c;
+    color: #fdf4d8;
+    background: #e0e616;
 }

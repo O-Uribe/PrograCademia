@@ -19,13 +19,6 @@ app.use(express.static(publicPath));
 app.use(morgan('dev')); 
 
 io.on('connection', (socket) => {
-    console.log(socket.id)
-    socket.on('message', (message) => {
-        socket.broadcast.emit('message', {
-            body: message,
-            from: socket.id            
-        });     
-    });
 });
 
 //conexion base de datos
@@ -37,6 +30,9 @@ mongoose.connect(uri,
   .then(() => console.log('Base de datos conectada'))
   .catch(e => console.log(e))
 
-    
+
+
+  
+      
 server.listen(process.env.PORT, () => {console.log('Servidor iniciado en el puerto ', process.env.PORT);});
 
