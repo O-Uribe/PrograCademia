@@ -2,81 +2,126 @@
 /*#00b4a3, #68c9ab, #fdf4d8, #e0e616, #d4c700*/
 /* CSS para formulario de login y registro */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body{
     font-family: 'Poppins', sans-serif;
-}
-html, body {
-    height: 100%;
-    background: #00b4a3;
-}
-.container {
-    width: 100%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #00b4a3;
+    font-weight: 800;
+    font-size: large;
+    background: #fc7d1c;
+    padding: 50px 0;
 }
 form{
     width: 100%;
-    max-width: 400px;
-    padding: 15px;
-    margin: 0 auto;
-    background-color: #fdf4d8;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
-}
-select{
-    width: 100%;
-    height: 40px;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #fdf4d8;
-    border-radius: 5px;
-}
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-input {
-    width: 100%;
-    height: 40px;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-.boxes button {
-    display: block;
-    position: relative;
-    left: 25%;
-    width: 50%;
-    padding: 15px;
-    border: none;
-    margin-bottom: 5px;
+    padding: 40px;
     box-sizing: border-box;
+}
+input[type="radio"]{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+h1{
     text-align: center;
-    background: #d4c700;
-    color: #fdf4d8;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-   
-.boxes button:hover {
-    background: #fdf4d8;
-    color: gold;
-} 
-
-
-
-.botones-test{
+    color: #333;
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+header{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    background: #ffb780;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.container{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffb780;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
+.flex-outer a{
+    text-decoration: none;
+    color: #333;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+}
+.container *{
+    box-sizing: border-box;
+}
+.flex-outer,
+.flex-inner {
+  list-style-type: none;
+  padding: 0;
+}
+
+.flex-outer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flex-outer li,
+.flex-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex-inner {
+  padding: 0 8px;
+  justify-content: space-between;  
+}
+
+.flex-outer > li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+  padding: 8px;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer li p {
+  margin: 0;
+}
+
+.flex-outer li input:not([type='checkbox']),
+
+.flex-outer li button {
+  margin: auto ;
+  width: 90%;
+  padding: 8px 16px;
+  border: none;
+  color: #333;
+  letter-spacing: .09em;
+  border-radius: 2px;
+}
+
+.flex-inner li {
+  width: 100px;
+}
