@@ -1,0 +1,63 @@
+/*Paleta de colores*/
+/*#00b4a3, #68c9ab, #fdf4d8, #e0e616, #d4c700*/
+
+html, body {
+    height: 50%;
+    width: 90%; 
+    padding: 10px; 
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+button{
+    width: 50%; 
+    height: 100%; 
+    float: left;
+}
+
+#answer1{
+    background-color: #4CAF50;
+}
+#answer2{
+    background-color: #f94a1e;
+}
+#answer3{
+    background-color: #3399ff;
+}
+#answer4{
+    background-color: #ff9933;
+}
+
+
+#stats{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+    margin: 20px;
+}
+
+#nameText{
+    padding: 0px 10px;
+}
+#scoreText{
+    padding: 0px 10px;
+}
+#message{
+    font-size: 35px;
+}
+
+#title{
+    font-size: 50px;
+}
+
+
+.boxes {
+    
+    width: 50%;
+    height: 50%;
+    display: inline-block;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

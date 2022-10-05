@@ -1,0 +1,127 @@
+/*Paleta de colores*/
+/*#00b4a3, #68c9ab, #fdf4d8, #e0e616, #d4c700*/
+/* CSS para formulario de login y registro */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: large;
+    background: #fc7d1c;
+    padding: 50px 0;
+}
+form{
+    width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+input[type="radio"]{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+h1{
+    text-align: center;
+    color: #333;
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+header{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffb780;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.container{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffb780;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.flex-outer a{
+    text-decoration: none;
+    color: #333;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+}
+.container *{
+    box-sizing: border-box;
+}
+.flex-outer,
+.flex-inner {
+  list-style-type: none;
+  padding: 0;
+}
+
+.flex-outer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flex-outer li,
+.flex-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex-inner {
+  padding: 0 8px;
+  justify-content: space-between;  
+}
+
+.flex-outer > li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+  padding: 8px;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer li p {
+  margin: 0;
+}
+
+.flex-outer li input:not([type='checkbox']),
+
+.flex-outer li button {
+  margin: auto ;
+  width: 90%;
+  padding: 8px 16px;
+  border: none;
+  color: #333;
+  letter-spacing: .09em;
+  border-radius: 2px;
+}
+
+.flex-inner li {
+  width: 100px;
+}

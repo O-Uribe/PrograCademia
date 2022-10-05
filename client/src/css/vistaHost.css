@@ -1,0 +1,116 @@
+/*Paleta de colores*/
+/*#00b4a3, #68c9ab, #fdf4d8, #e0e616, #d4c700*/
+
+#respuesta1{
+    background-color: #4CAF50;
+    margin: auto;
+    padding: 30px 20px;
+    height: 50%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+}
+#respuesta2{
+    background-color: #f94a1e;
+    margin: auto;
+    padding: 30px 20px;
+    height: 50%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+}
+#respuesta3{
+    background-color: #3399ff;
+    margin: auto;
+    padding: 30px 20px;
+    height: 50%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+}
+#respuesta4{
+    background-color: #ff9933;
+    margin: auto;
+    padding: 30px 20px;
+    height: 50%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+}
+.cubo{
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 70px;
+    height: 0px;
+    font-size: 20px;
+}
+
+#cubo1{
+    background-color: #4CAF50;
+}
+#cubo2{
+    background-color: #f94a1e;
+}
+#cubo3{
+    background-color: #3399ff;
+}
+#cubo4{
+    background-color: #ff9933;
+}
+
+#nextQButton{
+    display: none;
+}
+#pregunta{
+    font-family: 'Raleway', sans-serif;
+}
+#timerText{
+    font-family: 'Raleway', sans-serif;
+}
+#num{
+    font-family: 'Tajawal', sans-serif;
+    font-size: 35px;
+}
+#playersAnswered{
+    font-family: 'Tajawal', sans-serif;
+}
+#questionNum{
+    font-family: 'Tajawal', sans-serif;
+}
+
+#ganador1{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    display: none;
+}
+#ganador2{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 22px;
+    display: none;
+}
+#ganador3{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    display: none;
+}
+#ganador4{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    display: none;
+}
+#ganador5{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    display: none;
+}
+#Ganador{
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 35px;
+    color: #3399ff;
+    display: none;
+}
