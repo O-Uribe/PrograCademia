@@ -1,3 +1,4 @@
+//import fetch from 'node-fetch';
 require('dotenv').config();
 
 const path = require('path');
@@ -7,6 +8,14 @@ const SocketServer= require('socket.io');
 
 const morgan = require('morgan');
 
+const fetch = require("node-fetch");
+
+fetch("https://restapi-progracademia.herokuapp.com/api/preguntas")
+  .then((respuesta) => {
+    return respuesta.json();
+  }).then((resp) => {
+    console.log(resp);
+  })
 
 const publicPath = path.join(__dirname, '../public');
 
