@@ -26,11 +26,11 @@ function App() {
         <Route path="/Chat" element={<Chat />} />
         <Route path="/OffLine" element={<OffLine />} /> 
         <Route path="/player" element={<Player />} />
-		<Route path="/game" element={<Game />} />
-		<Route path="/host" element={<Host />} />
-		<Route path="/hostGame" element={<HostGame />} /> 
-		<Route path="/quizcreator" element={<QuizCreator />} />
-		<Route path="/lobbycreator" element={<LobbyCreator />} />
+        <Route path="/game" element={<Game />} />
+        <Route path="/host" element={<Host />} />
+        <Route path="/hostGame" element={<HostGame />} /> 
+        <Route path="/quizcreator" element={<QuizCreator />} />
+        <Route path="/lobbycreator" element={<LobbyCreator />} />
 		</Routes>
    </div>
     );
