@@ -169,7 +169,6 @@ export default function HostGame() {
     });
 
 
-
     socket.on('getTime', function(player){
         socket.emit('time', {
             player: player,
@@ -181,9 +180,9 @@ export default function HostGame() {
     
     return(
         <div>
-            <h4 id = "questionNum">Question 1 / x</h4>
-            <h4 id = "playersAnswered">Players Answered: 0 / x</h4>
-            <h3 id = "timerText">Time Left:<span id = "num"> 20</span></h3>
+            <h4 id = "questionNum">Pregunta 1 / x</h4>
+            <h4 id = "playersAnswered">Jugadores Listos: 0 / x</h4>
+            <h3 id = "timerText">Tiempo Restante:<span id = "num"> 20</span></h3>
             
             
             <div class = "square" id = "square1"></div>
@@ -201,7 +200,7 @@ export default function HostGame() {
             <h3 id = "answer4">Answer</h3>
             
             <br></br>
-            <button onclick = {nextQuestion()} id = "nextQButton">Next Question</button>
+            <button onclick = {nextQuestion()} id = "nextQButton">Siguiente Pregunta</button>
             
             <h2 id = "winnerTitle">Top 5 Players</h2>
             <h3 id = "winner1">1.</h3>
