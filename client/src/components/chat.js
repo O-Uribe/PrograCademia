@@ -1,9 +1,7 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-// const socket = io("http://localhost:3001");
-const socket = io("/");
+const socket = io("http://localhost:5000");
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
@@ -33,9 +31,9 @@ export default function Chat() {
   };
 
   return (
-    <div className="h-screen bg-zinc-800 text-white flex items-center justify-center">
-      <form onSubmit={handleSubmit} className="bg-zinc-900 p-10">
-        <h1 className="text-2xl font-bold my-2">Chat React</h1>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <h1>Chat Progracademia</h1>
         <input
           name="message"
           type="text"

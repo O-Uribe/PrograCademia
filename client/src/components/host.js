@@ -42,7 +42,7 @@ export default function Host() {
 	//When server starts the game
 	socket.on('gameStarted', function(id){
 		console.log('Game Started!');
-		window.location.href="/host/game/" + "?id=" + id;
+		//window.location.href="/host/game/" + "?id=" + id;
 	});
 
 	socket.on('noGameFound', function(){
@@ -51,12 +51,12 @@ export default function Host() {
 
     return(
         <div>
-        	<button id = "cancel" onclick = "endGame()">Cancel Game</button>
+        	<button id = "cancel" onclick = {endGame()}>Cancel Game</button>
         	<h2 id = "title">Join this Game using the Game Pin: </h2>
-			<h1 id = "gamePinText"></h1>
-			<textarea style = "width: 700px; height: 500px;" readonly id = 'players'></textarea>
+			<h1 id = "gamePinText">PIN</h1>
+			<textarea readonly id = 'players'></textarea>
 			<br></br>
-			<button id = 'start' onclick = "startGame()">Start Game</button>
+			<button id = 'start' onclick = {startGame()}>Start Game</button>
 			<br></br>
 			<br></br>
         </div>    

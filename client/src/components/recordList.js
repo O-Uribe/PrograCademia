@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
  
-const Record = (props) => (
- <tr>
-   <td>{props.record.nombre}</td>
-    <td>{props.record.apellido}</td>
-    <td>{props.record.email}</td>
-    <td>{props.record.rut}</td>
-    <td>{props.record.password}</td>
-    <td>{props.record.rol}</td>
-    <td>{props.record.anio_ingreso}</td>
-   <td>
-     <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
-     <button className="btn btn-link"
-       onClick={() => {
-         props.deleteRecord(props.record._id);
-       }}
-     >
-       Borrar
-     </button>
-   </td>
- </tr>
-);
+// const Record = (props) => (
+//  <tr>
+//    <td>{props.record.nombre}</td>
+//     <td>{props.record.apellido}</td>
+//     <td>{props.record.email}</td>
+//     <td>{props.record.rut}</td>
+//     <td>{props.record.password}</td>
+//     <td>{props.record.rol}</td>
+//     <td>{props.record.anio_ingreso}</td>
+//    <td>
+//      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
+//      <button className="btn btn-link"
+//        onClick={() => {
+//          props.deleteRecord(props.record._id);
+//        }}
+//      >
+//        Borrar
+//      </button>
+//    </td>
+//  </tr>
+// );
  
 export default function RecordList() {
  const [records, setRecords] = useState([]);
@@ -57,17 +57,17 @@ export default function RecordList() {
  }
  
  // This method will map out the records on the table
- function recordList() {
-   return records.map((record) => {
-     return (
-       <Record
-         record={record}
-         deleteRecord={() => deleteRecord(record._id)}
-         key={record._id}
-       />
-     );
-   });
- }
+//  function recordList() {
+//    return records.map((record) => {
+//      return (
+//        <Record
+//          record={record}
+//          deleteRecord={() => deleteRecord(record._id)}
+//          key={record._id}
+//        />
+//      );
+//    });
+//  }
  
  // This following section will display the table with the records of individuals.
  return (
@@ -85,7 +85,6 @@ export default function RecordList() {
       <form action="/offline">
         <button type="submit" >Jugar sin cuenta</button>
       </form>  
-
 
    </div>
  );
