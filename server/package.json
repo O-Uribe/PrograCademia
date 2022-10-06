@@ -1,11 +1,11 @@
 {
   "name": "taller_integracion_iii",
   "version": "1.0.0",
-  "description": "\"nombre del sitio\" es un sitio web creado con nodejs y socket io para ayudar a futuros programadores a que aprendan de una forma didactica, simple e interactiva a entender los conceptos basicos de la programacion, ya sea en distintos lenguajes como:\r - pseudocodigo\r - html\r - python\r - etc",
+  "description": "\"Progracademia\" Es un sitio web creado con nodejs y socket io para ayudar a futuros programadores a que aprendan de una forma didactica, simple e interactiva a entender los conceptos basicos de la programacion, ya sea en distintos lenguajes como:\r - pseudocodigo\r - html\r - python\r - etc",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -22,12 +22,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "mongoose": "^6.6.0",
+    "mongodb": "^4.10.0",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.7",
     "socket.io": "^4.5.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.20"
   }
 }
