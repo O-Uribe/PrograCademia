@@ -74,17 +74,19 @@ export default function RecordList() {
    <div>
       <div onclick="mostrar()" class="btn_jugar" id="btn_inicio"><button>Jugar</button></div>
 
-      <div class="btn_registrarse" id="btn_1" ><button>Registrarse</button></div>
+      <form action="/create">
+        <button type="submit" >Registrarse</button>
+      </form>  
 
-      <div class="btn_iniciarsesion" id="btn_2" ><button>Iniciar Sesion</button></div>
+      <form action="/">
+        <button type="submit" >Iniciar Sesion</button>
+      </form>  
+  
+      <form action="/offline">
+        <button type="submit" >Jugar sin cuenta</button>
+      </form>  
 
-      <div class="btn_jugarsin" action="player/juego/index.html" id="btn_3" >
-    
-        <form action="player/juego/index.html">
-          <button type="submit" >Jugar sin cuenta</button>
-        </form>  
 
-      </div>
    </div>
  );
 }
