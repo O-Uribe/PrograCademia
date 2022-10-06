@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react"
 import Navbar from "./components/navbar";
 import RecordList from "./components/recordList";
 import Edit from "./components/edit";
@@ -22,7 +21,6 @@ import './css/style.css'
 
 function App() {
   return (
-  
     <div>
       <Navbar />
       <Routes>

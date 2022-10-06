@@ -24,13 +24,6 @@ export default function Quiz() {
     makeAPICall();
   }, [])
 
-  /*const cargaPregunta = async() =>{
-    const respuesta = await fetch("https://restapi-progracademia.herokuapp.com/api/preguntas");
-    console.log(respuesta);
-  }
-  cargaPregunta();*/
-
-
   function handleAnswerSubmit(isCorrect, e){
     // añadir puntuación
     if (isCorrect) setPuntuación(puntuación + 1);
