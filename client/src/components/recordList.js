@@ -72,22 +72,19 @@ export default function RecordList() {
  // This following section will display the table with the records of individuals.
  return (
    <div>
-     <h3>Record List</h3>
-     <table className="table table-striped">
-       <thead>
-         <tr>
-           <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Email</th>
-            <th>Rut</th>
-            <th>Password</th>
-            <th>Rol</th>
-            <th>Año Ingreso</th>
-            <th>Actions</th>            
-         </tr>
-       </thead>
-       <tbody>{recordList()}</tbody>
-     </table>
+      <div onclick="mostrar()" class="btn_jugar" id="btn_inicio"><button>Jugar</button></div>
+
+      <div class="btn_registrarse" id="btn_1" ><button>Registrarse</button></div>
+
+      <div class="btn_iniciarsesion" id="btn_2" ><button>Iniciar Sesion</button></div>
+
+      <div class="btn_jugarsin" action="player/juego/index.html" id="btn_3" >
+    
+        <form action="player/juego/index.html">
+          <button type="submit" >Jugar sin cuenta</button>
+        </form>  
+
+      </div>
    </div>
  );
 }
