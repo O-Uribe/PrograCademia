@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
- 
+import { useEffect, useState } from "react"
 import Navbar from "./components/navbar";
 import RecordList from "./components/recordList";
 import Edit from "./components/edit";
@@ -13,6 +13,7 @@ import Host from "./components/host";
 import HostGame from "./components/hostGame";
 import QuizCreator from "./components/quizCreator";
 import LobbyCreator from "./components/lobbyCreator";
+import Quiz from "./components/quiz";
 import './css/index.css'
 import './css/lobby.css'
 import './css/style.css'
@@ -20,12 +21,12 @@ import './css/style.css'
 
 
 function App() {
-    return (
+  return (
   
-      <div>
-     <Navbar />
-     <Routes>
-    	<Route exact path="/" element={<RecordList />} />
+    <div>
+      <Navbar />
+      <Routes>
+    	  <Route exact path="/" element={<RecordList />} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/create" element={<Create />} />
         <Route path="/Chat" element={<Chat />} />
@@ -36,10 +37,11 @@ function App() {
         <Route path="/hostGame" element={<HostGame />} /> 
         <Route path="/quizcreator" element={<QuizCreator />} />
         <Route path="/lobbycreator" element={<LobbyCreator />} />
-		</Routes>
+        <Route path="/quiz" element={<Quiz/>}/>
+		  </Routes>
    </div>
-    );
-  }
+  );
+}
   
 export default App;
 
