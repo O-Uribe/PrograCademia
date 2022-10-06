@@ -13,6 +13,11 @@ import Host from "./components/host";
 import HostGame from "./components/hostGame";
 import QuizCreator from "./components/quizCreator";
 import LobbyCreator from "./components/lobbyCreator";
+import './css/index.css'
+import './css/lobby.css'
+import './css/style.css'
+
+
 
 function App() {
     return (

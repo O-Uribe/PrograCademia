@@ -34,7 +34,7 @@ export default function LobbyCreator() {
             <a id = "back"href = "../">Back</a>
             <h1 id = "title">Start a Kahoot Game</h1>
             
-            <h4 id = "subtitle">Choose a Game Below or <a id = "link" href = "quiz-creator/">Create your Own!</a></h4>
+            <h4 id = "subtitle">Choose a Game Below or <a id = "link" href = "quizcreator/">Create your Own!</a></h4>
             <div id = "game-list">      
             
             </div>
