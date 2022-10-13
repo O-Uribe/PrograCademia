@@ -11,12 +11,12 @@ const HostLobby = (props) => {
   const pin = data.state;
   const { socket, setTriviaData, BASE_URL } = props;
 
-  console.log('el pin es', pin);
+  console.log('El pin es', pin);
 
   useEffect(() => {
     console.log('hostsocket', props.socket);
     if (!props.socket) {
-      fetch(`/trivia/${pin}/${props.trivia}`).then(() => {
+      fetch(`http://localhost:5000/trivia/${pin}/${props.trivia}`).then(() => {
         let newSocketHost;
         if (BASE_URL === 'http://localhost:5000') {
           newSocketHost = socketIO(`/${pin}`);
@@ -44,17 +44,17 @@ const HostLobby = (props) => {
 
   return (
     <React.Fragment>
-      <body className="bg-primary">
+      <div className="bg-primary">
         <div className="container d-flex align-items-center flex-column">
           <h2 className="pin-host-lobby masthead-heading text-uppercase mb-0 text-white">
             The PIN is {pin}
           </h2>
-          <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon">
-              <i class="fas fa-star"></i>
+          <div className="divider-custom">
+            <div className="divider-custom-line"></div>
+            <div className="divider-custom-icon">
+              <i className="fas fa-star"></i>
             </div>
-            <div class="divider-custom-line"></div>
+            <div className="divider-custom-line"></div>
           </div>
           <Link to="/host/trivia">
             <button
@@ -64,12 +64,12 @@ const HostLobby = (props) => {
               Start Game
             </button>
           </Link>
-          <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon">
-              <i class="fas fa-star"></i>
+          <div className="divider-custom">
+            <div className="divider-custom-line"></div>
+            <div className="divider-custom-icon">
+              <i className="fas fa-star"></i>
             </div>
-            <div class="divider-custom-line"></div>
+            <div className="divider-custom-line"></div>
           </div>
           <h2 className="pin-host-lobby text-center text-uppercase text-secondary">
             Players connected:
@@ -78,15 +78,15 @@ const HostLobby = (props) => {
           <div className="container d-flex align-items-center justify-content-center flex-column">
             <Players className="" players={players} />
           </div>
-          <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon">
-              <i class="fas fa-star"></i>
+          <div className="divider-custom">
+            <div className="divider-custom-line"></div>
+            <div className="divider-custom-icon">
+              <i className="fas fa-star"></i>
             </div>
-            <div class="divider-custom-line"></div>
+            <div className="divider-custom-line"></div>
           </div>
         </div>
-      </body>
+      </div>
     </React.Fragment>
   );
 };

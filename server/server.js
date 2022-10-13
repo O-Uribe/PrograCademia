@@ -1,25 +1,51 @@
 //Puerto
-const port = process.env.PORT || 5000;
-
-const express = require("express");
-const http = require("http");
+const path = require('path');
 const morgan = require("morgan");
 const cors = require("cors");
-const SocketServer = require("socket.io");
 
+const express = require('express');
+const socketIO = require('socket.io');
 
-//Import classes
-const {LiveGames} = require('./utils/liveGames');
-const {Players} = require('./utils/players');
-
-//Inicializamos el servidor
+const PORT = 5000;
 const app = express();
-const server = http.createServer(app);
-const io  = SocketServer(server,{
-	cors: {
-			origin: "http://localhost:3000",
-	},
-});
+const server = app.listen(PORT, () => console.log(`Servidor Iniciado en el puerto ${PORT}`));
+
+const io = socketIO(server);
+app.use(express.static(path.join(__dirname, 'build')));
+let namespace;
+
+
+const trivia = [
+    {
+      question: 'Pregunta 1?',
+      options: [
+        { id: 1, description: '1' },
+        { id: 2, description: '2' },
+        { id: 3, description: '3' },
+        { id: 4, description: '4' },
+      ],
+    },  
+    {
+      question: 'Pregunta 1?',
+      options: [
+        { id: 1, description: '1' },
+        { id: 2, description: '2' },
+        { id: 3, description: '3' },
+        { id: 4, description: '4' },
+      ],
+    },  
+    {
+      question: 'Pregunta 1?',
+      options: [
+        { id: 1, description: '1' },
+        { id: 2, description: '2' },
+        { id: 3, description: '3' },
+        { id: 4, description: '4' },
+      ],
+    },
+  ];
+  
+
 
 
 require("dotenv").config({ path: "./config.env" });
@@ -38,52 +64,129 @@ io.on("connection", (socket) => {
       	from: socket.id.slice(8),
     	});
   	});
-
-
-	//SOCKET PRIMERA CONEXION DE HOST
-	socket.on('host-join', (data) =>{
-		//Check to see if id passed in url corresponds to id of kahoot game in database
-		MongoClient.connect(url, function(err, db) {
-			if (err) throw err;
-			var dbo = db.db("kahootDB");
-			var query = { id:  parseInt(data.id)};
-			dbo.collection('kahootGames').find(query).toArray(function(err, result){
-				if(err) throw err;
-				
-				//A kahoot was found with the id passed in url
-				if(result[0] !== undefined){
-					var gamePin = Math.floor(Math.random()*90000) + 10000; //new pin for game
-
-					games.addGame(gamePin, socket.id, false, {playersAnswered: 0, questionLive: false, gameid: data.id, question: 1}); //Creates a game with pin and host id
-
-					var game = games.getGame(socket.id); //Gets the game data
-
-					socket.join(game.pin);//The host is joining a room based on the pin
-
-					console.log('Game Created with pin:', game.pin); 
-
-					//Sending game pin to host so they can display it for players to join
-					socket.emit('showGamePin', {
-						pin: game.pin
-					});
-				}else{
-					socket.emit('noGameFound');
-				}
-				db.close();
-			});
-		});
-	});
 });
 
 
 
-const dbo = require("./db/conn");
+// const dbo = require("./db/conn");
  
-server.listen(port, () => {
-  // perform a database connection when server starts
-  dbo.connectToServer(function (err) {
-    if (err) console.error(err);
+// server.listen(PORT, () => {
+//   // perform a database connection when server starts
+//   dbo.connectToServer(function (err) {
+//     if (err) console.error(err);
  
-  });
-  console.log(`Servidor iniciado en el puerto: ${port}`);
+//   });
+//   console.log(`Servidor iniciado en el puerto: ${port}`);
+// });
+
+
+
+
+app.get('/host-game', (req, res) => {
+    const { pin } = req.query;
+
+    namespace = io.of(`/${pin}`);
+
+    namespace.on('connection', (socket) => {
+    console.log('client connected');
+
+    socket.join('gameroom');
+    });
+
+    res.json({ connected: true });
+});
+
+app.get('/start-game', (req, res) => {
+    console.log('emiting a game!');
+    const { questionNumber } = req.query;
+
+    namespace.emit('question', {
+    question: trivia[questionNumber].question,
+    options: trivia[questionNumber].options,
+    });
+
+    res.json({ gameStarted: true });
+});
+
+app.get('/next-question', (req, res) => {
+    const { questionNumber } = req.query;
+
+    namespace.emit('question', {
+    question: trivia[questionNumber].question,
+    options: trivia[questionNumber].options,
+    });
+
+    res.json({ questionSent: true });
+});
+
+app.get('/podium', (req, res) => {
+    namespace.emit('podium', {
+    0: { name: 'Nicolas Rivarola', score: 3 },
+    1: { name: 'Hernan Peralta', score: 2 },
+    2: { name: 'Leonel Gauna', score: 1 },
+    });
+
+    res.json({ podiumSent: true });
+});
+
+
+app.get('/trivialist', (req, res) => {
+    const triviaData = {
+    triviaList: [
+        { id: 1, name: 'trivia1' },
+        { id: 1, name: 'trivia2' },
+    ],
+    pin: Math.floor(Math.random() * 10),
+    };
+    res.json(triviaData);
+});
+
+app.get('/trivia/:pin/:selectedTrivia', (req, res) => {
+    const { pin } = req.params;
+
+    namespace = io.of(`/${pin}`);
+    namespace.counter = 0;
+
+    namespace.on('connection', (socket) => {
+    console.log('client connected');
+
+    if (Object.values(namespace.clients().connected).length === 1) {
+        console.log('host joined!');
+        socket.host = true;
+    }
+
+    if (!socket.host) {
+        console.log('player joined!');
+        socket.join('gameroom');
+    }
+
+    socket.on('start-game', () => {
+        namespace.emit('question', {
+        question: trivia[namespace.counter].question,
+        options: trivia[namespace.counter].options,
+        });
+    });
+
+    socket.on('next-question', () => {
+        namespace.counter += 1;
+        namespace.emit('question', {
+        question: trivia[namespace.counter].question,
+        options: trivia[namespace.counter].options,
+        });
+    });
+
+    socket.on('disconnect', () => {
+        console.log('client disconnected');
+    });
+    });
+
+    res.json({ connected: true });
+});
+
+app.get('/answers', (req, res) => {
+    namespace.emit('mini-podium', [
+    { option: 1, count: 1 },
+    { option: 2, count: 0 },
+    ]);
+    res.json({ miniPodiumSent: true });
 });

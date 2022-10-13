@@ -35,7 +35,7 @@ const DashBoard = () => {
   }, [dataLoaded]);
 
   return (
-    <body>
+    <tbody>
       {dataLoaded ? (
         <div>
           <h1> Estadisticas </h1>
@@ -108,7 +108,7 @@ const DashBoard = () => {
       ) : (
         'Cargando...'
       )}
-    </body>
+    </tbody>
   );
 };
 

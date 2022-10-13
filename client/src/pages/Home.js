@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <React.Fragment>
-      <body>
+      <div>
         <header>
           <div>
             <h1>Progracademia!</h1>
@@ -34,7 +34,7 @@ const Home = () => {
             </div>
           </div>
         </header>
-      </body>
+      </div>
     </React.Fragment>
   );
 };

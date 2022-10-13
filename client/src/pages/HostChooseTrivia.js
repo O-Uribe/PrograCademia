@@ -12,7 +12,7 @@ const HostChooseTrivia = (props) => {
   const [pin, setPin] = useState('');
 
   useEffect(() => {
-    fetch('/trivialist')
+    fetch('http://localhost:5000/trivialist')
       .then((res) => res.json())
       .then((result) => {
         setTriviaList(result.triviaList);
@@ -54,7 +54,7 @@ const HostChooseTrivia = (props) => {
     ));
     return (
       <React.Fragment>
-        <body className="bg-primary">
+        <div className="bg-primary">
           <header className="bg-primary text-white text-center">
             <div className="container d-flex align-items-center flex-column">
               <section className="page-section portfolio" id="portfolio">
@@ -78,38 +78,10 @@ const HostChooseTrivia = (props) => {
               </section>
             </div>
           </header>
-        </body>
+        </div>
       </React.Fragment>
     );
   }
 };
 
 export default HostChooseTrivia;
-
-/*
-      <div className="col-md-6 col-lg-4 mb-5">
-        <div className="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-          <div className="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-            <div className="portfolio-item-caption-content text-center text-white">
-              <i className="fas fa-plus fa-3x"></i>
-            </div>
-            <Link
-              key={`item-${i + 1}`}
-              to={{
-                pathname: '/host/lobby',
-                state: pin,
-              }}
-            >
-              <img
-                key={i + 1}
-                onClick={() => props.onClickTriviaButton(trivia.id)}
-                className={`img-fluid triviaButton triviaButton${i}`}
-                src={podiumImg}
-                alt=""
-              />
-            </Link>
-            <h4>ASDASDAS</h4>
-          </div>
-        </div>
-      </div>
-*/

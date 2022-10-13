@@ -16,23 +16,21 @@ const UserHome = () => {
   };
   return (
     <React.Fragment>
-      <body className="masthead bg-primary">
+      <body>
         <div>
-          <div className="container text-white mb-0 pb-2">
+          <div>
             <input
-              className="form-control  m-1 bg-white"
               id="name"
               type="text"
               name="playerName"
-              placeholder="Please select your nick"
+              placeholder="Porfavor Indique su nombre"
               onChange={handlePlayerNameChange}
             />
             <input
-              className="form-control  m-1 bg-white"
               id="name"
               type="text"
               name="pin"
-              placeholder="Paste the PIN that the host gave you"
+              placeholder="Copie el pin indicado por el host"
               onChange={handlePINChange}
             />
           </div>
@@ -51,8 +49,8 @@ const UserHome = () => {
               }}
             >
               <button type="submit" className="btn btn-xl btn-outline-light btn-submit-data-user">
-                <i className="fas fa-download mr-2"></i>
-                Go to the waiting room
+                <i></i>
+                Ir a la sala de espera
               </button>
             </Link>
           </div>
