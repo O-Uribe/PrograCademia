@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
  
 // const Record = (props) => (
 //  <tr>
@@ -46,15 +46,15 @@ export default function RecordList() {
    return;
  }, [records.length]);
  
- // This method will delete a record
- async function deleteRecord(id) {
-   await fetch(`http://localhost:3000/${id}`, {
-     method: "DELETE"
-   });
+//  // This method will delete a record
+//  async function deleteRecord(id) {
+//    await fetch(`http://localhost:3000/${id}`, {
+//      method: "DELETE"
+//    });
  
-   const newRecords = records.filter((el) => el._id !== id);
-   setRecords(newRecords);
- }
+//    const newRecords = records.filter((el) => el._id !== id);
+//    setRecords(newRecords);
+//  }
  
  // This method will map out the records on the table
 //  function recordList() {
