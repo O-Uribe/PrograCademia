@@ -2,6 +2,11 @@
 /*#00b4a3, #68c9ab, #fdf4d8, #e0e616, #d4c700*/
 
 /* importing google fonts */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
     margin: 0;
