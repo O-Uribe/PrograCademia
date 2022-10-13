@@ -4,37 +4,23 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <React.Fragment>
-      <div>
-        <header>
-          <div>
-            <h1>Progracademia!</h1>
-            <div>
-              <div></div>
-              <div>
-                <i></i>
-              </div>
-              <div></div>
-            </div>
             <div>
               <Link to="/host/chooseTrivia">
-                <button>
+                <button className="btn btn-sm">
                   Ingresar como profesor
                 </button>
               </Link>
               <Link to="/user">
-                <button>
+                <button className="btn btn-sm">
                   Ingresar como estudiante
                 </button>
               </Link>
               <Link to="/admin/stats">
-                <button>
+                <button className="btn btn-sm">
                   Estadísticas
                 </button>
               </Link>
             </div>
-          </div>
-        </header>
-      </div>
     </React.Fragment>
   );
 };

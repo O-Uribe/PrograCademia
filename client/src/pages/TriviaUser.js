@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import StopGame from '../components/StopGame';
 import Questions from '../components/Questions';
 import Countdown from '../components/Countdown';
-import '../styles/TriviaUser.css';
 
 const Trivia = (props) => {
   const [isClicked, setIsClicked] = useState('');

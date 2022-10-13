@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import triviaImg from '../assets/trivia.svg';
 
-import '../styles/HostChooseTrivia.css';
 
 const HostChooseTrivia = (props) => {
   const [error, setError] = useState(null);

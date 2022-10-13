@@ -1,13 +1,9 @@
 import React, {useState}from "react";
-import {Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route,useNavigate } from 'react-router-dom'
+//import {useNavigate } from 'react-router-dom';
 
-
-// //Importamos componentes
- //import Navbar from "./components/navbar";
-// import RecordList from "./components/recordList";
-// import Edit from "./components/edit";
-// import Create from "./components/create";
-// import Chat from "./components/chat";
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
 
 //Importamos paginas
 import DashBoard from './pages/DashBoard';
@@ -20,9 +16,7 @@ import TriviaUser from './pages/TriviaUser';
 import UserHome from './pages/UserHome';
 import UserLobby from './pages/UserLobby';
 
-
 let BASE_URL = "http://localhost:5000";
-
 
 function App() {
     const [trivia, setTrivia] = useState(null);
@@ -31,24 +25,22 @@ function App() {
     const [triviaData, setTriviaData] = useState(null);
     const [triviaDataUser, setTriviaDataUser] = useState({ options: [] });
     const [podium, setPodium] = useState([]);
+    /*
     const Navigate = useNavigate();
 
     const onGameEnd = (result) => {
         setPodium(result);
         Navigate.push('/podium');
       };
-    
-
+    */  
   return (
-    <div className="App">        
-    	    {/* 
-            <Route exact path="/" element={<RecordList />} />
-            <Route path="/edit/:id" element={<Edit />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/Chat" element={<Chat />} /> */}
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/podium" element={
+    <Router>
+        <div className='flex flex-col justify-between h-screen bg-[#00000080]'>
+            <Navbar />
+            <main className=' mx-auto px-6 pb-12'>
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path="/podium" element={
             <Podium
                 socket={socket}
                 socketUser={socketUser}
@@ -86,7 +78,7 @@ function App() {
             <TriviaUser
                 socket={socketUser}
                 socketUser={socketUser}
-                onGameEnd={onGameEnd}
+                //onGameEnd={onGameEnd}
                 triviaData={triviaDataUser}
                 setSocketUser={setSocketUser}
                 setSocket={setSocket}/>
@@ -95,20 +87,18 @@ function App() {
             <Route path="/host/trivia" element={
             <Trivia
                 socketHost={socket}
-                onGameEnd={onGameEnd}
+                //onGameEnd={onGameEnd}
                 triviaData={triviaData}
                 setSocketUser={setSocketUser}
                 setSocket={setSocket}/>
             } />
             <Route path="/admin/stats" element={<DashBoard />} />
-        </Routes>
-   </div>
-  );
+            </Routes>
+            </main>
+            <Footer />
+        </div>
+    </Router>
+  )
 }
-  
-export default App;
 
-
-
-
-
+export default App

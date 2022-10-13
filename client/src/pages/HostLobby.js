@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import '../styles/HostLobby.css';
 import socketIO from 'socket.io-client';
 import Players from '../components/Players';
 

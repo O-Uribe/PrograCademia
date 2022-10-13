@@ -1,6 +1,5 @@
 import React from 'react';
 import StopGame from '../components/StopGame';
-import '../styles/Podium.css';
 const Podium = (props) => {
   return (
     <React.Fragment>
