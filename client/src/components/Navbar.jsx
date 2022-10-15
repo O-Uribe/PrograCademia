@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom'
+import {Howl} from 'howler';
 
+const sound = new Howl({
+  src: ['sonidos/mario.mp3'],
+  volume:0.2
+});
 const Navbar = () => {
   return (
     <div className='navbar bg-slate-800'>
@@ -26,19 +31,19 @@ const Navbar = () => {
             className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52'
           >
             <li>
-              <Link to='/'>Home</Link>
+              <Link to='/' onClick={()=>sound.play()}>Home</Link>
             </li>
             <li>
-              <Link to='/host/chooseTrivia'>Profesor</Link>
+              <Link to='/host/chooseTrivia' onClick={()=>sound.play()}>Profesor</Link>
             </li>
             <li>
-              <Link to='/user'>Alumno</Link>
+              <Link to='/user' onClick={()=>sound.play()}>Alumno</Link>
             </li>
           </ul>
         </div>
       </div>
       <div className='navbar-center'>
-        <Link to='/' className='btn btn-ghost text-xl normal-case md:text-3xl'>
+        <Link to='/' className='btn btn-ghost text-xl normal-case md:text-3xl' onClick={()=>sound.play()}>
           Progracademia!
         </Link>
       </div>
