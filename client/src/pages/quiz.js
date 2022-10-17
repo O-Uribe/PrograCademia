@@ -1,6 +1,6 @@
 import UseFetch from '../components/UseFetch';
 import React, { useState, useEffect } from 'react';
-import '../quiz.css'
+import '../global.css'
 
 function Quiz() {
   const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas");
@@ -89,6 +89,7 @@ function Quiz() {
 
   return (
     <div className="App">
+      <h1>APP</h1>
       {
         cargando
         ?
