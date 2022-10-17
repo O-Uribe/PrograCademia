@@ -8,7 +8,7 @@ router.get('/',(req,res) => {
     res.json(preguntas);
 });
 
-//agregar datos
+/*//agregar datos
 router.post('/', (req, res) =>{
     const { categoria, tipo_Pregunta, dificultad, pregunta, respuesta } = req.body;
     if(categoria && tipo_Pregunta && dificultad && pregunta && respuesta){
@@ -51,6 +51,6 @@ router.delete('/:id', (req,res) => {
         }
     });
     res.send(preguntas);
-});
+});*/
 
 module.exports = router;
