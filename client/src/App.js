@@ -15,6 +15,7 @@ import Trivia from './pages/Trivia';
 import TriviaUser from './pages/TriviaUser';
 import UserHome from './pages/UserHome';
 import UserLobby from './pages/UserLobby';
+import Quiz from './pages/quiz';
 
 let BASE_URL = "http://localhost:5000";
 
@@ -51,6 +52,10 @@ function App() {
             
             <Route path="/host/chooseTrivia" element={
                 <HostChooseTrivia onClickTriviaButton={(selectedTrivia) => setTrivia(selectedTrivia)} />
+            } />
+
+            <Route path="/host/quiz" element={
+                <Quiz/>
             } />
 
             <Route path="/host/lobby" element={
