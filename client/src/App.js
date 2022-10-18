@@ -42,81 +42,81 @@ function App() {
     */  
   return (
     <Router>
-        <div className='flex flex-col justify-between h-screen bg-[#00000080]'>
-            <main className=' mx-auto px-6 pb-12'>
-            <Routes>
-                <Route path='/home' element={<Home />} />
-                <Route path="/podium" element={
-            <Podium
-                socket={socket}
-                socketUser={socketUser}
-                setSocketUser={setSocketUser}
-                setSocket={setSocket}
-                ranking={podium} />
-            } />
-            
-            <Route path="/host/chooseTrivia" element={
-                <HostChooseTrivia onClickTriviaButton={(selectedTrivia) => setTrivia(selectedTrivia)} />
-            } />
+        <div className='flex flex-col h-screen'>
+            <main className="flex flex-col h-screen">
+                <Routes>
+                    <Route path='/home' element={<Home />} />
+                    <Route path="/podium" element={
+                <Podium
+                    socket={socket}
+                    socketUser={socketUser}
+                    setSocketUser={setSocketUser}
+                    setSocket={setSocket}
+                    ranking={podium} />
+                } />
+                
+                <Route path="/host/chooseTrivia" element={
+                    <HostChooseTrivia onClickTriviaButton={(selectedTrivia) => setTrivia(selectedTrivia)} />
+                } />
 
-            <Route path="/host/quiz" element={
-                <Quiz/>
-            } />
+                <Route path="/host/quiz" element={
+                    <Quiz/>
+                } />
 
-            <Route path="/host/lobby" element={
-            <HostLobby
-                BASE_URL={BASE_URL}
-                trivia={trivia}
-                setSocket={setSocket}
-                setTriviaData={setTriviaData}
-                socket={socket}/> 
-            } />
-
-
-            <Route exact path="/user" element={<UserHome />} />
-
-            <Route exact path="/" element={<Start/>} />
-
-            <Route exact path="/mainprofe" element={<MainProfe/>} />
-            <Route exact path="/registrarse" element={<Register/>} />
-            <Route exact path="/loginprofe" element={<Loginprofe/>} />
-            <Route exact path="/loginalu" element={<Loginestudiante/>} />
-
-            
-            <Route path="/user/lobby" element={
-            <UserLobby
-                BASE_URL={BASE_URL}
-                setSocketUser={setSocketUser}
-                socketUser={socketUser}
-                setTriviaDataUser={setTriviaDataUser}/>
-            } />
+                <Route path="/host/lobby" element={
+                <HostLobby
+                    BASE_URL={BASE_URL}
+                    trivia={trivia}
+                    setSocket={setSocket}
+                    setTriviaData={setTriviaData}
+                    socket={socket}/> 
+                } />
 
 
-            <Route path="/user/trivia" element={
-            <TriviaUser
-                socket={socketUser}
-                socketUser={socketUser}
-                //onGameEnd={onGameEnd}
-                triviaData={triviaDataUser}
-                setSocketUser={setSocketUser}
-                setSocket={setSocket}/>
+                <Route exact path="/user" element={<UserHome />} />
 
-            } />
-            <Route path="/host/trivia" element={
-            <Trivia
-                socketHost={socket}
-                //onGameEnd={onGameEnd}
-                triviaData={triviaData}
-                setSocketUser={setSocketUser}
-                setSocket={setSocket}/>
-            } />
-            <Route path="/admin/stats" element={<DashBoard />} />
-            </Routes>
+                <Route exact path="/" element={<Start/>} />
+
+                <Route exact path="/mainprofe" element={<MainProfe/>} />
+                <Route exact path="/registrarse" element={<Register/>} />
+                <Route exact path="/loginprofe" element={<Loginprofe/>} />
+                <Route exact path="/loginalu" element={<Loginestudiante/>} />
+
+                
+                <Route path="/user/lobby" element={
+                <UserLobby
+                    BASE_URL={BASE_URL}
+                    setSocketUser={setSocketUser}
+                    socketUser={socketUser}
+                    setTriviaDataUser={setTriviaDataUser}/>
+                } />
+
+
+                <Route path="/user/trivia" element={
+                <TriviaUser
+                    socket={socketUser}
+                    socketUser={socketUser}
+                    //onGameEnd={onGameEnd}
+                    triviaData={triviaDataUser}
+                    setSocketUser={setSocketUser}
+                    setSocket={setSocket}/>
+
+                } />
+                <Route path="/host/trivia" element={
+                <Trivia
+                    socketHost={socket}
+                    //onGameEnd={onGameEnd}
+                    triviaData={triviaData}
+                    setSocketUser={setSocketUser}
+                    setSocket={setSocket}/>
+                } />
+                <Route path="/admin/stats" element={<DashBoard />} />
+                </Routes>
             </main>
             <Footer />
         </div>
+        
     </Router>
   )
 }
-
 export default App

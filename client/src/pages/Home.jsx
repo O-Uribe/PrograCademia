@@ -2,9 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {Howl} from 'howler';
 
-
-
-
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2
@@ -13,15 +10,11 @@ const Home = () => {
   
   return (
     <React.Fragment>
-        <main>
-            
-        </main>
-            <Link className="btn btn-ghost normal-case text-xl" to="/">
-                <div className="navbar bg-base-100">
+        <Link className="btn btn-ghost normal-case text-xl" to="/">
                     Progracademia!
-                </div>
             </Link>
-            <div>
+        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        <div className="px-6 py-8 rounded shadow-md w-full">
                 <Link to="/loginprofe">
                     <button className="btn btn-sm" onClick={()=>sound.play()}>
                         Ingresar como profesor 
@@ -42,6 +35,7 @@ const Home = () => {
                         Registrarse
                     </button>
                 </Link>
+            </div>
             </div>
     </React.Fragment>
   );

@@ -30,49 +30,24 @@ const HostChooseTrivia = (props) => {
         return <div>Cargando...</div>;
     } else {
         const buttons = triviaList.map((trivia, i) => (
-            <div>
                 <div>
-                    <Link key={`item-${i + 1}`} to="/host/lobby" state={pin}>
-
-                    <img
-                    src={triviaImg}
-                    key={i + 1}
-                    onClick={() => props.onClickTriviaButton(trivia.id)}
-                    className={`img-fluid triviaButton triviaButton${i}`}
-                    alt=""
-                    />
-                </Link>
-                <h2>{trivia.name}</h2>
+                    <Link key={`item-${i + 1}`} to="/host/lobby" state={pin} className="btn">
+                        {trivia.name}
+                    </Link>
                 </div>
-            </div>
         ));
     return (
         <React.Fragment>
-            <div className="bg-primary">
-            <header className="bg-primary text-white text-center">
-                <div className="container d-flex align-items-center flex-column">
-                <section className="page-section portfolio" id="portfolio">
-                    <div className="">
-                    <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">
-                        Choose your favorite Trivia!
+                    <div>
+                    <h2 className="page-section-heading text-center text-uppercase mb-0 text-white">
+                        Elige tu favorito
                     </h2>
-                    <div className="divider-custom">
-                        <div className="divider-custom-line"></div>
-                        <div className="divider-custom-icon">
-                        <i className="fas fa-star"></i>
-                        </div>
-                        <div className="divider-custom-line"></div>
-                    </div>
                     <div className="justify-content-center">
-                        <div className="containerTriviaButton d-flex flex-wrap align-self-center">
-                        {buttons}
+                        <div className="d-flex flex-wrap align-self-center">
+                            {buttons}
                         </div>
                     </div>
                     </div>
-                </section>
-                </div>
-            </header>
-            </div>
         </React.Fragment>
     );
   }
