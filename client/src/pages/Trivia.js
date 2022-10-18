@@ -4,6 +4,7 @@ import StopGame from '../components/StopGame';
 import Questions from '../components/Questions';
 import Countdown from '../components/Countdown';
 import Minipodium from '../components/MiniPodium';
+import Navbarpr from '../components/Navbarprofe';
 
 
 const Trivia = (props) => {
@@ -20,6 +21,7 @@ const Trivia = (props) => {
   return props.triviaData ? (
     <React.Fragment>
         <body id="page-top">
+          <Navbarpr/>
             <div>
                 <div>
                     <Countdown socket={socketHost} />
@@ -58,7 +60,8 @@ const Trivia = (props) => {
       </body>
     </React.Fragment>
   ) : (
-    'Cargando Quiz...'
+    <><Navbarpr /><>Cargando Quiz...</></>
+    
   );
 };
 

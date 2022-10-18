@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Navbaral from '../components/Navbaralumno'
 
 const UserHome = () => {
   const [pin, setPin] = useState('');
@@ -16,41 +17,29 @@ const UserHome = () => {
   };
   return (
     <React.Fragment>
-      <main>
-        <div>
+      <Navbaral/>
+        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Ingrese un nombre</span>
+            </label>
+            <input type="text" name="playerName" className="input input-sm w-full max-w-xs input-bordered" onChange={handlePlayerNameChange} />
+          </div>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Ingrese el PIN</span>
+            </label>
+            <input type="text" name="pin" className="input input-sm w-full max-w-xs input-bordered" onChange={handlePINChange} />
+          </div>
           <div>
-            <input
-              id="name"
-              type="text"
-              name="playerName"
-              placeholder="Porfavor Indique su nombre"
-              onChange={handlePlayerNameChange}
-            />
-            <input
-              id="name"
-              type="text"
-              name="pin"
-              placeholder="Copie el pin indicado por el host"
-              onChange={handlePINChange}
-            />
-          </div>
-          <div className="divider-custom">
-            <div className="divider-custom-line"></div>
-            <div className="divider-custom-icon">
-              <i className="fas fa-star"></i>
-            </div>
-            <div className="divider-custom-line"></div>
-          </div>
-          <div className="container">
+            <br/>
             <Link to="/user/lobby" state = {[playerName, pin]}>
               <button type="submit" className="btn btn-xl btn-outline-light btn-submit-data-user">
-                <i></i>
                 Ir a la sala de espera
               </button>
             </Link>
           </div>
         </div>
-      </main>
     </React.Fragment>
   );
 };

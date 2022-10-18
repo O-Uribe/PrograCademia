@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import triviaImg from '../assets/trivia.svg';
+import Navbarpr from '../components/Navbarprofe';
 
 
 const HostChooseTrivia = (props) => {
@@ -34,11 +33,13 @@ const HostChooseTrivia = (props) => {
                     <Link key={`item-${i + 1}`} to="/host/lobby" state={pin} className="btn">
                         {trivia.name}
                     </Link>
+                    <br/>
                 </div>
         ));
     return (
         <React.Fragment>
-                    <div>
+            <Navbarpr/>
+                    <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                     <h2 className="page-section-heading text-center text-uppercase mb-0 text-white">
                         Elige tu favorito
                     </h2>

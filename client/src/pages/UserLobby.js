@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import socketIO from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Navbaral from '../components/Navbaralumno';
 
 const UserLobby = (props) => {
     const history = useNavigate();
@@ -38,15 +39,15 @@ const UserLobby = (props) => {
         }
     }, [history, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
     return (
-        <main>
+        <><Navbaral /><main>
             <div>
                 <div>
-                <h2>
-                    The PIN of the room is {pin}
-                </h2>
-                <h3>
-                    Your nick is {playerName}
-                </h3>
+                    <h2>
+                        El PIN de la sala es {pin}
+                    </h2>
+                    <h3>
+                        Tu usuario es {playerName}
+                    </h3>
                 </div>
                 <br />
                 <div>
@@ -56,13 +57,13 @@ const UserLobby = (props) => {
                             Espere a que su profesor inicie el Quiz
                         </div>
                         <div>
-                        El juego comenzará cuando el profesor lo decida, 
-                            espera pacientemente porfavor!    
-                        </div>                    
+                            El juego comenzará cuando el profesor lo decida,
+                            espera pacientemente porfavor!
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </main></>
     );
 };
 
