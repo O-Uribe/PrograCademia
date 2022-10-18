@@ -1,9 +1,8 @@
 import React, {useState}from "react";
-import { BrowserRouter as Router, Routes, Route,useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 //import {useNavigate } from 'react-router-dom';
 
 import Footer from './components/Footer'
-import Navbar from './components/Navbar'
 
 //Importamos paginas
 import DashBoard from './pages/DashBoard';
@@ -31,7 +30,8 @@ function App() {
     const [socketUser, setSocketUser] = useState(null);
     const [triviaData, setTriviaData] = useState(null);
     const [triviaDataUser, setTriviaDataUser] = useState({ options: [] });
-    const [podium, setPodium] = useState([]);
+    const [podium,] = useState([]);
+    //const [podium, setPodium] = useState([]);
     /*
     const Navigate = useNavigate();
 

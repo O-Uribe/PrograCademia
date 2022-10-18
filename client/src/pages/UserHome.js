@@ -16,7 +16,7 @@ const UserHome = () => {
   };
   return (
     <React.Fragment>
-      <body>
+      <main>
         <div>
           <div>
             <input
@@ -42,12 +42,7 @@ const UserHome = () => {
             <div className="divider-custom-line"></div>
           </div>
           <div className="container">
-            <Link
-              to={{
-                pathname: '/user/lobby',
-                state: [playerName, pin],
-              }}
-            >
+            <Link to="/user/lobby" state = {[playerName, pin]}>
               <button type="submit" className="btn btn-xl btn-outline-light btn-submit-data-user">
                 <i></i>
                 Ir a la sala de espera
@@ -55,7 +50,7 @@ const UserHome = () => {
             </Link>
           </div>
         </div>
-      </body>
+      </main>
     </React.Fragment>
   );
 };

@@ -11,6 +11,8 @@ const UserLobby = (props) => {
     const pin = pinState.pin;
     const { setSocketUser, socketUser, BASE_URL } = props;
 
+    console.log("esta es la data", data);
+
     useEffect(() => {
         if (!socketUser) {
         let newSocketUser;
@@ -36,7 +38,7 @@ const UserLobby = (props) => {
         }
     }, [history, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
     return (
-        <body>
+        <main>
             <div>
                 <div>
                 <h2>
@@ -60,7 +62,7 @@ const UserLobby = (props) => {
                     </div>
                 </div>
             </div>
-        </body>
+        </main>
     );
 };
 
