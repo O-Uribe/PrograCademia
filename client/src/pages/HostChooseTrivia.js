@@ -32,8 +32,13 @@ const HostChooseTrivia = (props) => {
     const buttons = triviaList.map((trivia, i) => (
       <div>
         <div>
-            <Link key={`item-${i + 1}`} to="/host/lobby" state={pin}>
-
+          <Link
+            key={`item-${i + 1}`}
+            to={{
+              pathname: '/host/lobby',
+              state: pin,
+            }}
+          >
             <img
               src={triviaImg}
               key={i + 1}
