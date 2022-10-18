@@ -12,15 +12,20 @@ const sound = new Howl({
 const Home = () => {
   
   return (
+    
+
+    
     <React.Fragment>
+
+<div className="navbar bg-base-100">
+  <a className="btn btn-ghost normal-case text-xl"><Link to="/">Progracademia!</Link></a>
+</div>
             <div>
-              <Link to="/host/chooseTrivia">
                 <button className="btn btn-sm" onClick={()=>sound.play()}>
-              <Link to="/host/chooseTrivia">Ingresar como profesor</Link>
+              <Link to="/loginprofe">Ingresar como profesor</Link>
                   
                 </button>
-              </Link>
-              <Link to="/user">
+              <Link to="/loginalu">
                 <button className="btn btn-sm"  onClick={()=>sound.play()}>
                   Ingresar como estudiante
                 </button>
@@ -28,6 +33,11 @@ const Home = () => {
               <Link to="/admin/stats">
                 <button className="btn btn-sm"  onClick={()=>sound.play()}>
                   Estadísticas
+                </button>
+              </Link>
+              <Link to="/registrarse">
+                <button className="btn btn-sm"  onClick={()=>sound.play()}>
+                  Registrarse
                 </button>
               </Link>
             </div>

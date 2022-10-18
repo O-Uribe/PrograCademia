@@ -16,6 +16,12 @@ import TriviaUser from './pages/TriviaUser';
 import UserHome from './pages/UserHome';
 import UserLobby from './pages/UserLobby';
 import Quiz from './pages/quiz';
+import {Start} from './pages/Start.jsx';
+import { MainProfe } from "./pages/MainProfe";
+import { Register } from "./pages/Register";
+import { Loginprofe } from "./pages/Loginprofe";
+import { Loginestudiante } from "./pages/Loginestudiante";
+
 
 let BASE_URL = "http://localhost:5000";
 
@@ -37,10 +43,9 @@ function App() {
   return (
     <Router>
         <div className='flex flex-col justify-between h-screen bg-[#00000080]'>
-            <Navbar />
             <main className=' mx-auto px-6 pb-12'>
             <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path='/home' element={<Home />} />
                 <Route path="/podium" element={
             <Podium
                 socket={socket}
@@ -69,6 +74,14 @@ function App() {
 
 
             <Route exact path="/user" element={<UserHome />} />
+
+            <Route exact path="/" element={<Start/>} />
+
+            <Route exact path="/mainprofe" element={<MainProfe/>} />
+            <Route exact path="/registrarse" element={<Register/>} />
+            <Route exact path="/loginprofe" element={<Loginprofe/>} />
+            <Route exact path="/loginalu" element={<Loginestudiante/>} />
+
             
             <Route path="/user/lobby" element={
             <UserLobby
