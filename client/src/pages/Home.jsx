@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {Howl} from 'howler';
-
+import Footer from '../components/Footer';
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2
@@ -10,6 +10,7 @@ const Home = () => {
   
   return (
     <React.Fragment>
+        <>
         <Link className="btn btn-ghost normal-case text-xl" to="/">
                     Progracademia!
             </Link>
@@ -37,6 +38,8 @@ const Home = () => {
                 </Link>
             </div>
             </div>
+        </>
+    <Footer/>
     </React.Fragment>
   );
 };

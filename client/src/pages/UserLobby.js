@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import socketIO from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbaral from '../components/Navbaralumno';
+import Footer from '../components/Footer';
 
 const UserLobby = (props) => {
     const history = useNavigate();
@@ -39,8 +40,8 @@ const UserLobby = (props) => {
         }
     }, [history, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
     return (
-        <><Navbaral /><main>
-            <div>
+        <><Navbaral /><main className='container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2'>
+            <div >
                 <div>
                     <h2>
                         El PIN de la sala es {pin}
@@ -63,7 +64,7 @@ const UserLobby = (props) => {
                     </div>
                 </div>
             </div>
-        </main></>
+        </main><Footer/></>
     );
 };
 

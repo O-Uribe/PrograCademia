@@ -2,8 +2,6 @@ import React, {useState}from "react";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 //import {useNavigate } from 'react-router-dom';
 
-import Footer from './components/Footer'
-
 //Importamos paginas
 import DashBoard from './pages/DashBoard';
 import Home from './pages/Home';
@@ -44,7 +42,7 @@ function App() {
   return (
     <Router>
         <div className='flex flex-col h-screen'>
-            <main className="flex flex-col h-screen">
+            <main className='flex flex-col h-screen'>
                 <Routes>
                     <Route path='/home' element={<Home />} />
                     <Route path="/podium" element={
@@ -115,7 +113,6 @@ function App() {
                 <Route path="/admin/stats" element={<DashBoard />} />
                 </Routes>
             </main>
-            <Footer />
         </div>
     </Router>
   )
