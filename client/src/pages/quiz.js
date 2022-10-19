@@ -1,6 +1,6 @@
 import UseFetch from '../components/UseFetch';
 import React, { useState, useEffect } from 'react';
-//import '../quiz.css'
+import '../quiz.css'
 
 function Quiz() {
   const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas");
@@ -11,7 +11,7 @@ function Quiz() {
   const [preguntaActual, setPreguntaActual] = useState(0);
   const [puntuacion, setPuntuacion] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
-  const [tiempoRespuesta, setTiempoRespuesta] = useState(10);
+  const [tiempoRespuesta, setTiempoRespuesta] = useState(15);
   const [areDisabled, setAreDisabled] = useState(false);
   const [answersShown, setAnswersShown] = useState(false);
 
@@ -24,8 +24,10 @@ function Quiz() {
     setTimeout(() => {
       if (preguntaActual === data.length - 1) {
         setIsFinished(true);
+        setTiempoRespuesta(15);
       } else {
         setPreguntaActual(preguntaActual + 1);
+        setTiempoRespuesta(15);
       }
     }, 500);
   }
@@ -34,7 +36,7 @@ function Quiz() {
     const intervalo = setInterval(() => {
       if(tiempoRespuesta > 0) setTiempoRespuesta((prev) => prev - 1);
       if(tiempoRespuesta === 0) setAreDisabled(true);
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(intervalo);
   }, [tiempoRespuesta]);
