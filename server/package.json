@@ -1,31 +1,20 @@
 {
-  "name": "taller_integracion_iii",
+  "name": "server",
   "version": "1.0.0",
-  "description": "\"Progracademia\" Es un sitio web creado con nodejs y socket io para ayudar a futuros programadores a que aprendan de una forma didactica, simple e interactiva a entender los conceptos basicos de la programacion, ya sea en distintos lenguajes como:\r - pseudocodigo\r - html\r - python\r - etc",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ouribe2020/Taller_Integracion_III.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ouribe2020/Taller_Integracion_III/issues"
-  },
-  "homepage": "https://github.com/ouribe2020/Taller_Integracion_III#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.0.2",
-    "express": "^4.18.1",
-    "mongodb": "^4.10.0",
-    "morgan": "^1.10.0",
-    "node-fetch": "^2.6.7",
-    "socket.io": "^4.5.1"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
