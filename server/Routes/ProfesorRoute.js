@@ -1,8 +1,8 @@
-const express = require('express');
+//const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const FormProfe = require('../models/FormProfeModel');
-
+//const FormProfe = require('../models/FormProfeModel');
 // @route   POST register/profesor
 
 router.route("/register/profesor").post(async (req, res) => {
@@ -24,4 +24,4 @@ router.route("/register/profesor").post(async (req, res) => {
 }
 );
 
-module.exports = router;
+export default router;

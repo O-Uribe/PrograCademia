@@ -1,13 +1,16 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const cors = require('cors');
-const mongoose = require('mongoose');
-const port = require('./config.js').PORT;
+
+import cors from 'cors';
+import mongoose from 'mongoose';
+import config from './config.js';
+
+const port = config().PORT;
+const uri = config().MONGO_URI;
 
 app.use(cors());
 app.use(express.json());
 
-const uri = require('./config.js').MONGO_URI;
 
 try {
     mongoose.connect(uri);
@@ -16,8 +19,9 @@ try {
     console.log('Error connecting to MongoDB:', error.message);
 }
 
-// Routes
-const profesorRoute = require('./Routes/ProfesorRoute');
+//Routes
+//const profesorRoute = require('./Routes/ProfesorRoute');
+import profesorRoute from './Routes/ProfesorRoute.js';
 app.use('/', profesorRoute);
 
 app.listen(
@@ -25,3 +29,5 @@ app.listen(
         console.log(`Server is running on port ${port}`);
     }
 );
+
+
