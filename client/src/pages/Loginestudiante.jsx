@@ -1,5 +1,5 @@
 import React from 'react'
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import axios from 'axios';
 
@@ -95,6 +95,12 @@ export const Loginestudiante = () => {
                 Login
                {/* <Link to="/mainprofe"> Login </Link> */}
             </button>
+
+               <Link to="/user">
+                <button type='submit' className="btn btn-outline">
+                  Ingresar sin registro
+                </button>
+               </Link>
             </div>
           </form>
         </div>

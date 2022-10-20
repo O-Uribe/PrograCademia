@@ -33,7 +33,7 @@ export default function Chat() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>Chat Progracademia</h1>
+        <h3>Chat Progracademia</h3>
         <input
           name="message"
           type="text"

@@ -12,6 +12,7 @@ const port = config().PORT;
 
 //middleware
 app.use(cors());
+app.use(express());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -27,9 +28,10 @@ try {
 
 // Routes
 import router from './Routes/FormsRoute.js';
+import exp from 'constants';
 app.use('/', router);
 
-app.use(express);
+//app.use(express);
 const server = http.createServer(app);
 const io = new SocketServer(server, {
     cors: {
@@ -37,6 +39,7 @@ const io = new SocketServer(server, {
         //methods: ['GET', 'POST']
     }
 });
+
 
 io.on('connection', (socket) => {
     //console.log(socket.id);

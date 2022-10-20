@@ -3,6 +3,7 @@ import socketIO from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbaral from '../components/Navbaralumno';
 import Footer from '../components/Footer';
+import Chat from '../components/chat'
 
 const UserLobby = (props) => {
     const history = useNavigate();
@@ -42,6 +43,7 @@ const UserLobby = (props) => {
     return (
         <><Navbaral /><main className='container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2'>
             <div >
+            <Chat/>
                 <div>
                     <h2>
                         El PIN de la sala es {pin}
@@ -61,8 +63,10 @@ const UserLobby = (props) => {
                             El juego comenzará cuando el profesor lo decida,
                             espera pacientemente porfavor!
                         </div>
+                        
                     </div>
                 </div>
+                
             </div>
         </main><Footer/></>
     );
