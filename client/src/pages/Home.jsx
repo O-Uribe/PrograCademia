@@ -33,7 +33,12 @@ const Home = () => {
                     </Link>
                     <Link to="/registrarse">
                         <button className="btn btn-sm"  onClick={()=>sound.play()}>
-                            Registrarse
+                            Registrarse como Profesor
+                        </button>
+                    </Link>
+                    <Link to="/registrarsealu">
+                        <button className="btn btn-sm"  onClick={()=>sound.play()}>
+                            Registrarse como Alumno
                         </button>
                     </Link>
                 </div>
