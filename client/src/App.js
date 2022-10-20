@@ -17,6 +17,7 @@ import {Start} from './pages/Start.jsx';
 import { MainProfe } from "./pages/MainProfe";
 import {MainAlumno} from './pages/MainAlumno'
 import { Register } from "./pages/Register";
+import { RegisterAlu } from "./pages/RegisterAlu";
 import { Loginprofe } from "./pages/Loginprofe";
 import { Loginestudiante } from "./pages/Loginestudiante";
 import Chat from './components/chat';
@@ -81,6 +82,7 @@ function App() {
                 <Route exact path="/mainprofe" element={<MainProfe/>} />
                 <Route exact path="/MainAlumno" element={<MainAlumno/>}/>
                 <Route exact path="/registrarse" element={<Register/>} />
+                <Route exact path="/registrarsealu" element={<RegisterAlu/>} />
                 <Route exact path="/loginprofe" element={<Loginprofe/>} />
                 <Route exact path="/loginalu" element={<Loginestudiante/>} />
 
