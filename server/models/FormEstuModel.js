@@ -32,11 +32,11 @@ const FormEstuSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    password: {
+    ingreso: {
         type: String,
         required: true
     },
-    ingreso: {
+    password: {
         type: String,
         required: true
     }

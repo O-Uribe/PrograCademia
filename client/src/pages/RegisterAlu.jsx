@@ -57,7 +57,7 @@ export const RegisterAlu = () => {
         ingreso: '',
         password: '',
       }) 
-      window.location.href = '/loginprofe';  //revisar
+      window.location.href = '/loginalu';  //revisar
     }).catch(err => {
       console.log(err)
     })
@@ -225,23 +225,23 @@ export const RegisterAlu = () => {
                 {/*Año de ingreso*/}
                 <div className="mt-5">
                     <label
-                        htmlFor="añoIngreso"
+                        htmlFor="ingreso"
                         className="block text-sm font-medium text-gray-700"
                     >
                         Año de ingreso
                     </label>
                     <input
                         type="text"
-                        id="añoIngreso"
+                        id="ingreso"
                         onChange={handleChange}
                         onBlur={validateInput}
-                        name="añoIngreso"
-                        value={input.añoIngreso}
+                        name="ingreso"
+                        value={input.ingreso}
                         placeholder="2020"
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
-                    {errors.añoIngreso && (
-                        <div style={{ color: "red" }}>{errors.añoIngreso}</div>
+                    {errors.ingreso && (
+                        <div style={{ color: "red" }}>{errors.ingreso}</div>
                     )}
                 </div>
 
