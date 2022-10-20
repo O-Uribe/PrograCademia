@@ -52,7 +52,6 @@ export const Register = () => {
         rut: '',
         email: '',
         password: '',
-        confirmarPassword: ''
       }) 
       window.location.href = '/loginprofe';  //revisar
     }).catch(err => {
