@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbarpr from '../components/Navbarprofe';
 
-
 const HostChooseTrivia = (props) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -10,7 +9,7 @@ const HostChooseTrivia = (props) => {
     const [pin, setPin] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/trivialist')
+        fetch('http://localhost:5000/list')
         .then((res) => res.json())
         .then((result) => {
             setTriviaList(result.triviaList);
@@ -40,14 +39,14 @@ const HostChooseTrivia = (props) => {
         <React.Fragment>
             <Navbarpr/>
                     <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                    <h2 className="page-section-heading text-center text-uppercase mb-0 text-white">
-                        Elige tu favorito
-                    </h2>
-                    <div className="justify-content-center">
-                        <div className="d-flex flex-wrap align-self-center">
-                            {buttons}
+                        <h2 className="page-section-heading text-center text-uppercase mb-0 text-white">
+                            Elige tu favorito
+                        </h2>
+                        <div className="justify-content-center">
+                            <div className="d-flex flex-wrap align-self-center">
+                                {buttons}
+                            </div>
                         </div>
-                    </div>
                     </div>
         </React.Fragment>
     );

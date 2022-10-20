@@ -19,6 +19,7 @@ import {MainAlumno} from './pages/MainAlumno'
 import { Register } from "./pages/Register";
 import { Loginprofe } from "./pages/Loginprofe";
 import { Loginestudiante } from "./pages/Loginestudiante";
+import Chat from './components/chat';
 
 
 let BASE_URL = "http://localhost:5000";
@@ -54,6 +55,7 @@ function App() {
                     ranking={podium} />
                 } />
                 
+                <Route exact path ="/chat" element={<Chat/>}/>
                 <Route path="/host/chooseTrivia" element={
                     <HostChooseTrivia onClickTriviaButton={(selectedTrivia) => setTrivia(selectedTrivia)} />
                 } />
