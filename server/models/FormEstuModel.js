@@ -10,9 +10,10 @@
 
 */
 
-const mongoose = require('mongoose');
-const { ESTU_COLLECTION } = require('../config');
-const collection = require('../config.js').ESTU_COLLECTION;
+import mongoose from 'mongoose';
+import config from '../config.js';
+
+const ESTU_COLLECTION = config().ESTU_COLLECTION;
 
 const FormEstuSchema = new mongoose.Schema({
     nombre: {
@@ -44,4 +45,5 @@ const FormEstuSchema = new mongoose.Schema({
     timestamps: true // Guarda la fecha de creación y actualización
 });
 
-module.exports = mongoose.model('FormEstu', FormEstuSchema);
+
+export default mongoose.model('FormEstu', FormEstuSchema);

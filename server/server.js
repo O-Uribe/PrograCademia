@@ -1,8 +1,12 @@
-const express = require('express');
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import config from './config.js';
+
 const app = express();
-const cors = require('cors');
-const mongoose = require('mongoose');
-const port = require('./config.js').PORT;
+const port = config().PORT;
+
+console.log(port);
 
 //middleware
 app.use(cors());
@@ -10,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //DB
-const uri = require('./config.js').MONGO_URI;
+const uri = config().MONGO_URI;
 
 try {
     mongoose.connect(uri);
@@ -20,8 +24,8 @@ try {
 }
 
 // Routes
-const rutas = require('./Routes/FormsRoute.js');
-app.use('/', rutas);
+import router from './Routes/FormsRoute.js';
+app.use('/', router);
 
 
 app.listen(

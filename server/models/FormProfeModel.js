@@ -1,6 +1,8 @@
-const mongoose = require('mongoose');
-const { PROFE_COLLECTION } = require('../config');
-const collection = require('../config.js').PROFE_COLLECTION;
+import mongoose from 'mongoose';
+import config from '../config.js';
+const PROFE_COLLECTION = config().PROFE_COLLECTION;
+
+
 /*
   Inputs para register de profesor
 
@@ -37,5 +39,4 @@ const FormProfeSchema = new mongoose.Schema({
     timestamps: true // Guarda la fecha de creación y actualización
 });
 
-module.exports = mongoose.model('FormProfe', FormProfeSchema);
-    
+export default mongoose.model('FormProfe', FormProfeSchema);

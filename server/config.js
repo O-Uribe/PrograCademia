@@ -1,5 +1,4 @@
 import config from 'dotenv' 
-//const config = require("dotenv")
 config.config()
 
 export default function() {
