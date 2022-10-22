@@ -77,7 +77,7 @@ export const RegisterAlu = () => {
         break;
       case "apellido":
         !value.length
-          ? setErrors({ ...errors, Apellido: "Ingresar" })
+          ? setErrors({ ...errors, apellido: "Ingresar" })
           : delete errors[inputName] && setErrors({ ...errors });
         break;
       case "rut":
@@ -105,7 +105,7 @@ export const RegisterAlu = () => {
           setErrors({
             ...errors,
             password:
-              "Debe contener al menos una minúscula, una mayúscula y al menos un dígito",
+              "Debe contener al menos una minúscula y al menos un dígito",
           });
         else if (value.length < 8)
           setErrors({
@@ -129,19 +129,19 @@ export const RegisterAlu = () => {
   };
   return (
     <>
-      <div className="container m-auto max-w-lg">
+      <div className="container m-auto max-w-lg ">
         <div className="md:mt-10 m-2 sm:mt-0">
-          <form className="mt-8 space-y-6" >
+          <form className="card flex-shrink-0 w-full  shadow-2xl bg-base-100 mt-8 space-y-6 " >
             <div className="shadow overflow-hidden sm:rounded-md">
-              <div className="px-4 py-5 bg-white sm:p-6">
+              <div className="px-4 py-5 bg-base-100 sm:p-6">
                 {/*nombre*/}
-                <div>
+                <div className="form-control">
                 <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-700"
+                      className="label "
                     >
                       Nombre
-                    </label>
+                  </label>
                 <input
                   type="text"
                   name="nombre"
@@ -150,17 +150,17 @@ export const RegisterAlu = () => {
                   value={input.nombre}
                   onChange={handleChange}
                   onBlur={validateInput}
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className='input input-bordered'
                 />
                 {errors.nombre && (
                       <div style={{ color: "red" }}>{errors.nombre}</div>
                 )}
                 </div>
                 {/*apellido*/}
-                <div className="mt-5">
+                <div className="form-control">
                   <label
                     htmlFor="apellido"
-                    className="block text-sm font-medium text-gray-700"
+                    className="label"
                   >
                     Apellido
                   </label>
@@ -172,17 +172,17 @@ export const RegisterAlu = () => {
                     value={input.apellido}
                     onChange={handleChange}
                     onBlur={validateInput}
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className='input input-bordered'
                   />
                   {errors.apellido && (
                     <div style={{ color: "red" }}>{errors.apellido}</div>
                   )}
                 </div>
                 {/*rut*/}
-                <div className="mt-5">
+                <div className="form-control">
                   <label
                     htmlFor="rut"
-                    className="block text-sm font-medium text-gray-700"
+                    className="label"
                   >
                     Rut
                   </label>
@@ -194,17 +194,17 @@ export const RegisterAlu = () => {
                     value={input.rut}
                     onChange={handleChange}
                     onBlur={validateInput}
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className='input input-bordered'
                   />
                   {errors.rut && (
                     <div style={{ color: "red" }}>{errors.rut}</div>
                   )}
                 </div>
                 {/*email*/}
-                <div className="mt-5">
+                <div className="form-control">
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
+                    className="label"
                   >
                     Email
                   </label>
@@ -216,17 +216,17 @@ export const RegisterAlu = () => {
                     name="email"
                     value={input.email}
                     placeholder="juanperez@uct.cl"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className='input input-bordered'
                   />
                   {errors.email && (
                     <div style={{ color: "red" }}>{errors.email}</div>
                   )}
                 </div>
                 {/*Año de ingreso*/}
-                <div className="mt-5">
+                <div className="form-control">
                     <label
                         htmlFor="ingreso"
-                        className="block text-sm font-medium text-gray-700"
+                        className="label"
                     >
                         Año de ingreso
                     </label>
@@ -238,7 +238,7 @@ export const RegisterAlu = () => {
                         name="ingreso"
                         value={input.ingreso}
                         placeholder="2020"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        className='input input-bordered'
                     />
                     {errors.ingreso && (
                         <div style={{ color: "red" }}>{errors.ingreso}</div>
@@ -247,10 +247,10 @@ export const RegisterAlu = () => {
 
 
                 {/*Contraseña*/ }
-                <div className="mt-5">
+                <div className="form-control">
                 <label
                     htmlFor="password"
-                    className="block text-sm font-medium text-gray-700"
+                    className="label"
                   >
                     Contraseña
                   </label>
@@ -261,7 +261,7 @@ export const RegisterAlu = () => {
                     name="password"
                     value={input.password}
                     placeholder="********"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className='input input-bordered'
                   />
                   {errors.password && (
                     <div style={{ color: "red" }}>{errors.password}</div>
@@ -269,10 +269,10 @@ export const RegisterAlu = () => {
                 </div>
 
                 {/*Confirmar Contraseña*/}
-                <div className="mt-5">
+                <div className="form-control">
                 <label
                   htmlFor="confirmPassword"
-                  className="block text-sm font-medium text-gray-700"
+                  className="label"
                 >
                   Confirmar Contraseña
                 </label>
@@ -284,17 +284,17 @@ export const RegisterAlu = () => {
                   value={input.confirmarPassword}
                   onChange={handleChange}
                   onBlur={validateInput}
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className='input input-bordered'
                 />
                 {errors.confirmarPassword && (
                   <div style={{ color: "red" }}>{errors.confirmarPassword}</div>
                 )}
               </div>
             </div>
-            <div className="px-4 py-3 bg-gray-50 sm:px-6">
+            <div className="form-control mt-6">
             <button 
               onClick={handleClick}
-              className="btn disabled:bg-gray-400 py-2 px-4 min-w-full border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="btn btn-outline"
             >
               Enviar
             </button>
