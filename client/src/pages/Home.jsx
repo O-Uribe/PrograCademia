@@ -11,37 +11,70 @@ const Home = () => {
   return (
     <React.Fragment>
         <>
-        <Link className="btn btn-ghost normal-case text-xl" to="/">
-                    Progracademia!
-            </Link>
-        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-            <div className="px-6 py-8 rounded shadow-md w-full">
+        <Link className="btn btn-ghost normal-case text-xl  bg-base-200" to="/">
+            Progracademia!
+        </Link>
+        <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row bg-base-200">
+            <div className="card w-96 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">Profesor!</h2>
+                    <p></p>
+                    <div className="card-actions justify-end">
                     <Link to="/loginprofe">
-                        <button className="btn btn-sm" onClick={()=>sound.play()}>
-                            Ingresar como profesor 
+                        <button className="btn btn-primary" onClick={()=>sound.play()}>
+                            Ingresar
                         </button>
                     </Link>
+                    </div>
+                </div>
+            </div>
+            <div className="lg:divider-horizontal"></div> 
+            <div className="card w-96 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">Estudiante!</h2>
+                    <p></p>
+                    <div className="card-actions justify-end">
                     <Link to="/loginalu">
-                        <button className="btn btn-sm"  onClick={()=>sound.play()}>
-                        Ingresar como estudiante
+                        <button className="btn btn-primary"  onClick={()=>sound.play()}>
+                        Ingresar
                         </button>
                     </Link>
+                    </div>
+                </div>
+            </div>
+            <div className="lg:divider-horizontal"></div> 
+            <div className="card w-96 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">Estudiante!</h2>
+                    <p></p>
+                    <div className="card-actions justify-end">
+                    <Link to="/usersr">
+                        <button className="btn btn-primary"  onClick={()=>sound.play()}>
+                        Sin Registro
+                        </button>
+                    </Link>
+                    </div>
+                </div>
+            </div>
+            <div className="lg:divider-horizontal"></div> 
+            <div className="card w-96 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">Estadistica!</h2>
+                    <p></p>
+                    <div className="card-actions justify-end">
                     <Link to="/admin/stats">
-                        <button className="btn btn-sm"  onClick={()=>sound.play()}>
+                        <button className="btn btn-primary"  onClick={()=>sound.play()}>
                             Estadísticas
                         </button>
                     </Link>
-                    <Link to="/registrarse">
-                        <button className="btn btn-sm"  onClick={()=>sound.play()}>
-                            Registrarse como Profesor
-                        </button>
-                    </Link>
-                    <Link to="/registrarsealu">
-                        <button className="btn btn-sm"  onClick={()=>sound.play()}>
-                            Registrarse como Alumno
-                        </button>
-                    </Link>
+                    </div>
                 </div>
+            </div>
+                    
             </div>
         </>
     <Footer/>

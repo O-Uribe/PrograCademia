@@ -12,6 +12,8 @@ import Trivia from './pages/Trivia';
 import TriviaUser from './pages/TriviaUser';
 import UserHome from './pages/UserHome';
 import UserLobby from './pages/UserLobby';
+import UserHomesr from './pages/UserHomesr';
+import UserLobbysr from './pages/UserLobbysr';
 import Quiz from './pages/quiz';
 import {Start} from './pages/Start.jsx';
 import { MainProfe } from "./pages/MainProfe";
@@ -43,7 +45,7 @@ function App() {
     */  
   return (
     <Router>
-        <div className='flex flex-col h-screen'>
+        <div className='flex flex-col h-screen bg-base-200'>
             <main className='flex flex-col h-screen'>
                 <Routes>
                     <Route path='/home' element={<Home />} />
@@ -76,6 +78,7 @@ function App() {
 
 
                 <Route exact path="/user" element={<UserHome />} />
+                <Route exact path="/usersr" element={<UserHomesr />} />
 
                 <Route exact path="/" element={<Start/>} />
 
@@ -89,6 +92,13 @@ function App() {
                 
                 <Route path="/user/lobby" element={
                 <UserLobby
+                    BASE_URL={BASE_URL}
+                    setSocketUser={setSocketUser}
+                    socketUser={socketUser}
+                    setTriviaDataUser={setTriviaDataUser}/>
+                } />
+                <Route path="/user/lobbysr" element={
+                <UserLobbysr
                     BASE_URL={BASE_URL}
                     setSocketUser={setSocketUser}
                     socketUser={socketUser}

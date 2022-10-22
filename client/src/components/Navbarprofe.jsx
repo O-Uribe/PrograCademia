@@ -8,7 +8,7 @@ const sound = new Howl({
 });
 const Navbarpr=()=>{
     return(
-        <div className='navbar bg-slate-800'>
+        <div className='navbar bg-base-100'>
             <div className='navbar-start'>
                 <div className='dropdown dropdown-hover'>
                 <label tabIndex={0} className='btn btn-ghost btn-circle'>

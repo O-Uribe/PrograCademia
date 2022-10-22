@@ -31,9 +31,9 @@ export default function Chat() {
   };
 
   return (
-    <div>
+    <div className="w-96 bg-base-100 shadow-xl image-full object-left">
       <form onSubmit={handleSubmit}>
-        <h3>Chat Progracademia</h3>
+        <h2>Chat Progracademia</h2>
         <input
           name="message"
           type="text"

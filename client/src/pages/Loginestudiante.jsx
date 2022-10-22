@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Footer from '../components/Footer';
 import axios from 'axios';
 
 /*
@@ -19,7 +18,7 @@ export const Loginestudiante = () => {
   const [password, setPassword] = React.useState('');
 
   const handleSubmit = (e) => {
- ///if login is succes redirect to mainprofe
+ ///if login is succes redirect to MainAlumno
     e.preventDefault();
     axios.post('http://localhost:5000/login/estudiante', {
       email,
@@ -27,7 +26,7 @@ export const Loginestudiante = () => {
     })
       .then((response) => {
         console.log(response);
-        window.location.href = '/mainprofe';
+        window.location.href = '/MainAlumno';
       }, (error) => {
         console.log(error);
       });
@@ -55,59 +54,59 @@ export const Loginestudiante = () => {
         break;
     }
   };
-
-
   return (
     <React.Fragment>
-      <main className='container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2'>
-        <div>
-          <form onSubmit={handleSubmit}>
-            <div className='mb-4'>
-              <label className='block text-grey-darker text-sm font-bold mb-2' htmlFor='email'>
-                Email
-              </label>
-              <input
-                className='shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker'
-                id='email'
-                onChange={(e) => setEmail(e.target.value)}
-                onBlur={validateInput}
-                type='email'
-                placeholder='Email'
-                required
-              />
-            </div>
-            <div className='mb-4'>
-              <label className='block text-grey-darker text-sm font-bold mb-2' htmlFor='password'>
-                Contraseña
-              </label>
-              <input
-                className='shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3'
-                id='password'
-                onChange={(e) => setPassword(e.target.value)}
-                onBlur={validateInput}
-                type='password'
-                placeholder='Password'
-                required
-              />
-            </div>
-            <div className='flex items-center justify-between'>
-              <button type='submit' className="btn btn-outline">
-                Login
-               {/* <Link to="/mainprofe"> Login </Link> */}
-            </button>
-
-               <Link to="/user">
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="text-center lg:text-left">
+            <h1 className="text-5xl font-bold">Inicia sesión!</h1>
+            <p className="py-6">Para poder obtener muchos mas beneficios, y una mejor calidad de juego por favor inicia sesion.</p>
+          </div>
+          <form onSubmit={handleSubmit} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className="card-body">
+              <div className="form-control">
+                <label className="label" htmlFor='email'>
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  className='input input-bordered'
+                  id='email'
+                  onChange={(e) => setEmail(e.target.value)}
+                  onBlur={validateInput}
+                  type='email'
+                  placeholder='Email'
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label"  htmlFor='password'>
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  className='input input-bordered'
+                  id='password'
+                  onChange={(e) => setPassword(e.target.value)}
+                  onBlur={validateInput}
+                  type='password'
+                  placeholder='Password'
+                  required
+                />
+                <label className="label">
+                  <Link to="/registrarsealu"className="label-text-alt link link-hover">Registrarse aqui</Link>
+                </label>
+              </div>
+              <div className="form-control mt-6"> 
                 <button type='submit' className="btn btn-outline">
-                  Ingresar sin registro
+                  Login
                 </button>
-               </Link>
+              </div>
             </div>
           </form>
         </div>
-      </main>
-    <Footer/>
+      </div>
     </React.Fragment>
-    
+
+
   )
 }
 
