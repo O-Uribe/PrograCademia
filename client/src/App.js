@@ -23,6 +23,7 @@ import { RegisterAlu } from "./pages/RegisterAlu";
 import { Loginprofe } from "./pages/Loginprofe";
 import { Loginestudiante } from "./pages/Loginestudiante";
 import Chat from './components/chat';
+import Pruebas from './pages/pruebas'
 
 
 let BASE_URL = "http://localhost:5000";
@@ -66,6 +67,7 @@ function App() {
                 <Route path="/host/quiz" element={
                     <Quiz/>
                 } />
+                <Route path="/pruebas" element={<Pruebas/>} />
 
                 <Route path="/host/lobby" element={
                 <HostLobby
