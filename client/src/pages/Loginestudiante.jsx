@@ -25,10 +25,12 @@ export const Loginestudiante = () => {
       password
     })
       .then((response) => {
-        console.log(response);
-        window.location.href = '/MainAlumno';
+        if(response.data === 'Alumno logueado'){
+          alert(response.data)
+          window.location.href = '/mainalumno';  //revisar 
+        }
       }, (error) => {
-        console.log(error);
+        alert(error.response.data)
       });
 
   }

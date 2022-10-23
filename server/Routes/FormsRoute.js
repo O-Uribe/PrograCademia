@@ -4,14 +4,17 @@ const router = express.Router();
 import FormProfe from '../models/FormProfeModel.js';
 import FormEstu from '../models/FormEstuModel.js';
 
+//import { checkRut } from '../actions/existeRut.js';  // para un futuro
+
 // @route   POST register/profesor
 
 router.route("/register/profesor").post(async (req, res) => {
     // verificar que el rut no exista
     const { nombre, apellido, rut, email, password } = req.body;
     const rutExists = await FormProfe.findOne({ rut: rut });
-    if (rutExists) {
-        return res.status(400).json({ error: "Rut ya existe" });
+    const emailExists = await FormProfe.findOne({ email: email });
+    if (rutExists || emailExists) {
+        return res.status(400).send( "Rut o Email ya existente" );
     }else{
         try {
             let formProfe = new FormProfe({
@@ -24,8 +27,11 @@ router.route("/register/profesor").post(async (req, res) => {
             await formProfe.save();
             res.send('Profesor registrado');
         } catch (error) {
-            console.log(error.message);
-            res.status(500).send('Server error');
+            if (error.message.includes('validation failed')) {
+                res.status(400).send("Debe completar todos los campos");
+            } else {
+                res.status(500).send(error.message);
+            }
         }
     }
 });
@@ -34,18 +40,17 @@ router.route("/register/profesor").post(async (req, res) => {
 
 router.route("/login/profesor").post(async (req, res) => {
     const { email, password } = req.body;
-    try {
-        let loginProfe = await FormProfe.findOne({ email });
-        if (!loginProfe) {
-            return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });
+    // verificar que el email exista
+    const emailExists = await FormProfe.findOne({ email: email });
+    if (!emailExists) {
+        return res.status(400).send( "Email no existe" );
+    }else {
+        // verificar que el password sea correcto
+        if (emailExists.password === password) {
+            res.send('Profesor logueado');
+        }else{
+            res.status(400).send( "Password incorrecto" );
         }
-        if (password !== loginProfe.password) {
-            return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });
-        }
-        res.send('Profesor logueado');
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send('Server error');
     }
 });
 
@@ -54,20 +59,30 @@ router.route("/login/profesor").post(async (req, res) => {
 
 router.route("/register/estudiante").post(async (req, res) => {
     const { nombre, apellido, rut, email, password, ingreso } = req.body;
-    try {
-        let formEstu = new FormEstu({
-            nombre,
-            apellido,
-            rut,
-            email,
-            password,
-            ingreso
-        });
-        await formEstu.save();
-        res.send('Estudiante registrado');
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send('Server error');
+    const rutExists = await FormEstu.findOne({ rut: rut });
+    const emailExists = await FormEstu.findOne({ email: email });
+    if (rutExists || emailExists) {
+        return res.status(400).send( "Rut o Email ya existente" );
+    }else{
+        try {
+            let formEstu = new FormEstu({
+                nombre,
+                apellido,
+                rut,
+                email,
+                password,
+                ingreso
+            });
+            await formEstu.save();
+            res.send('Estudiante registrado');
+        } catch (error) {
+            // Si un campo no es completado se envia un mensaje de error al cliente con el campo que falta
+            if (error.message.includes('validation failed')) {
+                res.status(400).send("Debe completar todos los campos");
+            } else {
+                res.status(500).send(error.message);
+            }
+        }
     }
 });
 
@@ -75,18 +90,17 @@ router.route("/register/estudiante").post(async (req, res) => {
 
 router.route("/login/estudiante").post(async (req, res) => {
     const { email, password } = req.body;
-    try {
-        let loginEstu = await FormEstu.findOne({ email });
-        if (!loginEstu) {
-            return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });
+    // verificar que el email exista
+    const emailExists = await FormEstu.findOne({ email: email });
+    if (!emailExists) {
+        return res.status(400).send( "Email no existe" );
+    }else {
+        // verificar que el password sea correcto
+        if (emailExists.password === password) {
+            res.send('Alumno logueado');
+        }else{
+            res.status(400).send( "Password incorrecto" );
         }
-        if (password !== loginEstu.password) {
-            return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });
-        }
-        res.send('Estudiante logueado');
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send('Server error');
     }
 });
 

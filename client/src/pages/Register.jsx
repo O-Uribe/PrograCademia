@@ -36,6 +36,7 @@ export const Register = () => {
 
   function handleClick(event){
     event.preventDefault()
+    
     const newUser = {
       nombre: input.nombre,
       apellido: input.apellido,
@@ -43,19 +44,12 @@ export const Register = () => {
       email: input.email,
       password: input.password,
     }   
-    axios.post('http://localhost:5000/register/profesor', newUser).then(res => {
-      console.log(res)
-      // Limpiar inputs
-      setInput({
-        nombre: '',
-        apellido: '',
-        rut: '',
-        email: '',
-        password: '',
-      }) 
+    axios.post('http://localhost:5000/register/profesor', newUser)
+    .then(res => {
+      alert(res.data)
       window.location.href = '/loginprofe';  //revisar
     }).catch(err => {
-      console.log(err)
+      console.log(err.response.data)
     })
   
   }

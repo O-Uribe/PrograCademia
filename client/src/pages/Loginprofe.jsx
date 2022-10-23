@@ -27,13 +27,14 @@ export const Loginprofe = () => {
       password
     })
       .then((response) => {
-        console.log(response);
-        window.location.href = '/mainprofe';  //revisar 
-      }, (error) => {
-        console.log(error);
-      });
-
-  }
+        if (response.data === 'Profesor logueado'){
+          alert(response.data)
+          window.location.href = '/mainprofe';  //revisar 
+        }
+        }).catch(err => {
+        alert(err.response.data)
+      })
+    }
 
   const [errors, setErrors] = React.useState({});
 
@@ -79,7 +80,7 @@ export const Loginprofe = () => {
                   onBlur={validateInput}
                   type='email'
                   placeholder='Email'
-                  required
+                  
                 />
               </div>
               <div className="form-control">
@@ -93,7 +94,7 @@ export const Loginprofe = () => {
                   onBlur={validateInput}
                   type='password'
                   placeholder='Password'
-                  required
+                  
                 />
                 <label className="label">
                   <Link to="/registrarse"className="label-text-alt link link-hover">Registrarse aqui</Link>

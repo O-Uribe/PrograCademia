@@ -46,20 +46,19 @@ export const RegisterAlu = () => {
       ingreso: input.ingreso,
       password: input.password,
     }   
-    axios.post('http://localhost:5000/register/estudiante', newUser).then(res => {
-      console.log(res)
-      // Limpiar inputs
-      setInput({
-        nombre: '',
-        apellido: '',
-        rut: '',
-        email: '',
-        ingreso: '',
-        password: '',
-      }) 
-      window.location.href = '/loginalu';  //revisar
+    axios.post('http://localhost:5000/register/estudiante', newUser)
+    .then(res => {
+      if(res.data === 'Estudiante registrado'){
+        alert(res.data)
+        window.location.href = '/loginalu';  //revisar
+      }
     }).catch(err => {
-      console.log(err)
+      //si es status 500 usar console.log si es status 400 usar alert
+      if(err.response.status === 400){
+        alert(err.response.data)
+      }else{
+        console.log(err.response.data)
+      }
     })
   
   }
@@ -80,10 +79,13 @@ export const RegisterAlu = () => {
           ? setErrors({ ...errors, apellido: "Ingresar" })
           : delete errors[inputName] && setErrors({ ...errors });
         break;
-      case "rut":
+      case "rut": //Rut debe tener formato 12345678-9
         !value.length
           ? setErrors({ ...errors, rut: "Ingresar" })
           : delete errors[inputName] && setErrors({ ...errors });
+        if (value.length > 0 && !value.match(/^[0-9]+-[0-9kK]$/)) {
+          setErrors({ ...errors, rut: "El formato debe ser 12345678-9" });
+        }
         break;
 
       case "email":
@@ -189,7 +191,7 @@ export const RegisterAlu = () => {
                   <input
                     type="text"
                     name="rut"
-                    placeholder="00.000.000-0"
+                    placeholder="00000000-0"
                     id="rut"
                     value={input.rut}
                     onChange={handleChange}
