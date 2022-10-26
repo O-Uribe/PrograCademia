@@ -23,6 +23,28 @@ export const ShowEstudiante = () => {
                 .then((data) => setEstudiantes(data));
         }, []);
 
+        function handleDelete(id) {
+            fetch(`http://localhost:5000/estudiante/${id}`, {
+                method: "DELETE",
+            }).then((response) => {
+                if (response.ok) {
+                    alert("Estudiante Eliminado");
+                    window.location.reload();
+                }
+            });
+        }
+
+        function handleEdit(id) {
+            fetch(`http://localhost:5000/estudiante/${id}`, {
+                method: "PUT",
+            }).then((response) => {
+                if (response.ok) {
+                    alert("Estudiante Editado");
+                    window.location.reload();
+                }
+            });
+        }
+
     return (
         <div>
             <h1>Estudiantes</h1>
@@ -44,6 +66,9 @@ export const ShowEstudiante = () => {
                             <td>{estudiante.rut}</td>
                             <td>{estudiante.email}</td>
                             <td>{estudiante.ingreso}</td>
+                            <td>
+                                <button onClick={() => handleDelete(estudiante._id)}>Eliminar</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

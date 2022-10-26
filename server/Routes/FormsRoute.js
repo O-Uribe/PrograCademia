@@ -3,8 +3,10 @@ const router = express.Router();
 
 import FormProfe from '../models/FormProfeModel.js';
 import FormEstu from '../models/FormEstuModel.js';
+import mongoose from 'mongoose';
 
 //import { checkRut } from '../actions/existeRut.js';  // para un futuro
+
 
 // @route   POST register/profesor
 
@@ -72,9 +74,29 @@ router.route("/profesor").get(async (req, res) => {
 
 //@route    GET register/profesor/:id
 router.route("/profesor/:id").get(async (req, res) => {
+    const { id } = req.params;
     try {
-        const formProfe = await FormProfe.findById(req.params.id);
-        res.json(formProfe);
+        const formProfe = await FormProfe.findById(id);
+        if (formProfe) {
+            res.json(formProfe);
+        } else {
+            res.status(404).send("Profesor no encontrado");
+        }
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
+//@route    DELETE register/profesor/:id
+router.route("/profesor/:id").delete(async (req, res) => {
+    const { id } = req.params;
+    try {
+        const formProfe = await FormProfe.findByIdAndDelete(id);
+        if (formProfe) {
+            res.send("Profesor eliminado");
+        } else {
+            res.status(404).send("Profesor no encontrado");
+        }
     } catch (error) {
         res.status(500).send(error.message);
     }
@@ -132,7 +154,7 @@ router.route("/login/estudiante").post(async (req, res) => {
     }
 });
 
-// @route   GET register/estudiante
+// @route   GET register/estudiante  TODOS LOS ESTUDIANTES
 router.route("/estudiante").get(async (req, res) => {
     try {
         const formEstu = await FormEstu.find();
@@ -142,10 +164,19 @@ router.route("/estudiante").get(async (req, res) => {
     }
 });
 
-// @route   GET register/estudiante/:id
+// @route   GET register/estudiante/:id  ESTUDIANTE POR ID
 router.route("/estudiante/:id").get(async (req, res) => {
     try {
-        const formEstu = await FormEstu.findById(req.params.id);
+        const formEstu = await FormEstu.findOne({ _id: req.params.id });
+        res.json(formEstu);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+// @route   DELETE register/estudiante/:id  http://localhost:5000/estudiante/63548548c3d2e33838c30fe3​ ejemplo
+router.route("/estudiante/:id").delete(async (req, res) => {
+    try {
+        const formEstu = await FormEstu.findByIdAndDelete(req.params.id);
         res.json(formEstu);
     } catch (error) {
         res.status(500).send(error.message);

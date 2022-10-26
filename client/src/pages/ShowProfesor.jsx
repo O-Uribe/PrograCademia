@@ -21,6 +21,16 @@ export const ShowProfesor = () => {
             .then((data) => setProfesores(data));
     }, []);
 
+    function handleDelete(id) {
+        fetch(`http://localhost:5000/profesor/${id}`, {
+            method: "DELETE",
+        }).then((response) => {
+            if (response.ok) {
+                alert("Profesor Eliminado");
+                window.location.reload();
+            }
+        });
+    }
 
     return (
         <div>
@@ -41,6 +51,9 @@ export const ShowProfesor = () => {
                             <td>{profesor.apellido}</td>
                             <td>{profesor.rut}</td>
                             <td>{profesor.email}</td>
+                            <td>
+                                <button onClick={() => handleDelete(profesor._id)}>Eliminar</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
