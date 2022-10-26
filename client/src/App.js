@@ -24,6 +24,8 @@ import { Loginprofe } from "./pages/Loginprofe";
 import { Loginestudiante } from "./pages/Loginestudiante";
 import Chat from './components/chat';
 import Pruebas from './pages/pruebas'
+import ShowProfesor from './pages/ShowProfesor'
+import ShowEstudiante from './pages/ShowAlu'
 
 
 let BASE_URL = "http://localhost:5000";
@@ -127,6 +129,8 @@ function App() {
                     setSocket={setSocket}/>
                 } />
                 <Route path="/admin/stats" element={<DashBoard />} />
+                <Route path="/admin/mostrar/profesor" element={<ShowProfesor/>} />
+                <Route path="/admin/mostrar/alumno" element={<ShowEstudiante/>} />
                 </Routes>
             </main>
         </div>

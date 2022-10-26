@@ -13,9 +13,15 @@ router.route("/register/profesor").post(async (req, res) => {
     const { nombre, apellido, rut, email, password } = req.body;
     const rutExists = await FormProfe.findOne({ rut: rut });
     const emailExists = await FormProfe.findOne({ email: email });
+    // Verificar que el email termine en @uct.cl
+    const emailUct = email.includes("@uct.cl");
+
     if (rutExists || emailExists) {
         return res.status(400).send( "Rut o Email ya existente" );
-    }else{
+    }else if(!emailUct){
+        return res.status(400).send( "Email debe terminar en @uct.cl" );
+    }
+    else{
         try {
             let formProfe = new FormProfe({
                 nombre,
@@ -54,6 +60,25 @@ router.route("/login/profesor").post(async (req, res) => {
     }
 });
 
+// @route   GET register/profesor
+router.route("/profesor").get(async (req, res) => {
+    try {
+        const formProfe = await FormProfe.find();
+        res.json(formProfe);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
+//@route    GET register/profesor/:id
+router.route("/profesor/:id").get(async (req, res) => {
+    try {
+        const formProfe = await FormProfe.findById(req.params.id);
+        res.json(formProfe);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
 
 // @route   POST register/estudiante
 
@@ -61,8 +86,11 @@ router.route("/register/estudiante").post(async (req, res) => {
     const { nombre, apellido, rut, email, password, ingreso } = req.body;
     const rutExists = await FormEstu.findOne({ rut: rut });
     const emailExists = await FormEstu.findOne({ email: email });
+    const emailUct = email.includes("@alu.uct.cl");
     if (rutExists || emailExists) {
         return res.status(400).send( "Rut o Email ya existente" );
+    }else if (!emailUct){
+        return res.status(400).send( "Email debe terminar en @alu.uct.cl" );
     }else{
         try {
             let formEstu = new FormEstu({
@@ -104,4 +132,23 @@ router.route("/login/estudiante").post(async (req, res) => {
     }
 });
 
+// @route   GET register/estudiante
+router.route("/estudiante").get(async (req, res) => {
+    try {
+        const formEstu = await FormEstu.find();
+        res.json(formEstu);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
+// @route   GET register/estudiante/:id
+router.route("/estudiante/:id").get(async (req, res) => {
+    try {
+        const formEstu = await FormEstu.findById(req.params.id);
+        res.json(formEstu);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
 export default router;
