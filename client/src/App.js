@@ -26,6 +26,7 @@ import Chat from './components/chat';
 import Pruebas from './pages/pruebas'
 import ShowProfesor from './pages/ShowProfesor'
 import ShowEstudiante from './pages/ShowAlu'
+import { Recursos } from "./pages/recursos";
 
 
 let BASE_URL = "http://localhost:5000";
@@ -92,7 +93,7 @@ function App() {
                 <Route exact path="/registrarsealu" element={<RegisterAlu/>} />
                 <Route exact path="/loginprofe" element={<Loginprofe/>} />
                 <Route exact path="/loginalu" element={<Loginestudiante/>} />
-
+                <Route exact path="/recursos" element={<Recursos/>} />
                 
                 <Route path="/user/lobby" element={
                 <UserLobby
