@@ -23,11 +23,12 @@ import { RegisterAlu } from "./pages/RegisterAlu";
 import { Loginprofe } from "./pages/Loginprofe";
 import { Loginestudiante } from "./pages/Loginestudiante";
 import Chat from './components/chat';
-import Pruebas from './pages/pruebas'
-import ShowProfesor from './pages/ShowProfesor'
-import ShowEstudiante from './pages/ShowAlu'
+import Pruebas from './pages/pruebas';
+import ShowProfesor from './pages/ShowProfesor';
+import ShowEstudiante from './pages/ShowAlu';
 import { Recursos } from "./pages/recursos";
-import videoBg from './assets/fondo.mp4'
+import videoBg from './assets/fondo.mp4';
+import Formulario from './pages/formulario';
 
 let BASE_URL = "http://localhost:5000";
 
@@ -71,6 +72,11 @@ function App() {
                 <Route path="/host/quiz" element={
                     <Quiz/>
                 } />
+
+                <Route path="/host/formulario" element={
+                    <Formulario/>
+                } />
+
                 <Route path="/pruebas" element={<Pruebas/>} />
 
                 <Route path="/host/lobby" element={
