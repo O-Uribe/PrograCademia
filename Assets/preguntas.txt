@@ -1,0 +1,129 @@
+LOGICA DE PROGRAMACION
+Un compilador es:
+
+	El que permite traducir un programa escrito en un lenguaje de programación a lenguaje máquina. CORRECTA
+	Un lenguaje de alto nivel
+	Una instrucción
+	Una directiva de pre procesamiento
+
+    En caso de presentarse una falla de sintaxis, en el proceso de programación, se procede a:
+	Ignorar los errores y ejecutar el programa.
+	Comprender el mensaje de error que reporta el ambiente de programación, examinar el código del programa para identificar en cuál instrucción se encuentra la falla, corregir la falla, probar el programa de nuevo. CORRECTA 
+	Examinar el código del programa para identificar en cuál instrucción se encuentra la falla, Comprender el mensaje de error que reporta el ambiente de programación.
+	Examinar el código del programa para identificar en cuál instrucción se encuentra la falla, corregir la falla.
+
+
+    Las etapas que deben seguirse en la construcción de un programa son:
+	Análisis, algoritmo, diagrama de flujo, seudocódigo
+	Análisis, seudocódigo, prueba de escritorio, implementación (codificar en un lenguaje de programación).
+	Análisis, algoritmo, prueba de escritorio, implementación (codificar en un lenguaje de programación), prueba, instalación y uso del aplicativo.
+	Análisis, algoritmo, diagrama de flujo, seudocódigo, prueba de escritorio, implementación (codificar en un lenguaje de programación), prueba, instalación y uso del aplicativo. CORRECTA
+
+    Instrucción que permite almacenar un valor en una variable.
+	Leer
+	Asignar CORRECTA 
+	Escribir
+	Si / entonces
+
+    El diagrama de flujo es la representación grafica de un algoritmo, donde se visualiza el flujo de los datos y las operaciones (procesos) de un programa. Se caracteriza por:
+	Que debe ser construido por herramientas muy técnicas
+	Utilizar formas geométricas elementales
+	Su sencillez, claridad, uso de normas y símbolos, flexibilidad. CORRECTA
+	Requerir un buen análisis del problemaa
+
+
+
+    java
+
+Tipo de dato que permite almacenar un entero en Java
+
+
+int CORRECTA
+byte
+double
+string
+
+
+
+
+Para imprimir texto a través de la pantalla se hace uso de...
+
+
+#System.out.println() CORRECTA
+System.in.println()
+System.in()
+System.out()
+
+
+Si deseas guardar el nombre de "Pablito", el tipo de dato que se debe utilizar es:
+
+String CORRECTA
+Cadena
+Char
+Word
+
+
+
+Un ejemplo de Objeto en Programación seria ?
+
+
+Carro
+Bicicleta
+Avión
+Todas las opciones son correctas CORRECTA
+
+
+
+Para guardar la altura de una persona (en metros), debes utilizar el tipo de dato:
+
+Double CORRECTA
+Char
+Int 
+Byte
+
+PYTHON
+
+
+La forma correcta de asignar el valor 3 a la variable num es
+
+opciones de respuesta
+var num = 3
+num = 3 CORRECTA
+def num = 3
+3 -> num;
+
+
+El resultado de la siguiente operación 2**3 es
+
+
+6
+8 CORRECTA
+1
+5
+
+
+
+¿Cuál de los siguientes es un comando de Python que permite al usuario escribir texto?
+
+opciones de respuesta
+input( )
+ask( )
+write( )
+print( ) CORRECTA
+
+
+¿Cómo se insertan los comentarios en Python?
+
+opciones de respuesta
+__
+//
+# CORRECTA
+()
+
+En la lista mylist = [10,20, 30] ¿cómo se mostraría el valor 30?
+
+
+print(mylist[3])
+print(mylist(3))
+print(mylist[2]) CORRECTA
+print(mylist(2))

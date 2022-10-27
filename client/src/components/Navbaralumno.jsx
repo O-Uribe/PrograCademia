@@ -41,6 +41,9 @@ const Navbaral=()=>{
                     <li>
                     <Link to='/MainAlumno' onClick={()=>sound.play()}>Historial</Link>
                     </li>
+                    <li>
+                    <Link to='/Recursos' onClick={()=>sound.play()}>Recursos</Link>
+                    </li>
                 </ul>
                 </div>
             </div>
