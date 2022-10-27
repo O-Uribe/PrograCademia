@@ -27,7 +27,7 @@ import Pruebas from './pages/pruebas'
 import ShowProfesor from './pages/ShowProfesor'
 import ShowEstudiante from './pages/ShowAlu'
 import { Recursos } from "./pages/recursos";
-
+import videoBg from './assets/fondo.mp4'
 
 let BASE_URL = "http://localhost:5000";
 
@@ -49,8 +49,9 @@ function App() {
     */  
   return (
     <Router>
-        <div className='flex flex-col h-screen bg-base-200'>
-            <main className='flex flex-col h-screen'>
+        <div className='flex'>
+        <video src={videoBg} autoPlay loop muted className="object-cover h-screen w-screen"/>
+            <main className='flex flex-col items-center justify-center h-full absolute text-white w-full'>
                 <Routes>
                     <Route path='/home' element={<Home />} />
                     <Route path="/podium" element={

@@ -115,11 +115,11 @@ export const Register = () => {
   };
   return (
     <>
-      <div className="container m-auto max-w-lg">
-        <div className="md:mt-10 m-2 sm:mt-0">
-          <form className="card flex-shrink-0 w-full  shadow-2xl bg-base-100 mt-8 space-y-6 ">
+      <div className="container h-screen">
+        <div className="container m-auto max-w-lg">
+          <form className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
           <div className="shadow overflow-hidden sm:rounded-md">
-              <div className="px-4 py-5 bg-base-100 sm:p-6">
+              <div className="px-1 py-2 bg-base-100">
                 {/*nombre*/}
                 <div className="form-control">
                 <label
@@ -253,7 +253,7 @@ export const Register = () => {
                 )}
               </div>
             </div>
-            <div className="form-control mt-6">
+            <div className="form-control">
             <button 
               onClick={handleClick}
               className="btn btn-outline"
@@ -264,8 +264,8 @@ export const Register = () => {
             </div>
           </form>
       </div>
+      <Footer className="w-full h-full"/>
     </div>
-    <Footer/>
   </>
   );
 }

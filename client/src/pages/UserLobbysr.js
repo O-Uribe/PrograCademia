@@ -41,10 +41,10 @@ const UserLobbysr = (props) => {
     }, [history, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
     return (
         <>
-        <Link className="btn btn-ghost normal-case text-xl  bg-base-200" to="/">
+        <Link className="text-center btn-ghost normal-case text-xl w-full bg-base-200" to="/">
             Progracademia!
         </Link>
-            <div className='mx-auto flex-1 flex flex-col items-center px-2 lg:flex-row bg-base-200'>
+            <div className='mx-auto flex-1 flex flex-col items-center px-2 lg:flex-row'>
                 <Chat/>
                 <div className="lg:divider-horizontal"></div>
                 <div className="card w-96 bg-base-100 text-neutral-content">

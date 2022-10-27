@@ -11,18 +11,18 @@ const Home = () => {
   return (
     <React.Fragment>
         <>
-        <Link className="btn btn-ghost normal-case text-xl  bg-base-200" to="/">
+        <Link className="text-center btn-ghost normal-case text-xl w-full bg-base-200" to="/">
             Progracademia!
         </Link>
-        <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row bg-base-200">
-            <div className="card w-96 bg-base-100 shadow-xl image-full">
+        <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row">
+            <div className="card shadow-xl image-full">
                 <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Profesor!</h2>
                     <p></p>
                     <div className="card-actions justify-end">
                     <Link to="/loginprofe">
-                        <button className="btn btn-primary" onClick={()=>sound.play()}>
+                        <button className="btn btn-primary text-black" onClick={()=>sound.play()}>
                             Ingresar
                         </button>
                     </Link>
@@ -30,7 +30,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="lg:divider-horizontal"></div> 
-            <div className="card w-96 bg-base-100 shadow-xl image-full">
+            <div className="card shadow-xl image-full">
                 <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Estudiante!</h2>
@@ -45,7 +45,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="lg:divider-horizontal"></div> 
-            <div className="card w-96 bg-base-100 shadow-xl image-full">
+            <div className="card  shadow-xl image-full">
                 <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Estudiante!</h2>
@@ -60,7 +60,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="lg:divider-horizontal"></div> 
-            <div className="card w-96 bg-base-100 shadow-xl image-full">
+            <div className="card  shadow-xl image-full">
                 <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Estadistica!</h2>

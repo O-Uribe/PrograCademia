@@ -41,10 +41,8 @@ const UserLobby = (props) => {
         }
     }, [history, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
     return (
-        <><Navbaral /><Link className="btn btn-ghost normal-case text-xl  bg-base-200" to="/">
-        Progracademia!
-    </Link>
-        <div className='mx-auto flex-1 flex flex-col items-center px-2 lg:flex-row bg-base-200'>
+        <><Navbaral />
+        <div className='mx-auto flex-1 flex flex-col items-center px-2 lg:flex-row'>
             <Chat/>
             <div className="lg:divider-horizontal"></div>
             <div className="card w-96 bg-base-100 text-neutral-content">
