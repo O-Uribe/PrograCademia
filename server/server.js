@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path';
 const app = express();
 import cors from 'cors';
 import mongoose from 'mongoose';
@@ -29,6 +28,9 @@ try {
 // Routes
 import router from './Routes/FormsRoute.js';
 import exp from 'constants';
+import { CONNREFUSED } from 'dns';
+import { Socket } from 'dgram';
+import { connect } from 'http2';
 app.use('/', router);
 
 //app.use(express);
@@ -52,18 +54,103 @@ io.on('connection', (socket) => {
 });
 
 
+let namespace;
 
+const trivia = [
+  {
+    question: 'Which is the biggest planet in the Solar System?',
+    options: [
+      { id: 1, description: 'Venus' },
+      { id: 2, description: 'JUPITER' },
+      { id: 3, description: 'Mercury' },
+      { id: 4, description: 'Mars' },
+    ],
+  },
+  {
+    question: 'Which is the largest animal?',
+    options: [
+      { id: 1, description: 'cow' },
+      { id: 2, description: 'dog' },
+      { id: 3, description: 'MOSQUITO' },
+      { id: 4, description: 'WHALE' },
+    ],
+  },
+  {
+    question: 'Which is the largest number?',
+    options: [
+      { id: 1, description: '1' },
+      { id: 2, description: '2' },
+    ],
+  },
+];
+
+
+app.get('/start-game', (req, res) => {
+    console.log('emiting a game!');
+    const { questionNumber } = req.query;
+
+    socket.broadcast.emit('question', {
+        question: trivia[questionNumber].question,
+        options: trivia[questionNumber].options,
+    });
+    res.json({ gameStarted: true });
+});
 
 app.get('/list', (req, res) => {
     const triviaData = {
-      triviaList: [
+        triviaList: [
         { id: 1, name: 'trivia1' },
-        { id: 1, name: 'trivia2' },
-      ],
-      pin: Math.floor(Math.random() * 10),
+        { id: 2, name: 'trivia2' },
+        ],
+        pin: Math.floor(Math.random() * 10),
     };
     res.json(triviaData);
-  });
+});
+
+app.get('/trivia/:pin/:selectedTrivia', (req, res) => {
+    const { pin } = req.params;
+
+    namespace = io.of(`/${pin}`);
+    namespace.counter = 0;
+
+    namespace.on('connection', (socket) => {
+        namespace.counter += 1;
+        if (namespace.counter === 1) {
+            //console.log('Profesor conectado!');
+            socket.host = true;
+        }
+
+        if (!socket.host) {
+            //console.log('Estudiante conectado!');
+            socket.join('gameroom');
+        }
+
+        socket.on('start-game', () => {
+            namespace.emit('question', {
+                question: trivia[namespace.counter].question,
+                options: trivia[namespace.counter].options,
+            });
+        });
+
+        socket.on('next-question', () => {
+            namespace.counter += 1;
+            namespace.emit('question', {
+                question: trivia[namespace.counter].question,
+                options: trivia[namespace.counter].options,
+            });
+        });
+
+        
+
+        // socket.on('disconnect', () => {
+        //     console.log('Usuario desconectado');
+        // });
+    });
+
+    res.json({ connected: true });
+});
+
+
 
 
 
