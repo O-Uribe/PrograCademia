@@ -33,9 +33,9 @@ export const ShowProfesor = () => {
     }
 
     return (
-        <div>
+        <div class="overflow-x-auto">
             <h1>Profesores</h1>
-            <table>
+            <table class="table w-full">
                 <thead>
                     <tr>
                         <th>Nombre</th>

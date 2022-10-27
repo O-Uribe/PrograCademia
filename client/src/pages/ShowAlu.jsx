@@ -46,9 +46,9 @@ export const ShowEstudiante = () => {
         }
 
     return (
-        <div>
+        <div class="overflow-x-auto">
             <h1>Estudiantes</h1>
-            <table>
+            <table class="table w-full">
                 <thead>
                     <tr>
                         <th>Nombre</th>
