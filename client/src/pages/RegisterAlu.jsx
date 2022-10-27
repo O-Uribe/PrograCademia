@@ -1,6 +1,7 @@
 import  React, { useState } from 'react'
 import axios from 'axios'
 import Footer from '../components/Footer';
+import videoBg from '../assets/fondo.mp4';
 /*
   Inputs para register de profesor
 
@@ -131,9 +132,10 @@ export const RegisterAlu = () => {
   };
   return (
     <>
-      <div className="container h-screen lg:flex-row">
+    <video src={videoBg} autoPlay loop muted className="h-fit object-cover w-full" />
+      <div className="container h-full lg:flex-row absolute">
         <div className="container m-auto max-w-lg">
-          <form className="card flex-shrink-0 w-full shadow-2xl h-5/6">
+          <form className="card flex-shrink-0 w-full shadow-2xl">
           <div className="shadow sm:rounded-md">
               <div className="px-1 py-2 bg-base-100">
                 {/*nombre*/}
@@ -294,7 +296,7 @@ export const RegisterAlu = () => {
                 </div>
                 
               </div>
-            <div className="form-control">
+            <div className="form-control bg-base-100">
               <button 
                 onClick={handleClick}
                 className="btn btn-outline"

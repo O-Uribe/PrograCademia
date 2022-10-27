@@ -5,6 +5,7 @@ import Navbaral from '../components/Navbaralumno';
 import Footer from '../components/Footer';
 import Chat from '../components/chat'
 import { Link } from 'react-router-dom';
+import videoBg from '../assets/fondo.mp4'
 
 
 const UserLobby = (props) => {
@@ -41,7 +42,9 @@ const UserLobby = (props) => {
         }
     }, [history, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
     return (
-        <><Navbaral />
+        <><video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+        <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+        <div className="w-full absolute inset-x-0 top-0"><Navbaral/></div>
         <div className='mx-auto flex-1 flex flex-col items-center px-2 lg:flex-row'>
             <Chat/>
             <div className="lg:divider-horizontal"></div>
@@ -59,7 +62,10 @@ const UserLobby = (props) => {
                     </div>
                 </div>
             </div>
-        </div><Footer/></>
+        </div>
+        <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
+        </div>
+        </>
     );
 };
 

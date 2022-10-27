@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import io from 'socket.io-client';
 import Players from '../components/Players';
 import Navbarpr from '../components/Navbarprofe';
-
+import Footer from '../components/Footer';
+import videoBg from '../assets/fondo.mp4'
 const HostLobby = (props) => {
     const [players, setPlayers] = useState([]);
     const data = useLocation();
@@ -42,7 +43,9 @@ const HostLobby = (props) => {
 
     return (
         <React.Fragment>
-        <Navbarpr/>
+            <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+                <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+                <div className="w-full absolute inset-x-0 top-0"><Navbarpr/></div>
             <div className='object-center text-center'>
                 <div className="container d-flex align-items-center flex-column">
                 <h2 className="pin-host-lobby masthead-heading text-uppercase mb-0 text-white">
@@ -71,6 +74,8 @@ const HostLobby = (props) => {
                     <Players className="" players={players} />
                 </div>
                 </div>
+            </div>
+            <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
             </div>
     </React.Fragment>
   );

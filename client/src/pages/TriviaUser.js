@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StopGame from '../components/StopGame';
 import Questions from '../components/Questions';
 import Countdown from '../components/Countdown';
-
+import videoBg from '../assets/fondo.mp4'
 const Trivia = (props) => {
   const [isClicked, setIsClicked] = useState('');
   const [isDisabled, setIsDisabled] = useState('');
@@ -22,7 +22,9 @@ const Trivia = (props) => {
   }, [onGameEnd, socketUser]);
 
   return props.triviaData ? (
-    <body className="bg-primary">
+    <>
+    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+    <body className="bg-primary absolute">
         <div className="text-center text-white bg-secondary text-uppercase">
             <Countdown socket={socketUser} />
         </div>
@@ -66,6 +68,7 @@ const Trivia = (props) => {
             />
         </div>
     </body>
+    </>
     ) : (
     'Cargando Quiz...'
     );

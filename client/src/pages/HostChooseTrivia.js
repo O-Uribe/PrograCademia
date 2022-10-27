@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbarpr from '../components/Navbarprofe';
-
+import Footer from '../components/Footer';
+import videoBg from '../assets/fondo.mp4'
 const HostChooseTrivia = (props) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -23,9 +24,19 @@ const HostChooseTrivia = (props) => {
     }, []);
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return (<>
+                    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+                        <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+                            Error: {error.message}
+                        </div>
+                </>);
     } else if (!isLoaded) {
-        return <div>Cargando...</div>;
+        return (<>
+                    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+                        <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+                            Cargando...
+                        </div>
+                </>);
     } else {
         const buttons = triviaList.map((trivia, i) => (
             <div key={`item-${i + 1}`}>
@@ -36,7 +47,9 @@ const HostChooseTrivia = (props) => {
         ));
         return (
             <React.Fragment>
-                <Navbarpr/>
+                <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+                <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+                <div className="w-full absolute inset-x-0 top-0"><Navbarpr/></div>
                         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                             <h2 className="page-section-heading text-center text-uppercase mb-0 text-white">
                                 Elige tu favorito
@@ -47,6 +60,8 @@ const HostChooseTrivia = (props) => {
                                 </div>
                             </div>
                         </div>
+                        <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
+                    </div>
             </React.Fragment>
     );
   }

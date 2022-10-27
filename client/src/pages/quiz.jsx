@@ -1,6 +1,6 @@
 import UseFetch from '../components/UseFetch';
 import React, { useState, useEffect } from 'react';
-
+import videoBg from '../assets/fondo.mp4'
 function Quiz() {
   const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas");
   const estado = UseFetch(url);
@@ -44,6 +44,9 @@ function Quiz() {
   }, [tiempoRespuesta]);
 
   if (isFinished) return (
+    <>
+    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+    <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
     <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
       <main className='app'>
         <div className="bg-no-repeat  justify-center mb-6 col-lg-3 col-md-3 rounded  m-1 py-2">
@@ -66,10 +69,15 @@ function Quiz() {
         </div>
       </main>
     </div>
+    </div>
+    </>
   )
 
   if(answersShown) return (
-    <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+    <>
+    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+      <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+      <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
       <main className='app'>
         <div className="flex flex-col justify-around relative w-full">
           <div className="mb-5">
@@ -98,9 +106,14 @@ function Quiz() {
         </div>
       </main>
     </div>
+    </div>
+    </>
   );
 
   return (
+    <>
+    <video src={videoBg} autoPlay loop muted className="h-fit object-cover w-full" />
+                <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
     <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
       <div className="App">
         {
@@ -150,6 +163,8 @@ function Quiz() {
         }
       </div>
     </div>
+    </div>
+    </>
   );
 }
 

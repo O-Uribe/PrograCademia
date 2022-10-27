@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {Howl} from 'howler';
 import Footer from '../components/Footer';
+import videoBg from '../assets/fondo.mp4'
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2
@@ -9,76 +10,79 @@ const sound = new Howl({
 const Home = () => {
   
   return (
-    <React.Fragment>
-        <>
-        <Link className="text-center btn-ghost normal-case text-xl w-full bg-base-200" to="/">
-            Progracademia!
-        </Link>
-        <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row">
-            <div className="card shadow-xl image-full">
-                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">Profesor!</h2>
-                    <p></p>
-                    <div className="card-actions justify-end">
-                    <Link to="/loginprofe">
-                        <button className="btn btn-primary text-black" onClick={()=>sound.play()}>
+    <>
+        <main className="h-screen w-screen">
+        <video src={videoBg} autoPlay loop muted className="h-full object-cover w-full" />
+            <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+            <Link className="text-center btn-ghost normal-case text-xl w-full bg-base-200 " to="/">
+                Progracademia!
+            </Link>
+            <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">
+                <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <h2 className="card-title">Profesor!</h2>
+                        <p></p>
+                        <div className="card-actions justify-end">
+                        <Link to="/loginprofe">
+                            <button className="btn btn-primary text-white" onClick={()=>sound.play()}>
+                                Ingresar
+                            </button>
+                        </Link>
+                        </div>
+                    </div>
+                </div>
+                <div className="lg:divider-horizontal"></div> 
+                <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <h2 className="card-title">Estudiante!</h2>
+                        <p></p>
+                        <div className="card-actions justify-end">
+                        <Link to="/loginalu">
+                            <button className="btn btn-primary"  onClick={()=>sound.play()}>
                             Ingresar
-                        </button>
-                    </Link>
+                            </button>
+                        </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="lg:divider-horizontal"></div> 
-            <div className="card shadow-xl image-full">
-                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">Estudiante!</h2>
-                    <p></p>
-                    <div className="card-actions justify-end">
-                    <Link to="/loginalu">
-                        <button className="btn btn-primary"  onClick={()=>sound.play()}>
-                        Ingresar
-                        </button>
-                    </Link>
+                <div className="lg:divider-horizontal"></div> 
+                <div className="card  shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <h2 className="card-title">Estudiante!</h2>
+                        <p></p>
+                        <div className="card-actions justify-end">
+                        <Link to="/usersr">
+                            <button className="btn btn-primary"  onClick={()=>sound.play()}>
+                            Sin Registro
+                            </button>
+                        </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="lg:divider-horizontal"></div> 
-            <div className="card  shadow-xl image-full">
-                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">Estudiante!</h2>
-                    <p></p>
-                    <div className="card-actions justify-end">
-                    <Link to="/usersr">
-                        <button className="btn btn-primary"  onClick={()=>sound.play()}>
-                        Sin Registro
-                        </button>
-                    </Link>
+                <div className="lg:divider-horizontal"></div> 
+                <div className="card  shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <h2 className="card-title">Estadistica!</h2>
+                        <p></p>
+                        <div className="card-actions justify-end">
+                        <Link to="/admin/stats">
+                            <button className="btn btn-primary"  onClick={()=>sound.play()}>
+                                Estadísticas
+                            </button>
+                        </Link>
+                        </div>
                     </div>
                 </div>
+                        
             </div>
-            <div className="lg:divider-horizontal"></div> 
-            <div className="card  shadow-xl image-full">
-                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">Estadistica!</h2>
-                    <p></p>
-                    <div className="card-actions justify-end">
-                    <Link to="/admin/stats">
-                        <button className="btn btn-primary"  onClick={()=>sound.play()}>
-                            Estadísticas
-                        </button>
-                    </Link>
-                    </div>
-                </div>
+            <Footer className="w-full absolute inset-x-0 bottom-0"/>
             </div>
-                    
-            </div>
-        </>
-    <Footer/>
-    </React.Fragment>
+    </main>
+    </>
   );
 };
 

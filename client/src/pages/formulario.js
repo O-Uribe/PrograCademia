@@ -1,6 +1,6 @@
 import React from "react"
 import { useForm } from "react-hook-form";
-
+import videoBg from '../assets/fondo.mp4'
 const Formulario = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm({
@@ -21,8 +21,10 @@ const Formulario = () => {
     }
 
     return (
-        <center>
-            <form class="bg-gray-600 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubmit)}>
+        <>
+        <video src={videoBg} autoPlay loop muted className="h-full object-cover w-full" />
+        <center className="absolute">
+            <form class="bg-base-100 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubmit)}>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Categoria</label>
@@ -88,6 +90,7 @@ const Formulario = () => {
                 type="submit" value="enviar"/>
             </form>
         </center>
+        </>
     );
 };
 

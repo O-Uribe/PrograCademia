@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Chat from '../components/chat'
 import { Link } from 'react-router-dom';
-
+import videoBg from '../assets/fondo.mp4'
 const UserLobbysr = (props) => {
     const Navigate = useNavigate();
     const data = useLocation();
@@ -40,6 +40,8 @@ const UserLobbysr = (props) => {
     
     return (
         <>
+        <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+        <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
         <Link className="text-center btn-ghost normal-case text-xl w-full bg-base-200" to="/">
             Progracademia!
         </Link>
@@ -60,7 +62,10 @@ const UserLobbysr = (props) => {
                         </div>
                     </div>
                 </div>
-            </div><Footer/></>
+            </div>
+            <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
+            </div>
+            </>
     );
 };
 

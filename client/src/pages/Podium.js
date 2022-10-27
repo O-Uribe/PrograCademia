@@ -1,8 +1,11 @@
 import React from 'react';
 import StopGame from '../components/StopGame';
+import videoBg from '../assets/fondo.mp4'
 const Podium = (props) => {
   return (
     <React.Fragment>
+      <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+      <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
       <body className="bg-primary">
         <div>
           <div>
@@ -36,6 +39,7 @@ const Podium = (props) => {
           />
         </div>
       </body>
+      </div>
     </React.Fragment>
   );
 };
