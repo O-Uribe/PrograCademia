@@ -5,6 +5,8 @@ import Navbaral from '../components/Navbaralumno';
 import Footer from '../components/Footer';
 import Chat from '../components/chat'
 import { Link } from 'react-router-dom';
+
+
 const UserLobby = (props) => {
     const history = useNavigate();
     const data = useLocation();
@@ -13,8 +15,6 @@ const UserLobby = (props) => {
     const playerName = playerNameState.playerName;
     const pin = pinState.pin;
     const { setSocketUser, socketUser, BASE_URL } = props;
-
-    console.log("esta es la data", data);
 
     useEffect(() => {
         if (!socketUser) {

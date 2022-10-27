@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import socketIO from 'socket.io-client';
+import io from 'socket.io-client';
 import Players from '../components/Players';
 import Navbarpr from '../components/Navbarprofe';
-
 
 const HostLobby = (props) => {
     const [players, setPlayers] = useState([]);
@@ -11,18 +10,16 @@ const HostLobby = (props) => {
     const pin = data.state;
     const { socket, setTriviaData, BASE_URL } = props;
 
-    console.log('La data es', data);
-    console.log('El pin es', pin);
-
+    
     useEffect(() => {
         console.log('hostsocket', props.socket);
         if (!props.socket) {
         fetch(`http://localhost:5000/trivia/${pin}/${props.trivia}`).then(() => {
             let newSocketHost;
             if (BASE_URL === 'http://localhost:5000') {
-            newSocketHost = socketIO(`/${pin}`);
+            newSocketHost = io(`/${pin}`);
             } else {
-            newSocketHost = socketIO(`${BASE_URL}/${pin}`);
+            newSocketHost = io(`${BASE_URL}/${pin}`);
             }
             props.setSocket(newSocketHost);
         });
@@ -35,6 +32,7 @@ const HostLobby = (props) => {
             const newTriviaData = triviaData;
             setTriviaData(newTriviaData);
         });
+        
         socket.on('playerlist', (players) => {
             const newPlayers = players;
             setPlayers(newPlayers);

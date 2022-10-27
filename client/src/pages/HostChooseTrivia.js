@@ -28,27 +28,26 @@ const HostChooseTrivia = (props) => {
         return <div>Cargando...</div>;
     } else {
         const buttons = triviaList.map((trivia, i) => (
-                <div>
-                    <Link key={`item-${i + 1}`} to="/host/lobby" state={pin} className="btn">
-                        {trivia.name}
-                    </Link>
-                    <br/>
-                </div>
+            <div key={`item-${i + 1}`}>
+                <Link to="/host/lobby" state={pin} className="btn">
+                    {trivia.name}
+                </Link>
+            </div>
         ));
-    return (
-        <React.Fragment>
-            <Navbarpr/>
-                    <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                        <h2 className="page-section-heading text-center text-uppercase mb-0 text-white">
-                            Elige tu favorito
-                        </h2>
-                        <div className="justify-content-center">
-                            <div className="d-flex flex-wrap align-self-center">
-                                {buttons}
+        return (
+            <React.Fragment>
+                <Navbarpr/>
+                        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                            <h2 className="page-section-heading text-center text-uppercase mb-0 text-white">
+                                Elige tu favorito
+                            </h2>
+                            <div className="justify-content-center">
+                                <div className="d-flex flex-wrap align-self-center">
+                                    {buttons}
+                                </div>
                             </div>
                         </div>
-                    </div>
-        </React.Fragment>
+            </React.Fragment>
     );
   }
 };

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import socketIO from 'socket.io-client';
+import io from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Chat from '../components/chat'
 import { Link } from 'react-router-dom';
+
 const UserLobbysr = (props) => {
-    const history = useNavigate();
+    const Navigate = useNavigate();
     const data = useLocation();
     const [playerNameState, pinState] = data.state;
 
@@ -13,32 +14,30 @@ const UserLobbysr = (props) => {
     const pin = pinState.pin;
     const { setSocketUser, socketUser, BASE_URL } = props;
 
-    console.log("esta es la data", data);
 
     useEffect(() => {
         if (!socketUser) {
-        let newSocketUser;
-
-        if (BASE_URL === 'http://localhost:5000') {
-            newSocketUser = socketIO(`/${pin}`, {
-            query: `playerName=${playerName}`,
-            });
-        } else {
-            newSocketUser = socketIO(`${BASE_URL}/${pin}`, {
-            query: `playerName=${playerName}`,
-            });
+            let newSocketUser;
+            if (BASE_URL === 'http://localhost:5000') {
+                newSocketUser = io(`/${pin}`, {
+                    query: `playerName=${playerName}`,
+                });
+            } else {
+                newSocketUser = io(`${BASE_URL}/${pin}`, {
+                    query: `playerName=${playerName}`,
+                });
+            }
+            setSocketUser(newSocketUser);
         }
 
-        setSocketUser(newSocketUser);
+        if (socketUser) {               
+            socketUser.on('question', (data) => {
+                props.setTriviaDataUser(data);
+                Navigate.push('/user/trivia');
+            });        
         }
-
-        if (socketUser) {
-        socketUser.on('question', (data) => {
-            props.setTriviaDataUser(data);
-            history.push('/user/trivia');
-        });
-        }
-    }, [history, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
+    }, [Navigate, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
+    
     return (
         <>
         <Link className="btn btn-ghost normal-case text-xl  bg-base-200" to="/">
