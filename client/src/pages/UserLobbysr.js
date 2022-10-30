@@ -2,19 +2,18 @@ import React, { useEffect } from 'react';
 import io from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Chat from '../components/chat'
 import { Link } from 'react-router-dom';
 import videoBg from '../assets/fondo.mp4'
+const socket = io("http://localhost:5000");
 const UserLobbysr = (props) => {
-    const Navigate = useNavigate();
     const data = useLocation();
     const [playerNameState, pinState] = data.state;
 
     const playerName = playerNameState.playerName;
     const pin = pinState.pin;
     const { setSocketUser, socketUser, BASE_URL } = props;
-
-
+    const navigate = useNavigate();
+    const handleOnClick = () => navigate(`/chat2/${playerName}`);
     useEffect(() => {
         if (!socketUser) {
             let newSocketUser;
@@ -33,11 +32,14 @@ const UserLobbysr = (props) => {
         if (socketUser) {               
             socketUser.on('question', (data) => {
                 props.setTriviaDataUser(data);
-                Navigate.push('/user/trivia');
+                navigate('/user/trivia');
             });        
         }
-    }, [Navigate, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
-    
+        localStorage.setItem("chatConnected", "true");
+    }, [navigate, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
+    const submitNickname = () => {
+        socket.emit("user nickname", playerName);
+      };
     return (
         <>
         <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
@@ -46,7 +48,13 @@ const UserLobbysr = (props) => {
             Progracademia!
         </Link>
             <div className='mx-auto flex-1 flex flex-col items-center px-2 lg:flex-row'>
-                <Chat/>
+                <button 
+                className='btn'
+                onClick={()=>{
+                    handleOnClick();
+                    submitNickname();
+                }}
+                >chat</button>
                 <div className="lg:divider-horizontal"></div>
                 <div className="card w-96 bg-base-100 text-neutral-content">
                     <div className="card-body items-center text-center">

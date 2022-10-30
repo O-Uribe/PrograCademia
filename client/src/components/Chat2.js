@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useParams, useNavigate } from "react-router-dom";
-
 import UserOnline from "./UserOnline";
 import io from "socket.io-client";
+import { Link } from 'react-router-dom';
+import videoBg from '../assets/fondo.mp4'
 const socket = io("http://localhost:5000");
+
+
 function Chat2() {
   let { user_nickName } = useParams();
   const [nickname, setNickname] = useState("");
@@ -15,10 +18,6 @@ function Chat2() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("chatConnected")) {
-      navigate("/join");
-    }
-
     window.addEventListener("beforeunload", () =>
       localStorage.removeItem("chatConnected")
     );
@@ -29,7 +28,7 @@ function Chat2() {
     });
 
     socket.on("private msg", ({ id, nickname, msg }) => {
-      setChat([...chat, `🔒 Private Message from ${nickname}: ${msg}`]);
+      setChat([...chat, `🔒 Mensaje privado para ${nickname}: ${msg}`]);
     });
 
     let objDiv = document.getElementById("msg");
@@ -39,7 +38,7 @@ function Chat2() {
       socket.off();
     };
   }, [chat, toUser, user_nickName, navigate]);
-
+  
   useEffect(() => {
     socket.on("connect", () => {
       socket.emit("new-user");
@@ -50,12 +49,12 @@ function Chat2() {
     });
 
     socket.on("welcome", (user) => {
-      setChat([...chat, `Welcome to our chat ${user} 😃`]);
+      setChat([...chat, `Bienvenido al chat ${user} 😃`]);
     });
 
     socket.on("user-disconnected", (user) => {
       if (user !== null) {
-        setChat([...chat, `${user} left the chat 👋🏻`]);
+        setChat([...chat, `${user} se ha ido 👋🏻`]);
       }
     });
 
@@ -68,7 +67,7 @@ function Chat2() {
     e.preventDefault();
 
     if (msg === "") {
-      toast("Enter a message.", {
+      toast("Ingresa tu mensaje", {
         duration: 4000,
         // Styling
         style: {},
@@ -80,7 +79,7 @@ function Chat2() {
         ariaLive: "polite",
       });
     } else if (toUser === nickname) {
-      toast("Select a different user.", {
+      toast("Selecciona un usuario diferente", {
         duration: 4000,
         // Styling
         style: {},
@@ -96,7 +95,7 @@ function Chat2() {
       selectElem.selectedIndex = 0;
       socket.emit("chat message private", { toUser, nickname, msg });
       setChat([...chat, { nickname, msg }]);
-      setChat([...chat, `🔒 Private Message for ${toUser}: ${msg}`]);
+      setChat([...chat, `🔒 Mensaje privado para ${toUser}: ${msg}`]);
       setMsg("");
       setToUser("");
     } else {
@@ -111,109 +110,121 @@ function Chat2() {
   };
 
   return (
-    <div className="flex w-screen main-chat lg:h-screen bg-gray-900 divide-solid">
-      <Toaster />
-      <div className="flex w-full lg:w-5/6 lg:h-5/6 lg:mx-auto lg:my-auto shadow-md">
-        {/* Users online */}
-        <div className="hidden lg:block pl-4 pr-4 w-64 bg-purple-900 text-white">
-          <p className="font-black my-4 text-xl">
-            {" "}
-            # Online: ({usersOnline !== null ? usersOnline.length : "0"}):
-          </p>
-          <ul className="divide-y divide-gray-300 truncate">
-            {usersOnline !== null
-              ? usersOnline.map((el, index) => (
-                  <button
-                    key={index}
-                    onClick={() => saveUserToPrivateMsg(el)}
-                    className="block focus:outline-none truncate"
-                  >
-                    <UserOnline nickname={el} />
-                  </button>
-                ))
-              : ""}
-          </ul>
-        </div>
-        <div className="flex flex-col flex-grow lg:max-w-full bg-purple-50">
-          {/* Messages */}
-          <p className="font-black mt-4 mb-2 pl-4 lg:pl-8 text-2xl">
-            Main Chat
-          </p>
-          <div
-            id="msg"
-            className="h-5/6 overflow-y-auto pl-4 lg:pl-8 pt-4 mb-2 lg:mb-0"
-          >
-            <ul className="w-full lg:w-96">
-              {chat.map((el, index) => (
-                <li
-                  key={index}
-                  className="w-screen break-words pr-6 lg:pr-0 lg:w-full"
-                >
-                  {el.nickname != null ? (
-                    `${el.nickname}: ${el.msg}`
-                  ) : (
-                    <p className="text-base font-semibold text-purple-900 rounded py-1">
-                      {el}
-                    </p>
-                  )}
-                </li>
-              ))}
+    <>
+      <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-screen" />
+      <div className="flex flex-col items-center justify-center h-full absolute top-0 text-white w-full">
+        <Toaster />
+        <div className="flex w-full lg:w-5/6 lg:h-5/6 lg:mx-auto lg:my-auto shadow-md">
+          {/* Users online */}
+          <div className="hidden lg:block pl-4 pr-4 w-64 bg-purple-900 text-white">
+            <p className="font-black my-4 text-xl">
+              {" "}
+              # Online: ({usersOnline !== null ? usersOnline.length : "0"}):
+            </p>
+            <ul className="divide-y divide-gray-300 truncate">
+              {usersOnline !== null
+                ? usersOnline.map((el, index) => (
+                    <button
+                      key={index}
+                      onClick={() => saveUserToPrivateMsg(el)}
+                      className="block focus:outline-none truncate"
+                    >
+                      <UserOnline nickname={el} />
+                    </button>
+                  ))
+                : ""}
             </ul>
           </div>
-          <form className="">
-            <div className="px-8">
-              <select
-                className="lg:hidden text-xs flex-1 appearance-none border border-gray-300 w-full py-2 px-1 lg:px-4 bg-white text-green-400 placeholder-gray-400 shadow-sm focus:outline-none"
-                id="usersOn"
-                onChange={(e) => saveUserToPrivateMsg(e.target.value)}
-              >
-                <option value="" className="">
-                  Everyone
-                </option>
-                {usersOnline !== null
-                  ? usersOnline.map((el, index) => (
-                      <option value={el} className="" key={index}>
+          <div className="flex flex-col flex-grow lg:max-w-full bg-purple-50">
+            {/* Messages */}
+            <p className="font-black mt-4 mb-2 pl-4 lg:pl-8 text-2xl text-black">
+              Chat
+            </p>
+            <div
+              id="msg"
+              className="h-5/6 overflow-y-auto pl-4 lg:pl-8 pt-4 mb-2 lg:mb-0 text-black"
+            >
+              <ul className="w-full lg:w-96">
+                {chat.map((el, index) => (
+                  <li
+                    key={index}
+                    className="w-screen break-words pr-6 lg:pr-0 lg:w-full"
+                  >
+                    {el.nickname != null ? (
+                      `${el.nickname}: ${el.msg}`
+                    ) : (
+                      <p className="text-base font-semibold text-purple-900 rounded py-1">
                         {el}
-                      </option>
-                    ))
-                  : ""}
-              </select>
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="w-full flex p-4 lg:p-8 bg-purple-50">
-              {" "}
-              <div className="flex relative w-full lg:w-5/6">
-                <span className="rounded-l-md inline-flex items-center px-1 lg:px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
-                  {toUser === "" ? (
-                    <p className="bg-purple-400 text-white text-xs lg:text-base font-normal rounded p-1">
-                      To: Everyone
-                    </p>
-                  ) : (
-                    <p className="bg-purple-700 text-white text-xs lg:text-base font-semibold rounded p-1 w-20 lg:w-28 truncate">
-                      To: {toUser}
-                    </p>
-                  )}
-                </span>
-                <input
-                  type="text"
-                  className="rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-1 lg:px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none"
-                  name="message"
-                  onChange={(e) => setMsg(e.target.value)}
-                  value={msg}
-                />
-              </div>
-              <div className="hidden lg:block w-1/6">
-                <button
-                  className="ml-8 flex-shrink-0 bg-green-400 text-gray-700 text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2"
-                  onClick={(e) => submitMsg(e)}
+            <form className="">
+              <div className="px-8">
+                <select
+                  className="lg:hidden text-xs flex-1 appearance-none border border-gray-300 w-full py-2 px-1 lg:px-4 bg-white text-green-400 placeholder-gray-400 shadow-sm focus:outline-none"
+                  id="usersOn"
+                  onChange={(e) => saveUserToPrivateMsg(e.target.value)}
                 >
-                  Send
-                </button>
+                  <option value="" className="">
+                    Todos
+                  </option>
+                  {usersOnline !== null
+                    ? usersOnline.map((el, index) => (
+                        <option value={el} className="" key={index}>
+                          {el}
+                        </option>
+                      ))
+                    : ""}
+                </select>
               </div>
-            </div>
-          </form>
+              <div className="w-full flex p-4 lg:p-8 bg-purple-50">
+                {" "}
+                <div className="flex relative w-full lg:w-5/6">
+                  <span className="rounded-l-md inline-flex items-center px-1 lg:px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                    {toUser === "" ? (
+                      <p className="bg-purple-400 text-black text-xs lg:text-base font-normal rounded p-1">
+                        Para: Todos
+                      </p>
+                    ) : (
+                      <p className="bg-purple-700 text-black text-xs lg:text-base font-semibold rounded p-1 w-20 lg:w-28 truncate">
+                        Para: {toUser}
+                      </p>
+                    )}
+                  </span>
+                  <input
+                    type="text"
+                    className="rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-1 lg:px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none"
+                    name="message"
+                    onChange={(e) => setMsg(e.target.value)}
+                    value={msg}
+                  />
+                </div>
+                <div className="hidden lg:block w-1/6">
+                  <button
+                    className="ml-8 flex-shrink-0 bg-green-400 text-gray-700 text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2"
+                    onClick={(e) => submitMsg(e)}
+                  >
+                    Enviar
+                  </button>
+                  <Link to="/home" 
+                  onClick={
+                    socket.on("user-disconnected", (user) => {
+                      if (user !== null) {
+                        setChat([...chat, `${user} se ha ido 👋🏻`]);
+                      }
+                    })
+                  } 
+                  className="ml-8 flex-shrink-0 bg-green-400 text-gray-700 text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2">Salir</Link>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

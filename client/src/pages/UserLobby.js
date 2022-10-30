@@ -6,7 +6,8 @@ import Footer from '../components/Footer';
 import Chat from '../components/chat'
 import { Link } from 'react-router-dom';
 import videoBg from '../assets/fondo.mp4'
-
+import io from 'socket.io-client';
+const socket = io("http://localhost:5000");
 
 const UserLobby = (props) => {
     const history = useNavigate();
@@ -16,7 +17,8 @@ const UserLobby = (props) => {
     const playerName = playerNameState.playerName;
     const pin = pinState.pin;
     const { setSocketUser, socketUser, BASE_URL } = props;
-
+    const navigate = useNavigate();
+    const handleOnClick = () => navigate(`/chat2/${playerName}`);
     useEffect(() => {
         if (!socketUser) {
         let newSocketUser;
@@ -41,12 +43,21 @@ const UserLobby = (props) => {
         });
         }
     }, [history, props, setSocketUser, pin, socketUser, BASE_URL, playerName]);
+    const submitNickname = () => {
+        socket.emit("user nickname", playerName);
+      };
     return (
         <><video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
         <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
         <div className="w-full absolute inset-x-0 top-0"><Navbaral/></div>
         <div className='mx-auto flex-1 flex flex-col items-center px-2 lg:flex-row'>
-            <Chat/>
+        <button 
+                className='btn'
+                onClick={()=>{
+                    handleOnClick();
+                    submitNickname();
+                }}
+                >chat</button>
             <div className="lg:divider-horizontal"></div>
             <div className="card w-96 bg-base-100 text-neutral-content">
                 <div className="card-body items-center text-center">
