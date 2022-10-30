@@ -29,6 +29,8 @@ import ShowEstudiante from './pages/ShowAlu';
 import { Recursos } from "./pages/recursos";
 import Formulario from './pages/formulario';
 
+import Chat2 from "./components/Chat2";
+import Join from "./components/Join";
 let BASE_URL = "http://localhost:5000";
 
 function App() {
@@ -52,6 +54,8 @@ function App() {
         <div className='flex'>
             <main className='flex flex-col items-center justify-center absolute text-white w-full'>
                 <Routes>
+                    <Route path="/join"  element={<Join/>} />
+                    <Route path="/chat2/:user_nickName" element={<Chat2/>}/>
                     <Route path='/home' element={<Home />} />
                     <Route path="/podium" element={
                 <Podium
@@ -62,7 +66,7 @@ function App() {
                     ranking={podium} />
                 } />
                 
-                <Route exact path ="/chat" element={<Chat/>}/>
+                <Route exact path ="/Chat" element={<Chat/>}/>
                 <Route path="/host/chooseTrivia" element={
                     <HostChooseTrivia onClickTriviaButton={(selectedTrivia) => setTrivia(selectedTrivia)} />
                 } />
