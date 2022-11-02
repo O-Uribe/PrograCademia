@@ -6,11 +6,11 @@ const fs = require('fs');
 const json_books = fs.readFileSync('src/alternativas.json', 'utf-8');
 let books = JSON.parse(json_books);
 
-/*router.get('/', (req, res) => {
+router.get('/', (req, res) => {
     res.render('index.ejs', {
         books
     });
-});*/
+});
 
 router.get('/404-ERROR', (req, res) => {
     res.render('404.ejs');
@@ -26,6 +26,7 @@ router.post('/new-entry', (req, res) =>{
         res.status(400).send('Entries must have a title and description');
         return;
     }
+    const _id = preguntas.length;
 
     var a3; var b3; var c3; var d3;
 
@@ -35,6 +36,7 @@ router.post('/new-entry', (req, res) =>{
     if(d2 === "True"){d3 = Boolean(true);}else{d3 = Boolean(false)}
 
     let newBook = {
+        _id,
         categoria,
         tipo_Pregunta,
         dificultad,

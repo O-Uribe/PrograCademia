@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <% include partials/header %>
     <title>Inicio</title>
 </head>
-<body>
+<body class="h-screen bg-slate-900">
 
     <% include partials/navigation %>
 
-    <div class="container p-4">
+    <div class="container p-4 bg-black">
         <div class="row">
             <% books.forEach(function (book) { %>
                 <div class="col-md-4">
@@ -18,6 +18,11 @@
                         </div>
                         <div class="card-body">
                             <p><%= book.tipo_Pregunta %></p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/delete/<%= book._id %>" class="btn btn-danger btn-block">
+                                Delete
+                            </a>
                         </div>
                     </div>
                 </div>
