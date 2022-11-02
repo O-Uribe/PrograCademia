@@ -219,7 +219,7 @@ export const RegisterAlu = () => {
                     onBlur={validateInput}
                     name="email"
                     value={input.email}
-                    placeholder="juanperez@uct.cl"
+                    placeholder="juanperez@alu.uct.cl"
                     className='input input-bordered'
                   />
                   {errors.email && (

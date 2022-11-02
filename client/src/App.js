@@ -25,7 +25,7 @@ import { Loginestudiante } from "./pages/Loginestudiante";
 import Chat from './components/chat';
 import Pruebas from './pages/pruebas';
 import ShowProfesor from './pages/ShowProfesor';
-import ShowEstudiante from './pages/ShowAlu';
+import { ShowEstudiante } from './pages/ShowAlu';
 import { Recursos } from "./pages/recursos";
 import Formulario from './pages/formulario';
 

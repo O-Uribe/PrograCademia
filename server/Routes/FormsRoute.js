@@ -173,10 +173,20 @@ router.route("/estudiante/:id").get(async (req, res) => {
         res.status(500).send(error.message);
     }
 });
-// @route   DELETE register/estudiante/:id  http://localhost:5000/estudiante/63548548c3d2e33838c30fe3​ ejemplo
+// @route   DELETE register/estudiante/:id  
 router.route("/estudiante/:id").delete(async (req, res) => {
     try {
         const formEstu = await FormEstu.findByIdAndDelete(req.params.id);
+        res.json(formEstu);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
+// @route   PUT register/estudiante/:id  
+router.route("/estudiante/:id").put(async (req, res) => {
+    try {
+        const formEstu = await FormEstu.findByIdAndUpdate(req.params.id, req.body);
         res.json(formEstu);
     } catch (error) {
         res.status(500).send(error.message);
