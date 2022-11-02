@@ -10,9 +10,50 @@ export const MainProfe = () => {
       <video src={videoBg} autoPlay loop muted className="h-full object-cover w-full" />
       <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
       <div className="w-full absolute inset-x-0 top-0"><Navbarpr/></div>
-          <Link to="/host/chooseTrivia" className="btn btn-outline"> Iniciar un quiz </Link>
-          <a href='https://restapi-progracademia.herokuapp.com/new-entry' className='btn btn-outline'>Crear quiz</a>
-          <Link to='/host/quiz' className="btn btn-outline">Ver quiz</Link>
+      <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">
+                <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <p></p>
+                        <div className="card-actions justify-end">
+                        <Link to="/host/chooseTrivia" className="btn btn-primary"> Iniciar un quiz </Link>
+                        </div>
+                    </div>
+                </div>
+                <div className="lg:divider-horizontal"></div> 
+                <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <p></p>
+                        <div className="card-actions justify-end">
+                        <button className="btn btn-primary">Crear quiz</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="lg:divider-horizontal"></div> 
+                <div className="card  shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <p></p>
+                        <div className="card-actions justify-end">
+                        <Link to='/host/quiz' className="btn btn-primary">Ver quiz</Link>
+                        </div>
+                    </div>
+                </div>
+                <div className="lg:divider-horizontal"></div>
+                <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <p></p>
+                        <div className="card-actions justify-end">
+                        <Link to="/host/formulario" className="btn btn-primary">Crear Pregunta</Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+          
+          
           <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
       </div>
       </main>

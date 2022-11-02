@@ -54,7 +54,7 @@ const HostLobby = (props) => {
                 <Link to="/host/trivia">
                     <button
                     onClick={() => props.socket.emit('start-game')}
-                    className="start-game-btn text-white bg-secondary btn btn-xl btn-outline-light"
+                    className="btn btn-primary"
                     >
                     Iniciar Juego
                     </button>
@@ -66,7 +66,7 @@ const HostLobby = (props) => {
                     </div>
                     <div className="divider-custom-line"></div>
                 </div>
-                <h2 className="pin-host-lobby text-center text-uppercase text-secondary">
+                <h2 className="pin-host-lobby text-center text-uppercase text-white">
                     Usuarios Conectados:
                 </h2>
                 <br />

@@ -164,7 +164,7 @@ function Chat2() {
             <form className="">
               <div className="px-8">
                 <select
-                  className="lg:hidden text-xs flex-1 appearance-none border border-gray-300 w-full py-2 px-1 lg:px-4 bg-white text-green-400 placeholder-gray-400 shadow-sm focus:outline-none"
+                  className=" lg:hidden text-xs flex-1 appearance-none border border-gray-300 w-full py-2 px-1 lg:px-4 bg-white text-green-400 placeholder-gray-400 shadow-sm focus:outline-none"
                   id="usersOn"
                   onChange={(e) => saveUserToPrivateMsg(e.target.value)}
                 >
@@ -203,21 +203,27 @@ function Chat2() {
                   />
                 </div>
                 <div className="hidden lg:block w-1/6">
-                  <button
-                    className="ml-8 flex-shrink-0 bg-green-400 text-gray-700 text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2"
+                  <Link
+                    className="btn ml-8 flex-shrink-0 bg-green-400 text-gray-700 text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2"
                     onClick={(e) => submitMsg(e)}
                   >
                     Enviar
-                  </button>
-                  <Link to="/home" 
-                  onClick={
-                    socket.on("user-disconnected", (user) => {
-                      if (user !== null) {
-                        setChat([...chat, `${user} se ha ido 👋🏻`]);
-                      }
-                    })
-                  } 
-                  className="ml-8 flex-shrink-0 bg-green-400 text-gray-700 text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2">Salir</Link>
+                  </Link>
+                  </div>
+                  <div className="hidden lg:block w-1/6"> 
+                  <Link 
+                    to="/home"
+                    className="btn ml-8 flex-shrink-0 bg-green-400 text-gray-700 text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2"
+                    onClick={
+                      socket.on("user-disconnected", (user) => {
+                        if (user !== null) {
+                          setChat([...chat, `${user} se ha ido 👋🏻`]);
+                        }
+                      })
+                    } 
+                  >                 
+                    Salir
+                  </Link>
                 </div>
               </div>
             </form>

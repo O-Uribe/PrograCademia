@@ -47,30 +47,41 @@ const UserLobbysr = (props) => {
         <Link className="text-center btn-ghost normal-case text-xl w-full bg-base-200" to="/">
             Progracademia!
         </Link>
-            <div className='mx-auto flex-1 flex flex-col items-center px-2 lg:flex-row'>
-                <button 
-                className='btn'
-                onClick={()=>{
-                    handleOnClick();
-                    submitNickname();
-                }}
-                >chat</button>
-                <div className="lg:divider-horizontal"></div>
-                <div className="card w-96 bg-base-100 text-neutral-content">
-                    <div className="card-body items-center text-center">
-                        <h3>
-                            El PIN de la sala es {pin}
-                        </h3>
-                        <h3>
-                            Tu usuario es {playerName}
-                        </h3>
-                        <p>El juego comenzará cuando el profesor lo decida,
-                                espera pacientemente porfavor!</p>
-                        <div className="card-actions justify-end">
+        <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">
+                <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <p></p>
+                        <div className="card-actions justify-center">
+                            <button 
+                                className="btn btn-primary text-white"
+                                onClick={()=>{
+                                    handleOnClick();
+                                    submitNickname();
+                                }}
+                            >chat</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            <div className="lg:divider-horizontal"></div>
+            <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <p> 
+                            El PIN de la sala es {pin}
+                            <br/>
+                            Tu usuario es {playerName}
+                        </p>
+                        <div className="card-actions justify-center">
+                        <Link>
+                            <h3>
+                            El juego comenzara pronto
+                            </h3>
+                        </Link>
+                        </div>
+                    </div>
+                </div>
+        </div>
             <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
             </div>
             </>

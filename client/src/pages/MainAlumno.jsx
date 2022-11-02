@@ -10,8 +10,37 @@ export const MainAlumno = () => {
       <video src={videoBg} autoPlay loop muted className="h-full object-cover w-full" />
       <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
       <div className="w-full absolute inset-x-0 top-0"><Navbaral/></div>
-          <Link to="/user" className="btn btn-outline"> Jugar </Link>
-          <button className="btn btn-outline">Historial de partidas</button>
+          <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">
+                <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <p></p>
+                        <div className="card-actions justify-center">
+                        <Link to="/user">
+                            <button className="btn btn-primary text-white">
+                                Jugar
+                            </button>
+                        </Link>
+                        </div>
+                    </div>
+                </div>
+                <div className="lg:divider-horizontal"></div> 
+                <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <p></p>
+                        <div className="card-actions justify-center">
+                        <Link>
+                            <button className="btn btn-primary"  >
+                            Historial
+                            </button>
+                        </Link>
+                        </div>
+                    </div>
+                </div>
+                <div className="lg:divider-horizontal"></div> 
+                        
+            </div>
           <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
       </div>
       </main>

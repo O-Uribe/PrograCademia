@@ -40,7 +40,7 @@ const HostChooseTrivia = (props) => {
     } else {
         const buttons = triviaList.map((trivia, i) => (
             <div key={`item-${i + 1}`}>
-                <Link to="/host/lobby" state={pin} className="btn">
+                <Link to="/host/lobby" state={pin} className="btn btn-primary">
                     {trivia.name}
                 </Link>
             </div>
@@ -50,19 +50,22 @@ const HostChooseTrivia = (props) => {
                 <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
                 <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
                 <div className="w-full absolute inset-x-0 top-0"><Navbarpr/></div>
-                        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                            <h2 className="page-section-heading text-center text-uppercase mb-0 text-white">
-                                Elige tu favorito
-                            </h2>
-                            <div className="justify-content-center">
-                                <div className="d-flex flex-wrap align-self-center">
-                                    {buttons}
-                                </div>
-                            </div>
+                <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">
+                <div className="card  shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <h2>Elige tu favorito</h2>
+                        <p></p>
+                        <div className="card-actions justify-center">
+                            {buttons}
                         </div>
-                        <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
                     </div>
-            </React.Fragment>
+                </div>
+                <div className="lg:divider-horizontal"></div>
+            </div>
+            <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
+        </div>
+    </React.Fragment>
     );
   }
 };

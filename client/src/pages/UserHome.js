@@ -36,7 +36,7 @@ const UserHome = () => {
           <div>
             <br/>
             <Link to="/user/lobby" state = {[playerName, pin]}>
-              <button type="submit" className="btn btn-xl btn-outline-light btn-submit-data-user">
+              <button type="submit" className="btn btn-primary">
                 Ir a la sala de espera
               </button>
             </Link>
