@@ -1,23 +1,63 @@
-import React from "react"
+import React, { useState } from "react"
 import { useForm } from "react-hook-form";
 import videoBg from '../assets/fondo.mp4'
+import UseFetch from '../components/UseFetch';
+
 const Formulario = () => {
 
-    const { register, formState: { errors }, handleSubmit } = useForm({
-        defaultValues: {
-            categoria: 'Science:Computers',
-            tipo_pregunta: 'multiple',
-            dificultad: 'normal',
-            titulo: 'pregunta',
-            a: 'A',
-            b: 'B',
-            c: 'C',
-            d: 'D'
+    const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas");
+    const estado = UseFetch(url);
+    const { cargando, dato } = estado;
+
+    const { register, formState: { errors }, handleSubmit } = useForm(
+        {
+            defaultValues: {
+                categoria: 'Science:Computers',
+                tipo_Pregunta: 'multiple',
+                dificultad: 'normal',
+                titulo: 'pregunta',
+                a: 'A',
+                b: 'B',
+                c: 'C',
+                d: 'D',
+            }
         }
-    });
+    );
 
     const onSubmit = (data) => {
-        console.log(data);
+        var a3; var b3; var c3; var d3;
+
+        if(data.a2 === "True"){a3 = Boolean(true);}else{a3 = Boolean(false)}
+        if(data.b2 === "True"){b3 = Boolean(true);}else{b3 = Boolean(false)}
+        if(data.c2 === "True"){c3 = Boolean(true);}else{c3 = Boolean(false)}
+        if(data.d2 === "True"){d3 = Boolean(true);}else{d3 = Boolean(false)}
+
+        const _id = dato.length; 
+
+        const newData = {
+            "_id":_id,
+            "categoria":data.categoria,
+            "tipo_Pregunta":data.tipo_Pregunta,
+            "dificultad":data.dificultad,
+            "titulo":data.titulo,
+            "opciones": [
+                {"textoRespuesta": data.a, "isCorrect": a3},
+                {"textoRespuesta": data.b, "isCorrect": b3},
+                {"textoRespuesta": data.c, "isCorrect": c3},
+                {"textoRespuesta": data.d, "isCorrect": d3}
+            ]
+        };
+
+        fetch(url,{
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify(newData),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.jons())
+        console.log(JSON.stringify(newData));
     }
 
     return (
@@ -32,7 +72,7 @@ const Formulario = () => {
                         type='text' {...register('categoria')}></input>
                         <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Tipo de Pregunta</label>
                         <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        type='text' {...register('tipo_pregunta')}></input>
+                        type='text' {...register('tipo_Pregunta')}></input>
                     </div>
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Dificultad</label>

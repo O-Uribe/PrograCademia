@@ -9,11 +9,10 @@ export const UseFetch = (url) => {
 
     async function getData(url) {
         try{
-            setResultado({cargando: true, data:null});
+            setResultado({cargando: true, dato:null});
             const respues = await fetch(url, {mode:'cors'});
-            const data = await respues.json();
-      
-            setResultado({ cargando: false, data });
+            const dato = await respues.json();
+            setResultado({ cargando: false, dato });
         }
         catch(e){
             console.log(e);

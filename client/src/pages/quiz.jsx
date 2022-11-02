@@ -4,7 +4,7 @@ import videoBg from '../assets/fondo.mp4'
 function Quiz() {
   const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas");
   const estado = UseFetch(url);
-  const { cargando, data } = estado;
+  const { cargando, dato } = estado;
   //console.log(data);
 
   const [preguntaActual, setPreguntaActual] = useState(0);
@@ -24,7 +24,7 @@ function Quiz() {
       );
     // cambiar a la siguiente pregunta
     setTimeout(() => {
-      if (preguntaActual === data.length - 1) {
+      if (preguntaActual === dato.length - 1) {
         setIsFinished(true);
         setTiempoRespuesta(15);
       } else {
@@ -51,7 +51,7 @@ function Quiz() {
       <main className='app'>
         <div className="bg-no-repeat  justify-center mb-6 col-lg-3 col-md-3 rounded  m-1 py-2">
           <h2>
-            Obtuviste {puntuacion} de {data.length}
+            Obtuviste {puntuacion} de {dato.length}
           </h2>
           <br/>
           <button onClick={() => (window.location.href = '/host/quiz')} className='btnter'>
@@ -81,19 +81,19 @@ function Quiz() {
       <main className='app'>
         <div className="flex flex-col justify-around relative w-full">
           <div className="mb-5">
-            <span>Pregunta {preguntaActual + 1} de</span> {data.length}
+            <span>Pregunta {preguntaActual + 1} de</span> {dato.length}
           </div>
           <div className="mb-3">
-            {data[preguntaActual].titulo}
+            {dato[preguntaActual].titulo}
           </div>
           <div>
-            {data[preguntaActual].opciones.filter(
+            {dato[preguntaActual].opciones.filter(
               (opcion) => opcion.isCorrect
               )[0].textoRespuesta
             }
           </div>
           <button onClick={() => {
-            if (preguntaActual === data.length - 1) {
+            if (preguntaActual === dato.length - 1) {
               window.location.href = '/mainprofe';
             } else {
               setPreguntaActual(preguntaActual + 1);
@@ -124,10 +124,10 @@ function Quiz() {
           <main className='app'>
             <div className="flex flex-col justify-around relative w-full">
               <div className="mb-5">
-                <span>Pregunta {preguntaActual + 1} de</span> {data.length}
+                <span>Pregunta {preguntaActual + 1} de</span> {dato.length}
               </div>
               <div className="mb-3">
-                {data[preguntaActual].titulo}
+                {dato[preguntaActual].titulo}
               </div>
               <div>{!areDisabled ? (
                 <span className='tiempo-restante'>
@@ -147,7 +147,7 @@ function Quiz() {
               </div>
             </div>
             <div className="flex flex-col justify-between w-full">
-              {data[preguntaActual].opciones.map((respuesta) => (
+              {dato[preguntaActual].opciones.map((respuesta) => (
                 <button
                     className='btnquiz' 
                     disabled={areDisabled}
