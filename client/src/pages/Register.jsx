@@ -264,7 +264,7 @@ export const Register = () => {
             </div>
           </form>
       </div>
-      <Footer className="w-full h-full"/>
+      <Footer/>
     </div>
   </>
   );

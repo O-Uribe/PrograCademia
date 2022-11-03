@@ -53,7 +53,7 @@ function App() {
     <Router>
         <div className='flex'>
         <Particle/>
-            <main className='flex flex-col items-center justify-center absolute text-white w-full'>
+            <main className='flex flex-col absolute text-white items-center justify-center w-screen h-screen'>
                 <Routes>
                     <Route path="/chat2/:user_nickName" element={<Chat2/>}/>
                     <Route path='/home' element={<Home />} />
