@@ -58,42 +58,48 @@ io.on("connection", (socket) => {
     let { id } = socket.client;
   
     socket.on("user nickname", (nickname) => {
-      //  1) When the CLIENT sends the 'nickname', we store the 'nickname',
-      //  'socket.client.id', and 'socket.id in a Map structure
-      usersConnected.set(nickname, [socket.client.id, socket.id]);
-      //console.log(nickname)
-      //  2) Send list with connected sockets
-      io.emit("users-on", Array.from(usersConnected.keys()));
-  
-      //  3) Send to all other users the 'nickname' of the new socket connected
-      socket.broadcast.emit("welcome", nickname);
+        //  1) When the CLIENT sends the 'nickname', we store the 'nickname',
+        //  'socket.client.id', and 'socket.id in a Map structure
+        usersConnected.set(nickname, [socket.client.id, socket.id]);
+        //  2) Send list with connected sockets
+        console.log(nickname)
+        io.emit("users-on", Array.from(usersConnected.keys()));
+    
+        //  3) Send to all other users the 'nickname' of the new socket connected
+        //socket.broadcast.emit("welcome", nickname);
+
+        socket.broadcast.emit("welcome", nickname);
+
+        io.emit("playerName", nickname);
+
+
     });
   
     socket.on("chat message", ({ nickname, msg }) => {
-      socket.broadcast.emit("chat message", { nickname, msg });
+        socket.broadcast.emit("chat message", { nickname, msg });
     });
   
     socket.on("chat message private", ({ toUser, nickname, msg }) => {
-      let socketId = usersConnected.get(toUser)[1];
-      io.to(socketId).emit("private msg", { id, nickname, msg });
+        let socketId = usersConnected.get(toUser)[1];
+        io.to(socketId).emit("private msg", { id, nickname, msg });
     });
   
     socket.on("disconnect", () => {
-      let tempUserNickname;
-      // TODO: Improve this - Big O (N) - Not good if we have a lot of sockets connected
-      // Find the user and remove from our data structure
-      for (let key of usersConnected.keys()) {
-        if (usersConnected.get(key)[0] === id) {
-          tempUserNickname = key;
-          usersConnected.delete(key);
-          break;
+        let tempUserNickname;
+        // TODO: Improve this - Big O (N) - Not good if we have a lot of sockets connected
+        // Find the user and remove from our data structure
+        for (let key of usersConnected.keys()) {
+            if (usersConnected.get(key)[0] === id) {
+            tempUserNickname = key;
+            usersConnected.delete(key);
+            break;
+            }
         }
-      }
-      // Send to client the updated list with users connected
-      io.emit("users-on", Array.from(usersConnected.keys()));
+        // Send to client the updated list with users connected
+        io.emit("users-on", Array.from(usersConnected.keys()));
   
-      // Send to cliente the nickname of the user that was disconnected
-      socket.broadcast.emit("user-disconnected", tempUserNickname);
+        // Send to cliente the nickname of the user that was disconnected
+        socket.broadcast.emit("user-disconnected", tempUserNickname);
     });
   });
 
@@ -108,22 +114,6 @@ const trivia = [
       { id: 2, description: 'JUPITER' },
       { id: 3, description: 'Mercury' },
       { id: 4, description: 'Mars' },
-    ],
-  },
-  {
-    question: 'Which is the largest animal?',
-    options: [
-      { id: 1, description: 'cow' },
-      { id: 2, description: 'dog' },
-      { id: 3, description: 'MOSQUITO' },
-      { id: 4, description: 'WHALE' },
-    ],
-  },
-  {
-    question: 'Which is the largest number?',
-    options: [
-      { id: 1, description: '1' },
-      { id: 2, description: '2' },
     ],
   },
 ];
