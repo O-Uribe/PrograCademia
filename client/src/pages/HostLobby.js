@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import io from 'socket.io-client';
-import Players from '../components/Players';
+import UserOnline from '../components/UserOnline';
 import Navbarpr from '../components/Navbarprofe';
 import Footer from '../components/Footer';
-import videoBg from '../assets/fondo.mp4'
+//import { set } from 'mongoose';
+const socket = io("http://localhost:5000");
+
 const HostLobby = (props) => {
-    const [players, setPlayers] = useState([]);
+    //const [players, setPlayers] = useState([]);
+    //const [usersOnline, setPlayers] = useState([]);
     const data = useLocation();
     const pin = data.state;
-    const { socket, setTriviaData, BASE_URL } = props;
-
+    const {setTriviaData, BASE_URL } = props;
+    const [user, setUser] = useState("");
+    const [usersOnline, setUsersOnline] = useState([]);
     
     useEffect(() => {
-        console.log('hostsocket', props.socket);
         if (!props.socket) {
         fetch(`http://localhost:5000/trivia/${pin}/${props.trivia}`).then(() => {
             let newSocketHost;
@@ -28,25 +31,32 @@ const HostLobby = (props) => {
     }, [pin, props, BASE_URL]);
 
     useEffect(() => {
-        if (socket) {
-        socket.on('question', (triviaData) => {
-            const newTriviaData = triviaData;
-            setTriviaData(newTriviaData);
-        });
-        
-        socket.on('playerlist', (players) => {
-            const newPlayers = players;
-            setPlayers(newPlayers);
-        });
-        }
-    }, [socket, setTriviaData]);
 
+            socket.on("users-on", (list) => {
+                setUsersOnline(list);
+            });
+
+            socket.on('playerName', (user) => {
+                setUser(user);
+            });
+
+            socket.on('question', (triviaData) => {
+                const newTriviaData = triviaData;
+                setTriviaData(newTriviaData);
+            });
+        
+        // socket.on('playerlist', (players) => {
+        //     const newPlayers = players;
+        //     setPlayers(newPlayers);
+        // });
+    },);    
+    // }, [socket, setTriviaData]);
+    
     return (
         <React.Fragment>
-            <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
                 <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
                 <div className="w-full absolute inset-x-0 top-0"><Navbarpr/></div>
-            <div className='object-center text-center'>
+                <div className='object-center text-center'>
                 <div className="container d-flex align-items-center flex-column">
                 <h2 className="pin-host-lobby masthead-heading text-uppercase mb-0 text-white">
                     El PIN es {pin}
@@ -71,11 +81,20 @@ const HostLobby = (props) => {
                 </h2>
                 <br />
                 <div className="container d-flex align-items-center justify-content-center flex-column">
-                    <Players className="" players={players} />
+                    {usersOnline.map((el, index) => (
+                        <div key={index} className="block focus:outline-none truncate">
+                            <UserOnline nickname={el.playerName} />
+                        </div>
+                        ))
+                    }
+
                 </div>
                 </div>
             </div>
             <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
+            </div>
+            <div>
+                {user.playerName}
             </div>
     </React.Fragment>
   );
