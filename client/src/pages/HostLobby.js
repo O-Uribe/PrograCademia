@@ -13,7 +13,7 @@ const HostLobby = (props) => {
     const data = useLocation();
     const pin = data.state;
     const {setTriviaData, BASE_URL } = props;
-    const [user, setUser] = useState("");
+    //const [user, setUser] = useState("");
     const [usersOnline, setUsersOnline] = useState([]);
     
     useEffect(() => {
@@ -36,8 +36,9 @@ const HostLobby = (props) => {
                 setUsersOnline(list);
             });
 
+
             socket.on('playerName', (user) => {
-                setUser(user);
+                //setUser(user);
             });
 
             socket.on('question', (triviaData) => {
@@ -54,6 +55,7 @@ const HostLobby = (props) => {
     
     return (
         <React.Fragment>
+
                 <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
                 <div className="w-full absolute inset-x-0 top-0"><Navbarpr/></div>
                 <div className='object-center text-center'>
@@ -79,7 +81,7 @@ const HostLobby = (props) => {
                 <h2 className="pin-host-lobby text-center text-uppercase text-white">
                     Usuarios Conectados:
                 </h2>
-                <br />
+                <br></br>
                 <div className="container d-flex align-items-center justify-content-center flex-column">
                     {usersOnline.map((el, index) => (
                         <div key={index} className="block focus:outline-none truncate">
@@ -94,7 +96,6 @@ const HostLobby = (props) => {
             <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
             </div>
             <div>
-                {user.playerName}
             </div>
     </React.Fragment>
   );

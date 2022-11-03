@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {Howl} from 'howler';
 import Footer from '../components/Footer';
+import FondoCard from '../assets/Icons/fondoCard.png';
+
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2
@@ -17,7 +19,7 @@ const Home = () => {
             </Link>
             <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">
                 <div className="card shadow-xl image-full">
-                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <figure><img src={FondoCard} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">Profesor!</h2>
                         <p></p>
@@ -32,7 +34,7 @@ const Home = () => {
                 </div>
                 <div className="lg:divider-horizontal"></div> 
                 <div className="card shadow-xl image-full">
-                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <figure><img src={FondoCard}alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">Estudiante!</h2>
                         <p></p>
@@ -47,7 +49,7 @@ const Home = () => {
                 </div>
                 <div className="lg:divider-horizontal"></div> 
                 <div className="card  shadow-xl image-full">
-                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <figure><img src={FondoCard} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">Estudiante!</h2>
                         <p></p>
@@ -62,7 +64,7 @@ const Home = () => {
                 </div>
                 <div className="lg:divider-horizontal"></div> 
                 <div className="card  shadow-xl image-full">
-                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <figure><img src={FondoCard} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">Estadistica!</h2>
                         <p></p>
