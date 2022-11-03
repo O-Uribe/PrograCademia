@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import videoBg from '../assets/fondo.mp4'
 /*
   Inputs para Login de Estudiante
 
@@ -58,7 +57,6 @@ export const Loginestudiante = () => {
   };
   return (
     <React.Fragment>
-      <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
       <div className="hero min-h-screen absolute">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">

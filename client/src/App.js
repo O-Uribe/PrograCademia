@@ -28,6 +28,7 @@ import ShowProfesor from './pages/ShowProfesor';
 import { ShowEstudiante } from './pages/ShowAlu';
 import { Recursos } from "./pages/recursos";
 import Formulario from './pages/formulario';
+import Particle from "./components/Particle";
 
 import Chat2 from "./components/Chat2";
 let BASE_URL = "http://localhost:5000";
@@ -51,6 +52,7 @@ function App() {
   return (
     <Router>
         <div className='flex'>
+        <Particle/>
             <main className='flex flex-col items-center justify-center absolute text-white w-full'>
                 <Routes>
                     <Route path="/chat2/:user_nickName" element={<Chat2/>}/>

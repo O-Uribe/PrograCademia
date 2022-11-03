@@ -4,7 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import UserOnline from "./UserOnline";
 import io from "socket.io-client";
 import { Link } from 'react-router-dom';
-import videoBg from '../assets/fondo.mp4'
 const socket = io("http://localhost:5000");
 
 
@@ -111,7 +110,6 @@ function Chat2() {
 
   return (
     <>
-      <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-screen" />
       <div className="flex flex-col items-center justify-center h-full absolute top-0 text-white w-full">
         <Toaster />
         <div className="flex w-full lg:w-5/6 lg:h-5/6 lg:mx-auto lg:my-auto shadow-md">

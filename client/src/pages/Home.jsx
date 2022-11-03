@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {Howl} from 'howler';
 import Footer from '../components/Footer';
-import videoBg from '../assets/fondo.mp4'
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2
@@ -12,7 +11,6 @@ const Home = () => {
   return (
     <>
         <main className="h-screen w-screen">
-        <video src={videoBg} autoPlay loop muted className="h-full object-cover w-full" />
             <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
             <Link className="text-center btn-ghost normal-case text-xl w-full bg-base-200 " to="/">
                 Progracademia!

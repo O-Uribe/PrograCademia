@@ -3,7 +3,6 @@ import io from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
-import videoBg from '../assets/fondo.mp4'
 const socket = io("http://localhost:5000");
 const UserLobbysr = (props) => {
     const data = useLocation();
@@ -42,7 +41,7 @@ const UserLobbysr = (props) => {
       };
     return (
         <>
-        <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+        
         <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
         <Link className="text-center btn-ghost normal-case text-xl w-full bg-base-200" to="/">
             Progracademia!

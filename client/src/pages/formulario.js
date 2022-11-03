@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form";
-import videoBg from '../assets/fondo.mp4'
 import UseFetch from '../components/UseFetch';
 
 const Formulario = () => {
@@ -62,7 +61,7 @@ const Formulario = () => {
 
     return (
         <>
-        <video src={videoBg} autoPlay loop muted className="h-full object-cover w-full" />
+    
         <center className="absolute">
             <form class="bg-base-100 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubmit)}>
                 <div class="flex flex-wrap -mx-3 mb-6">

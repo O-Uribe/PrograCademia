@@ -1,11 +1,10 @@
 import React from 'react'
 import Navbaral from '../components/Navbaralumno'
 import Footer from '../components/Footer'
-import videoBg from '../assets/fondo.mp4'
 export const Recursos = () => {
   return (
     <>
-    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+    
       <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
       <div className="w-full absolute inset-x-0 top-0"><Navbaral/></div>
       <main>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import videoBg from '../assets/fondo.mp4'
+
 
 const DashBoard = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -37,7 +37,6 @@ const DashBoard = () => {
 
   return (
     <>
-    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
     <tbody className='absolute'>
       {dataLoaded ? (
         <div>

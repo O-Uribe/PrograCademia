@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbarpr from '../components/Navbarprofe';
 import Footer from '../components/Footer';
-import videoBg from '../assets/fondo.mp4'
 const HostChooseTrivia = (props) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -25,14 +24,14 @@ const HostChooseTrivia = (props) => {
 
     if (error) {
         return (<>
-                    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+                    
                         <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
                             Error: {error.message}
                         </div>
                 </>);
     } else if (!isLoaded) {
         return (<>
-                    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
+                    
                         <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
                             Cargando...
                         </div>
@@ -47,7 +46,6 @@ const HostChooseTrivia = (props) => {
         ));
         return (
             <React.Fragment>
-                <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
                 <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
                 <div className="w-full absolute inset-x-0 top-0"><Navbarpr/></div>
                 <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">

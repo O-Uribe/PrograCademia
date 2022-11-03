@@ -1,6 +1,5 @@
 import UseFetch from '../components/UseFetch';
 import React, { useState, useEffect } from 'react';
-import videoBg from '../assets/fondo.mp4'
 function Quiz() {
   const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas");
   const estado = UseFetch(url);
@@ -45,7 +44,6 @@ function Quiz() {
 
   if (isFinished) return (
     <>
-    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
     <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
     <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
       <main className='app'>
@@ -75,7 +73,6 @@ function Quiz() {
 
   if(answersShown) return (
     <>
-    <video src={videoBg} autoPlay loop muted className="h-screen object-cover w-full" />
       <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
       <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
       <main className='app'>
@@ -112,7 +109,6 @@ function Quiz() {
 
   return (
     <>
-    <video src={videoBg} autoPlay loop muted className="h-fit object-cover w-full" />
                 <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
     <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
       <div className="App">
