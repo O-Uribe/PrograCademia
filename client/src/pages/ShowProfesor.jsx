@@ -73,19 +73,21 @@ export const ShowProfesor = () => {
             <table class="table w-full">
                 <thead>
                     <tr>
+                        <th>Rut</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>Rut</th>
                         <th>Email</th>
+                        <th>Contraseña</th>
                     </tr>
                 </thead>
                 <tbody>
                     {profesores.map((profesor) => (
                         <tr key={profesor._id}>
+                            <td>{profesor.rut}</td>
                             <td>{profesor.nombre}</td>
                             <td>{profesor.apellido}</td>
-                            <td>{profesor.rut}</td>
                             <td>{profesor.email}</td>
+                            <td>{profesor.password}</td>
                             <td>
                                 <button onClick={() => handleDelete(profesor._id)}>Eliminar</button>
                             </td>

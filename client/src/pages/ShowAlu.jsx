@@ -82,9 +82,9 @@ export const ShowEstudiante = () => {
             <table class="table w-full">
                 <thead>
                     <tr>
+                        <th>Rut</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>Rut</th>
                         <th>Email</th>
                         <th>Contraseña</th>
                         <th>Año de Ingreso</th>
@@ -93,9 +93,9 @@ export const ShowEstudiante = () => {
                 <tbody>
                     {estudiantes.map((estudiante) => (
                         <tr key={estudiante._id}>
+                            <td>{estudiante.rut}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.apellido}</td>
-                            <td>{estudiante.rut}</td>
                             <td>{estudiante.email}</td>
                             <td>{estudiante.password}</td>
                             <td>{estudiante.ingreso}</td>
