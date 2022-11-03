@@ -29,6 +29,7 @@ import { ShowEstudiante } from './pages/ShowAlu';
 import { Recursos } from "./pages/recursos";
 import Formulario from './pages/formulario';
 import Particle from "./components/Particle";
+import Cards from "./pages/cards";
 
 import Chat2 from "./components/Chat2";
 let BASE_URL = "http://localhost:5000";
@@ -77,6 +78,10 @@ function App() {
 
                 <Route path="/host/formulario" element={
                     <Formulario/>
+                } />
+
+                <Route path="/host/preguntas" element={
+                    <Cards/>
                 } />
 
                 <Route path="/pruebas" element={<Pruebas/>} />
