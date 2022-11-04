@@ -56,7 +56,7 @@ const Formulario = () => {
             }
         })
             .then(res => res.jons())
-        console.log(JSON.stringify(newData));
+        //console.log(JSON.stringify(newData));
     }
 
     return (

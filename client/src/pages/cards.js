@@ -29,7 +29,7 @@ function Cards() {
                             {
                                 results.map(p => (
                                     <div className='col-md-4' key={p._id}>
-                                        <Card titulo={p.titulo} categoria={p.categoria}/>
+                                        <Card titulo={p.titulo} categoria={p.categoria} id={p._id}/>
                                     </div>
                                 ))
                             }
