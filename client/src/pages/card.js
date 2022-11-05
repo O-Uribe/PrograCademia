@@ -1,5 +1,5 @@
 import React from 'react'
-import pre from '../img/pre.webp';
+import pre from '../assets/image/pre.webp'
 import swal from 'sweetalert2';
 
 function Card({titulo, categoria, id}) {

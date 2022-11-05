@@ -6,9 +6,8 @@ import io from 'socket.io-client';
 const socket = io("http://localhost:5000");
 
 const UserHomesr = () => {
-  const [pin, setPin] = useState('');
-  const [playerName, setPlayerName] = useState('');
-
+    const [pin, setPin] = useState('');
+    const [playerName, setPlayerName] = useState('');
 
     const handlePINChange = (event) => {
         setPin({
@@ -16,6 +15,7 @@ const UserHomesr = () => {
             [event.target.name]: event.target.value,
         });
     };
+
     const handlePlayerNameChange = (event) => {
         setPlayerName({ ...playerName, [event.target.name]: event.target.value });
     };

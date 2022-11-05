@@ -23,19 +23,19 @@ const HostChooseTrivia = (props) => {
     }, []);
 
     if (error) {
-        return (<>
-                    
-                        <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
-                            Error: {error.message}
-                        </div>
-                </>);
+        return (
+            <>
+            <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+                Error: {error.message}
+            </div>
+            </>);
     } else if (!isLoaded) {
-        return (<>
-                    
-                        <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
-                            Cargando...
-                        </div>
-                </>);
+        return (
+            <>
+            <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+                Cargando...
+            </div>
+            </>);
     } else {
         const buttons = triviaList.map((trivia, i) => (
             <div key={`item-${i + 1}`}>

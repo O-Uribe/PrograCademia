@@ -1,14 +1,15 @@
+import io from 'socket.io-client';
+import Footer from '../components/Footer';
+import Navbarpr from '../components/Navbarprofe';
+import UserOnline from '../components/UserOnline';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import io from 'socket.io-client';
-import UserOnline from '../components/UserOnline';
-import Navbarpr from '../components/Navbarprofe';
-import Footer from '../components/Footer';
-//import { set } from 'mongoose';
+// import { Alert } from "@material-tailwind/react";
+
+
 const socket = io("http://localhost:5000");
 
 const HostLobby = (props) => {
-    //const [players, setPlayers] = useState([]);
     //const [usersOnline, setPlayers] = useState([]);
     const data = useLocation();
     const pin = data.state;
@@ -36,7 +37,6 @@ const HostLobby = (props) => {
                 setUsersOnline(list);
             });
 
-
             socket.on('playerName', (user) => {
                 //setUser(user);
             });
@@ -45,13 +45,9 @@ const HostLobby = (props) => {
                 const newTriviaData = triviaData;
                 setTriviaData(newTriviaData);
             });
-        
-        // socket.on('playerlist', (players) => {
-        //     const newPlayers = players;
-        //     setPlayers(newPlayers);
-        // });
+
     },);    
-    // }, [socket, setTriviaData]);
+
     
     return (
         <React.Fragment>
@@ -60,12 +56,14 @@ const HostLobby = (props) => {
                 <div className="w-full absolute inset-x-0 top-0"><Navbarpr/></div>
                 <div className='object-center text-center'>
                 <div className="container d-flex align-items-center flex-column">
+            
+
                 <h2 className="pin-host-lobby masthead-heading text-uppercase mb-0 text-white">
                     El PIN es {pin}
                 </h2>
                 <Link to="/host/trivia">
                     <button
-                    onClick={() => props.socket.emit('start-game')}
+                    onClick={() => socket.emit('start-game')}
                     className="btn btn-primary"
                     >
                     Iniciar Juego
