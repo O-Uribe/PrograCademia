@@ -23,7 +23,7 @@ import { RegisterAlu } from "./pages/RegisterAlu";
 import { Loginprofe } from "./pages/Loginprofe";
 import { Loginestudiante } from "./pages/Loginestudiante";
 import Chat from './components/chat';
-import Pruebas from './pages/Pruebas';
+import Pruebas from './pages/pruebas';
 import ShowProfesor from './pages/ShowProfesor';
 import { ShowEstudiante } from './pages/ShowAlu';
 import { Recursos } from "./pages/recursos";

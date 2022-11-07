@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Card from './card';
 import UseFetch from '../components/UseFetch';
+import Modals from '../components/modals';
 
 function Cards() {
     const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas/");
@@ -29,7 +30,12 @@ function Cards() {
                             {
                                 results.map(p => (
                                     <div className='col-md-4' key={p._id}>
-                                        <Card titulo={p.titulo} categoria={p.categoria} id={p._id}/>
+                                        <div>
+                                            <Modals titulo={p.titulo} categoria={p.categoria} tipoPre={p.tipo_Pregunta} dif={p.dificultad} id={p._id} opciones={p.opciones}/>
+                                        </div>
+                                        <div>
+                                            <Card titulo={p.titulo} categoria={p.categoria} id={p._id}/>
+                                        </div>
                                     </div>
                                 ))
                             }

@@ -1,5 +1,4 @@
 import React from 'react'
-import pre from '../assets/image/pre.webp'
 import swal from 'sweetalert2';
 
 function Card({titulo, categoria, id}) {
@@ -39,7 +38,6 @@ function Card({titulo, categoria, id}) {
 
     return (
         <div className='card text-center' style={{width:'20rem'}}>
-            <img src={pre} alt=''></img>
             <div className='card-body bg-dark text-light'>
                 <h4 className='card-title'>{titulo}</h4>
                 <p className='card-text'>{categoria}</p>
