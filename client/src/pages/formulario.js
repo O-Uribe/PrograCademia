@@ -26,10 +26,10 @@ const Formulario = () => {
     const onSubmit = (data) => {
         var a3; var b3; var c3; var d3;
 
-        if(data.a2 === "True"){a3 = Boolean(true);}else{a3 = Boolean(false)}
-        if(data.b2 === "True"){b3 = Boolean(true);}else{b3 = Boolean(false)}
-        if(data.c2 === "True"){c3 = Boolean(true);}else{c3 = Boolean(false)}
-        if(data.d2 === "True"){d3 = Boolean(true);}else{d3 = Boolean(false)}
+        if(data.a2 === "Pregunta Correcta"){a3 = Boolean(true);}else{a3 = Boolean(false)}
+        if(data.b2 === "Pregunta Correcta"){b3 = Boolean(true);}else{b3 = Boolean(false)}
+        if(data.c2 === "Pregunta Correcta"){c3 = Boolean(true);}else{c3 = Boolean(false)}
+        if(data.d2 === "Pregunta Correcta"){d3 = Boolean(true);}else{d3 = Boolean(false)}
 
         const _id = dato.length; 
 
@@ -107,26 +107,26 @@ const Formulario = () => {
                                 <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">================</label>
                                 <select class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                         {...register('a2')}>
-                                        <option>False</option>
-                                        <option>True</option>
+                                        <option>Pregunta Erronea</option>
+                                        <option>Pregunta Correcta</option>
                                 </select>
                                 <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">================</label>
                                 <select class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                         {...register('b2')}>
-                                        <option>False</option>
-                                        <option>True</option>
+                                        <option>Pregunta Erronea</option>
+                                        <option>Pregunta Correcta</option>
                                 </select>
                                 <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">================</label>
                                 <select class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                         {...register('c2')}>
-                                        <option>False</option>
-                                        <option>True</option>
+                                        <option>Pregunta Erronea</option>
+                                        <option>Pregunta Correcta</option>
                                 </select>
                                 <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">================</label>
                                 <select class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                         {...register('d2')}>
-                                        <option>False</option>
-                                        <option>True</option>
+                                        <option>Pregunta Erronea</option>
+                                        <option>Pregunta Correcta</option>
                                 </select>
                             </div>
                         </div>
