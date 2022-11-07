@@ -48,6 +48,16 @@ export const MainProfe = () => {
                         </div>
                     </div>
                 </div>
+                <div className="lg:divider-horizontal"></div>
+                <div className="card shadow-xl image-full">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <p></p>
+                        <div className="card-actions justify-end">
+                        <Link to="/host/preguntas" className="btn btn-primary">Preguntas</Link>
+                        </div>
+                    </div>
+                </div>
             </div>
           
           

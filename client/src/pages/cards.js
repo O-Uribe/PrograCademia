@@ -17,7 +17,7 @@ function Cards() {
     }
 
     return (
-        <div>
+        <div className='h-full'>
             {
                 cargando
                 ?
@@ -25,7 +25,7 @@ function Cards() {
                 :
                 <div>
                     <input value={search} onChange={searcher} type='text' placeholder='Search' className='form-control'></input>
-                    <div className='container d-flex justify-content-center align-items-center h-100'>
+                    <div className='container d-flex justify-content-center align-items-center'>
                         <div className='row'>
                             {
                                 results.map(p => (
