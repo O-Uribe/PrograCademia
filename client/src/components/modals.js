@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Modal, ModalHeader, ModalBody, FormGroup, Label, ModalFooter} from 'reactstrap'
-import 'bootstrap/dist/css/bootstrap.css'
+//import 'bootstrap/dist/css/bootstrap.css'
 import pre from '../assets/pre.webp';
 
 function Modals(titulo){

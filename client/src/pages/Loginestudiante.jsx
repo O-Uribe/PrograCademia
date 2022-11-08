@@ -63,6 +63,8 @@ export const Loginestudiante = () => {
       .then((response) => {
         if(response.status === 200){
           document.cookie = `token=${response.data.token}; path=/; samesite=strict`;
+          localStorage.setItem("loginalum", email);
+          window.location.href = '/mainalumno'; 
           console.log(document.cookie);
           //auth();
         }

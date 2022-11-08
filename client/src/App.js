@@ -30,7 +30,7 @@ import { Recursos } from "./pages/recursos";
 import Formulario from './pages/formulario';
 import Particle from "./components/Particle";
 import Cards from "./pages/cards";
-
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import Chat2 from "./components/Chat2";
 let BASE_URL = "http://localhost:5000";
 
@@ -41,6 +41,8 @@ function App() {
     const [triviaData, setTriviaData] = useState(null);
     const [triviaDataUser, setTriviaDataUser] = useState({ options: [] });
     const [podium,] = useState([]);
+    const userpr=localStorage.getItem("loginprofe");
+    const useral=localStorage.getItem("loginalum");
     //const [podium, setPodium] = useState([]);
     /*
     const Navigate = useNavigate();
@@ -101,12 +103,12 @@ function App() {
 
                 <Route exact path="/" element={<Start/>} />
 
-                <Route exact path="/mainprofe" element={<MainProfe/>} />
-                <Route exact path="/MainAlumno" element={<MainAlumno/>}/>
+                <Route exact path="/mainprofe" element={<ProtectedRoute user={userpr} children={<MainProfe />} redirectTo="/loginprofe" val={1}/>} />
+                <Route exact path="/MainAlumno" element={<ProtectedRoute user={useral} children={<MainAlumno/>} redirectTo="/loginalu" val={1}/>}/>
                 <Route exact path="/registrarse" element={<Register/>} />
                 <Route exact path="/registrarsealu" element={<RegisterAlu/>} />
-                <Route exact path="/loginprofe" element={<Loginprofe/>} />
-                <Route exact path="/loginalu" element={<Loginestudiante/>} />
+                <Route exact path="/loginprofe" element={<ProtectedRoute user={userpr} children={<Loginprofe/>} redirectTo="/mainprofe" val={2}/>} />
+                <Route exact path="/loginalu" element={<ProtectedRoute user={useral} children={<Loginestudiante/>} redirectTo="/mainalumno" val={2}/>} />
                 <Route exact path="/recursos" element={<Recursos/>} />
                 
                 <Route path="/user/lobby" element={

@@ -1,11 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {Howl} from 'howler';
-
+import img from '../assets/Icons/alumno.png'
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2
 });
+function cerrarsesion(){
+    localStorage.removeItem("loginprofe")
+    window.location.href = '/';  
+}
 const Navbarpr=()=>{
     return(
         <div className='navbar bg-base-100'>
@@ -48,8 +52,20 @@ const Navbarpr=()=>{
                 Progracademia!
                 </Link>
             </div>
-            <div className='navbar-end pr-14 hidden md:flex md:space-x-4 lg:space-x-7'>
-            </div>
+            <div className='navbar-end'>
+            <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full">
+                    <img src={img}/>
+                    </div>
+                </label>
+                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                    <li><button className="justify-between">Perfil</button></li>
+                    <li><button>Configuraciones</button></li>
+                    <li><button onClick={()=>cerrarsesion()}>Cerrar Sesion</button></li>
+                </ul>
+                </div>
+                </div>
         </div>
     )
 }

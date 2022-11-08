@@ -27,11 +27,12 @@ export const Loginprofe = () => {
     })
       .then((response) => {
         if (response.data === 'Profesor logueado'){
+          localStorage.setItem("loginprofe", email);
           alert(response.data)
           window.location.href = '/mainprofe';  //revisar 
         }
         }).catch(err => {
-        alert(err.response.data)
+        alert("err.response.data")
       })
     }
 
