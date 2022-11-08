@@ -1,9 +1,10 @@
 import express from 'express';
 const router = express.Router();
+import jsw from 'jsonwebtoken';
 
 import FormProfe from '../models/FormProfeModel.js';
 import FormEstu from '../models/FormEstuModel.js';
-import mongoose from 'mongoose';
+
 
 //import { checkRut } from '../actions/existeRut.js';  // para un futuro
 
@@ -142,17 +143,58 @@ router.route("/login/estudiante").post(async (req, res) => {
     const { email, password } = req.body;
     // verificar que el email exista
     const emailExists = await FormEstu.findOne({ email: email });
-    if (!emailExists) {
-        return res.status(400).send( "Email no existe" );
-    }else {
-        // verificar que el password sea correcto
-        if (emailExists.password === password) {
-            res.send('Alumno logueado');
-        }else{
-            res.status(400).send( "Password incorrecto" );
+    if (!(emailExists && emailExists.password === password)) {
+        return res.status(400).send("Email o Password incorrecto");
+    }
+    const userForToken = {
+        id: emailExists._id,
+    }
+    const token = jsw.sign(userForToken, process.env.SECRET);
+
+    res.status(200).send({ token, email: email });
+    
+});
+
+// @route   POST auth/estudiante
+router.route("/auth/estudiante").post(async (req, res) => {
+    // No se obtiene el token del header porque el cliente no lo envia
+    const autorization = req.get('authorization');
+    if (!autorization) {
+        return res.status(401).json({ error: 'Falta Token' });
+    }
+    if (autorization && autorization.toLowerCase().startsWith('bearer ')) {
+        const token = autorization.substring(7);
+        const decodedToken = jsw.verify(token, process.env.SECRET);
+        if (!token || !decodedToken.id) {
+            return res.status(401).json({ error: 'Falta Token o es inválido' });
         }
+        const user = await FormEstu.findOne({ _id: decodedToken.id });
+        /*
+        */
+        res.status(200).send({ user });
     }
 });
+/*
+    autorization = req.headers.Authorization;
+    let token  = ""
+
+    if (autorization && autorization.toLowerCase().startsWith('bearer ')) {
+        token = autorization.substring(7);
+    }
+
+    let decodedToken = {}
+    try {
+        decodedToken = jws.verify(token, process.env.SECRET);
+    } catch (error) {
+        console.log(error);
+    }
+    console.log(token);
+
+    if (!token || !decodedToken.id) {
+        return res.status(401).json({ error: 'No hay token o es invalido' })
+    }
+
+*/
 
 // @route   GET register/estudiante  TODOS LOS ESTUDIANTES
 router.route("/estudiante").get(async (req, res) => {

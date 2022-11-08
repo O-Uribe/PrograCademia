@@ -16,20 +16,58 @@ export const Loginestudiante = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
+  // Funcion para autenticar al usuario con tokens hacia post /auth/estudiante
+  /*
+  const auth = async () => {
+    const token = document.cookie.split('=')[1];
+    const config = {
+      headers: { 
+        Authorization: `Bearer ${token}` 
+      }
+    };
+    
+  };
+*/
+  const auth = () => {
+    const token = document.cookie.split('=')[1];
+          const config = {
+            headers: {
+              "content-type": 'application/json',
+              Authorization: `Bearer ${token}`,
+              credentials : 'include'
+            }
+          };
+          console.log(config);
+          //axios.post no envia el header Authorization
+          
+          axios.post('http://localhost:5000/auth/estudiante', config
+          ).then((response) => {
+            console.log(response.data);
+          }
+          )
+          .catch((error) => {
+            console.log(error.response.data);
+          }
+          );
+  };
+  function clearCookie() {
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  }
   const handleSubmit = (e) => {
- ///if login is succes redirect to MainAlumno
     e.preventDefault();
+    clearCookie();
     axios.post('http://localhost:5000/login/estudiante', {
       email,
       password
     })
       .then((response) => {
-        if(response.data === 'Alumno logueado'){
-          alert(response.data)
-          window.location.href = '/mainalumno';  //revisar 
+        if(response.status === 200){
+          document.cookie = `token=${response.data.token}; path=/; samesite=strict`;
+          console.log(document.cookie);
+          //auth();
         }
       }, (error) => {
-        alert(error.response.data)
+        alert(error.response.data);
       });
 
   }
@@ -103,6 +141,9 @@ export const Loginestudiante = () => {
               </div>
             </div>
           </form>
+          <button onClick={auth}>
+                  Test
+                </button>
         </div>
       </div>
     </React.Fragment>
