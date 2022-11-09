@@ -32,7 +32,7 @@ import Particle from "./components/Particle";
 import Cards from "./pages/Profesor/cards";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import Chat2 from "./components/Chat2";
-import Profile from "./pages/Profile"
+import Profile from "./pages/Estudiante/Logeado/Profile";
 import Game from "./pages/Estudiante/Game";
 import Race from "./pages/Profesor/race";
 
