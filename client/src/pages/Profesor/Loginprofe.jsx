@@ -15,6 +15,28 @@ export const Loginprofe = () => {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [tablaUsuarios, setTablaUsuarios] = React.useState([]);
+  React.useEffect(() => {
+    fetch("http://localhost:5000/profesor")
+        .then((response) => response.json())
+        .then((data) => {
+            setTablaUsuarios(data)
+        });
+  }, []);
+  function filtrar  ()  {
+      var resultadosBusqueda = tablaUsuarios.filter((elemento) => {
+          if (
+              elemento.email.toLowerCase().includes(email.toLowerCase())
+          ) {
+              return elemento; 
+          }
+      });
+      resultadosBusqueda.map((Alumno)=>(
+          localStorage.setItem("ProfeNombre", Alumno.nombre),
+          localStorage.setItem("ProfeApellido", Alumno.apellido)
+      ))
+      
+  };
 
   const handleSubmit = (e) => {
  ///if login is succes redirect to mainprofe
@@ -101,7 +123,7 @@ export const Loginprofe = () => {
                 </label>
               </div>
               <div className="form-control mt-6"> 
-                <button type='submit' className="btn btn-outline">
+                <button type='submit' className="btn btn-outline" onClick={filtrar}>
                   Login
                 </button>
               </div>

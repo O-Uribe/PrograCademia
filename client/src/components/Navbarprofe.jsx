@@ -1,13 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {Howl} from 'howler';
+import Perfil from './Perfilpr';
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2
 });
 function cerrarsesion(){
     localStorage.removeItem("loginprofe")
+    localStorage.removeItem("ProfeNombre")
+    localStorage.removeItem("ProfeApellido")
+    localStorage.removeItem("Profe_URL")
     window.location.href = '/';  
+}
+const img=localStorage.getItem("Profe_URL")
+const img2="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668004357/Imagenes%20Generales/Profe_bmbops.png" 
+let url=""
+const comprobar=()=>{
+    if(!img){
+        url=img2
+    }else{
+        url=img
+    }
 }
 const Navbarpr=()=>{
     return(
@@ -54,17 +68,18 @@ const Navbarpr=()=>{
             <div className='navbar-end'>
             <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                    <img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668004357/Imagenes%20Generales/Profe_bmbops.png"/>
+                    <div className="w-10 rounded-full"onLoad={comprobar()}>
+                    <img src={url}/>
                     </div>
                 </label>
                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                    <li><button className="justify-between">Perfil</button></li>
-                    <li><button>Configuraciones</button></li>
+                    <li><label  htmlFor="my-modal-4">Perfil</label></li>
+                    <li><Link to="/profile2" htmlFor="my-modal-3">Configuracion</Link></li>
                     <li><button onClick={()=>cerrarsesion()}>Cerrar Sesion</button></li>
                 </ul>
                 </div>
                 </div>
+                <Perfil/>
         </div>
     )
 }

@@ -1,16 +1,17 @@
 import axios from "axios";
 import React from "react";
 import Dropzone from 'react-dropzone'
+import { Link } from "react-router-dom";
 
 
 const Config = (props)=>{
-    const nombre=localStorage.getItem("AlumNombre")
-    const apellido=localStorage.getItem("AlumApellido")
-    const correo=localStorage.getItem("loginalum")
-    const img=localStorage.getItem("Alum_URL")
+    const nombre=localStorage.getItem("ProfeNombre")
+    const apellido=localStorage.getItem("ProfeApellido")
+    const correo=localStorage.getItem("loginprofe")
+    const img=localStorage.getItem("Profe_URL")
     const img2="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668005667/Imagenes%20Generales/sin_fpbfcs.jpg"
     const [image,setImage]=React.useState({Array:[]})
-    const folder=process.env.REACT_APP_API_FOLDER
+    const folder=process.env.REACT_APP_API_FOLDER2
     const key =process.env.REACT_APP_API_KEY;
     const cloud_name=process.env.REACT_APP_API_CLOUD_NAME    
     const [loading,setLoading]=React.useState("")
@@ -23,7 +24,7 @@ const Config = (props)=>{
         }
     }
     function volver(){
-        window.location.href="/MainAlumno"
+        window.location.href="/mainprofe"
     }
     const handleDrop=(files)=>{
         const uploaders=files.map((file)=>{
@@ -41,7 +42,7 @@ const Config = (props)=>{
                 const data = response.data
                 const fileURL=data.secure_url;
                 url=fileURL
-                window.localStorage.setItem("Alum_URL",fileURL)
+                window.localStorage.setItem("Profe_URL",fileURL)
             })
         })
         axios.all(uploaders).then(()=>{
