@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Navbarpr from '../components/Navbarprofe'
-import Footer from '../components/Footer'
+import Navbarpr from '../../components/Navbarprofe'
+import Footer from '../../components/Footer'
 export const MainProfe = () => {
   return (
     <>

@@ -1,4 +1,4 @@
-import UseFetch from '../components/UseFetch';
+import UseFetch from '../../components/UseFetch';
 import React, { useState, useEffect } from 'react';
 function Quiz() {
   const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas");
@@ -109,7 +109,7 @@ function Quiz() {
 
   return (
     <>
-                <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+    <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
     <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
       <div className="App">
         {

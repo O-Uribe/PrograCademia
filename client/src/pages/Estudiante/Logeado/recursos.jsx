@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbaral from '../components/Navbaralumno'
-import Footer from '../components/Footer'
+import Navbaral from '../../../components/Navbaralumno'
+import Footer from '../../../components/Footer'
 export const Recursos = () => {
   return (
     <>

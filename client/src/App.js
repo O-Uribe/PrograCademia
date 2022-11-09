@@ -3,36 +3,36 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 //import {useNavigate } from 'react-router-dom';
 
 //Importamos paginas
-import DashBoard from './pages/DashBoard';
-import Home from './pages/Home';
-import HostChooseTrivia from './pages/HostChooseTrivia';
-import HostLobby from './pages/HostLobby';
-import Podium from './pages/Podium';
-import Trivia from './pages/Trivia';
+import DashBoard from './pages/Admin/DashBoard';
+import Home from './pages/General/Home';
+import HostChooseTrivia from './pages/Profesor/HostChooseTrivia';
+import HostLobby from './pages/Profesor/HostLobby';
+import Podium from './pages/General/Podium';
+import Trivia from './pages/Profesor/Trivia';
 import TriviaUser from './pages/TriviaUser';
-import UserHome from './pages/UserHome';
-import UserLobby from './pages/UserLobby';
-import UserHomesr from './pages/UserHomesr';
-import UserLobbysr from './pages/UserLobbysr';
-import Quiz from './pages/quiz';
-import {Start} from './pages/Start.jsx';
-import { MainProfe } from "./pages/MainProfe";
-import {MainAlumno} from './pages/MainAlumno'
-import { Register } from "./pages/Register";
-import { RegisterAlu } from "./pages/RegisterAlu";
-import { Loginprofe } from "./pages/Loginprofe";
-import { Loginestudiante } from "./pages/Loginestudiante";
+import UserHome from './pages/Estudiante/Logeado/UserHome';
+import UserLobby from './pages/Estudiante/Logeado/UserLobby';
+import UserHomesr from './pages/Estudiante/NoLogeado/UserHomesr';
+import UserLobbysr from './pages/Estudiante/NoLogeado/UserLobbysr';
+import Quiz from './pages/Profesor/quiz';
+import {Start} from './pages/General/Start.jsx';
+import { MainProfe } from "./pages/Profesor/MainProfe";
+import {MainAlumno} from './pages/Estudiante/Logeado/MainAlumno'
+import { Register } from "./pages/Profesor/Register";
+import { RegisterAlu } from "./pages/Estudiante/Logeado/RegisterAlu";
+import { Loginprofe } from "./pages/Profesor/Loginprofe";
+import { Loginestudiante } from "./pages/Estudiante/Logeado/Loginestudiante";
 import Chat from './components/chat';
 import Pruebas from './pages/pruebas';
-import ShowProfesor from './pages/ShowProfesor';
-import { ShowEstudiante } from './pages/ShowAlu';
-import { Recursos } from "./pages/recursos";
-import Formulario from './pages/formulario';
+import ShowProfesor from './pages/Admin/ShowProfesor';
+import { ShowEstudiante } from './pages/Admin/ShowAlu';
+import { Recursos } from "./pages/Estudiante/Logeado/recursos";
+import Formulario from './pages/Profesor/formulario';
 import Particle from "./components/Particle";
-import Cards from "./pages/cards";
+import Cards from "./pages/Profesor/cards";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import Chat2 from "./components/Chat2";
-import Profile from "./pages/Profile"
+import Profile from "./pages/Estudiante/Logeado/Profile"
 let BASE_URL = "http://localhost:5000";
 
 function App() {

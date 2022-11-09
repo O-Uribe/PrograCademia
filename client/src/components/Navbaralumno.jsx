@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {Howl} from 'howler';
-import img from '../assets/Icons/alumno.png'
+import Imagenes from './Confi-al';
+import Perfil from './PerfilAL';
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2
@@ -10,6 +11,7 @@ function cerrarsesion(){
     localStorage.removeItem("loginalum")
     localStorage.removeItem("AlumNombre")
     localStorage.removeItem("AlumApellido")
+    localStorage.removeItem("Alum_URL")
     window.location.href = '/';  
 }
 const Navbaral=()=>{
@@ -61,16 +63,18 @@ const Navbaral=()=>{
             <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
-                    <img src={img}/>
+                    <img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/alumno_gw2ns4.png"/>
                     </div>
                 </label>
                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                    <li><button className="justify-between">Perfil</button></li>
-                    <li><button>Configuraciones</button></li>
+                    <li><label htmlFor="my-modal-4">Perfil</label></li>
+                    <li><label htmlFor="my-modal-3">Configuracion</label></li>
                     <li><button onClick={()=>cerrarsesion()}>Cerrar Sesion</button></li>
                 </ul>
                 </div>
                 </div>
+                <Imagenes/>
+                <Perfil/>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Navbarpr from '../components/Navbarprofe';
-import Footer from '../components/Footer';
+import Navbarpr from '../../components/Navbarprofe';
+import Footer from '../../components/Footer';
 const HostChooseTrivia = (props) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);

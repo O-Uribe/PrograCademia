@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
-import Footer from '../components/Footer';
-import Navbarpr from '../components/Navbarprofe';
-import UserOnline from '../components/UserOnline';
+import Footer from '../../components/Footer';
+import Navbarpr from '../../components/Navbarprofe';
+import UserOnline from '../../components/UserOnline';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // import { Alert } from "@material-tailwind/react";

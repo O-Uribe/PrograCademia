@@ -1,6 +1,6 @@
 import  React, { useState } from 'react'
 import axios from 'axios'
-import Footer from '../components/Footer';
+import Footer from '../../components/Footer';
 /*
   Inputs para register de profesor
 

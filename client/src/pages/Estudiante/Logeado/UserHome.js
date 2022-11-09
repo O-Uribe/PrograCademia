@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navbaral from '../components/Navbaralumno'
-import Footer from '../components/Footer';
+import Navbaral from '../../../components/Navbaralumno'
+import Footer from '../../../components/Footer';
 const UserHome = () => {
   const [pin, setPin] = useState('');
   const [playerName, setPlayerName] = useState('');

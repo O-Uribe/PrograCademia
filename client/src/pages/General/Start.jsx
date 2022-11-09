@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import {Howl} from 'howler';
-import Footer from '../components/Footer';
+import Footer from '../../components/Footer';
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2

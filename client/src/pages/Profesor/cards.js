@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Card from './card';
-import UseFetch from '../components/UseFetch';
-import Modals from '../components/modals';
+import UseFetch from '../../components/UseFetch';
+import Modals from '../../components/modals';
 
 function Cards() {
     const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas/");

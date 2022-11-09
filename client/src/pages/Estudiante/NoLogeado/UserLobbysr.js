@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import io from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer';
+import Footer from '../../../components/Footer';
 import { Link } from 'react-router-dom';
 const socket = io("http://localhost:5000");
 

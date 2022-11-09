@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {Howl} from 'howler';
-import img from '../assets/Icons/alumno.png'
 const sound = new Howl({
   src: ['sonidos/mario.mp3'],
   volume:0.2
@@ -56,7 +55,7 @@ const Navbarpr=()=>{
             <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
-                    <img src={img}/>
+                    <img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668004357/Imagenes%20Generales/Profe_bmbops.png"/>
                     </div>
                 </label>
                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">

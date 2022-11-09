@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 
-import StopGame from '../components/StopGame';
-import Questions from '../components/Questions';
-import Countdown from '../components/Countdown';
-import Minipodium from '../components/MiniPodium';
-import Navbarpr from '../components/Navbarprofe';
-import Footer from '../components/Footer';
+import StopGame from '../../components/StopGame';
+import Questions from '../../components/Questions';
+import Countdown from '../../components/Countdown';
+import Minipodium from '../../components/MiniPodium';
+import Navbarpr from '../../components/Navbarprofe';
+import Footer from '../../components/Footer';
 const Trivia = (props) => {
   const { socketHost, onGameEnd } = props;
 
