@@ -1,11 +1,11 @@
 import React from "react";
-import  Imagenes  from "../../../components/Confi-al";
+import Config from "../../../components/Confi-al";
 
 const Profile=()=>{
   
   return(
     <>
-      <Imagenes/>
+      <Config/>
     </>
   )
 }

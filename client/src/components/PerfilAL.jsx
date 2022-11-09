@@ -11,10 +11,8 @@ const Perfil = (props)=>{
     const comprobar=()=>{
         if(!img){
             url=img2
-            console.log(url)
         }else{
             url=img
-            console.log(url)
         }
     }
     return(

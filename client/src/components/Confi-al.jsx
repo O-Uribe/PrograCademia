@@ -1,10 +1,8 @@
 import axios from "axios";
 import React from "react";
 import Dropzone from 'react-dropzone'
+import { Link } from "react-router-dom";
 
-const folder=process.env.REACT_APP_API_FOLDER
-const key =process.env.REACT_APP_API_KEY;
-const cloud_name=process.env.REACT_APP_API_CLOUD_NAME
 
 const Config = (props)=>{
     const nombre=localStorage.getItem("AlumNombre")
@@ -21,11 +19,12 @@ const Config = (props)=>{
     const comprobar=()=>{
         if(!img){
             url=img2
-            console.log(url)
         }else{
             url=img
-            console.log(url)
         }
+    }
+    function volver(){
+        window.location.href="/MainAlumno"
     }
     const handleDrop=(files)=>{
         const uploaders=files.map((file)=>{
@@ -43,7 +42,7 @@ const Config = (props)=>{
                 const data = response.data
                 const fileURL=data.secure_url;
                 url=fileURL
-                localStorage.setItem("Alum_URL",fileURL)
+                window.localStorage.setItem("Alum_URL",fileURL)
             })
         })
         axios.all(uploaders).then(()=>{
@@ -52,10 +51,7 @@ const Config = (props)=>{
     }
     return(
         <>
-        <input type="checkbox" id="my-modal-3" className="modal-toggle " />
-        <div className="modal ">
-        <div className="modal-box relative bg-base-200"> 
-        <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        <div className="bg-base-200 rounded-3xl">
         <div className="flex p-5 bg-base-200 rounded-2xl" onLoad={comprobar()}>
                 <div className="flex flex-col relative w-full ">
                     <div className="mb-4">
@@ -89,7 +85,7 @@ const Config = (props)=>{
                     
                 </div>
         </div>
-        </div>
+            <button className="btn w-full bg-primary" onClick={()=>volver()}>Volver</button>
         </div>
         </>
     )
