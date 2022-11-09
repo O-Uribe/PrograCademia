@@ -47,7 +47,7 @@ export default function Particle() {
         },
         detectRetina: true,
         duration: 0,
-        fpsLimit: 120,
+        fpsLimit: 59,
         interactivity: {
           detectsOn: "window",
           events: {
