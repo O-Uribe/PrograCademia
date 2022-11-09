@@ -18,8 +18,9 @@ const UserLobbysr = (props) => {
 
     useEffect(() => {
         socket.on('question', (data) => {
+            console.log(data);
             props.setTriviaDataUser(data);
-            navigate('/user/trivia');
+            navigate('/user/game');
         });
         localStorage.setItem("chatConnected", "true");
     });

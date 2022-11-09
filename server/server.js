@@ -31,6 +31,7 @@ import exp from 'constants';
 import { CONNREFUSED } from 'dns';
 import { Socket } from 'dgram';
 import { connect } from 'http2';
+import { on } from 'events';
 app.use('/', router);
 
 //app.use(express);
@@ -42,17 +43,31 @@ const io = new SocketServer(server, {
     }
 });
 
+let namespace;
+
+const trivia = [
+{
+    question: 'Which is the biggest planet in the Solar System?',
+    options: [
+    { id: 1, description: 'Venus' },
+    { id: 2, description: 'JUPITER' },
+    { id: 3, description: 'Mercury' },
+    { id: 4, description: 'Mars' },
+    ],
+},];
+
+
 //Chat
 let usersConnected = new Map();
+let contador;
+
 io.on("connection", (socket) => {
     let { id } = socket.client;
-  
+
     socket.on("user nickname", (nickname) => {
         usersConnected.set(nickname, [socket.client.id, socket.id]);
         console.log(nickname)
         io.emit("users-on", Array.from(usersConnected.keys()));
-
-        socket.broadcast.emit("welcome", nickname);
 
         io.emit("playerName", nickname);
 
@@ -67,54 +82,26 @@ io.on("connection", (socket) => {
         io.to(socketId).emit("private msg", { id, nickname, msg });
     });
 
-
-    //////////////////////////Trivia//////////////////////////
-    app.get('/trivia/:pin/:selectedTrivia', (req, res) => {
-        const { pin } = req.params;
-
-        namespace = io.of(`/${pin}`);
-        namespace.counter = 0;
-
-        namespace.on('connection', (socket) => {
-            namespace.counter += 1;
-            if (namespace.counter === 1) {
-                console.log('Profesor conectado!');
-                socket.host = true;
-            }
-
-            if (!socket.host) {
-                //console.log('Estudiante conectado!');
-                socket.join('gameroom');
-            }
-
-            socket.on('start-game', () => {
-                namespace.emit('question', {
-                    question: trivia[namespace.counter].question,
-                    options: trivia[namespace.counter].options,
-                });
-            });
-
-            socket.on('next-question', () => {
-                namespace.counter += 1;
-                namespace.emit('question', {
-                    question: trivia[namespace.counter].question,
-                    options: trivia[namespace.counter].options,
-                });
-            });
-
+    socket.on('start-game', () => {
+        console.log('Game started!');
+        socket.emit('question', {
+            question: trivia[contador].question,
+            options: trivia[contador].options,
         });
+    });
 
-    res.json({ connected: true });
-});
+    socket.on('next-question', () => {
+        contador++;
+        socket.emit('question', {
+            question: trivia[2].question,
+            options: trivia[2].options,
+        });
+    });
 
-//////////////////////////Trivia//////////////////////////
 
-
-
-  
     socket.on("disconnect", () => {
         let tempUserNickname;
-
+    
         for (let key of usersConnected.keys()) {
             if (usersConnected.get(key)[0] === id) {
                 tempUserNickname = key;
@@ -122,40 +109,17 @@ io.on("connection", (socket) => {
                 break;
             }
         }
-
         io.emit("users-on", Array.from(usersConnected.keys()));
-  
+      
         socket.broadcast.emit("user-disconnected", tempUserNickname);
     });
-  });
+    
 
 
-let namespace;
-
-const trivia = [
-  {
-    question: 'Which is the biggest planet in the Solar System?',
-    options: [
-      { id: 1, description: 'Venus' },
-      { id: 2, description: 'JUPITER' },
-      { id: 3, description: 'Mercury' },
-      { id: 4, description: 'Mars' },
-    ],
-  },
-];
+});    
 
 
-app.get('/start-game', (req, res) => {
-    console.log('emiting a game!');
-    const { questionNumber } = req.query;
-
-    socket.broadcast.emit('question', {
-        question: trivia[questionNumber].question,
-        options: trivia[questionNumber].options,
-    });
-    res.json({ gameStarted: true });
-});
-
+//////////////////////////Trivia//////////////////////////
 app.get('/list', (req, res) => {
     const triviaData = {
         triviaList: [
@@ -167,6 +131,42 @@ app.get('/list', (req, res) => {
     res.json(triviaData);
 });
 
+
+app.get('/trivia/:pin/:selectedTrivia', (req, res) => {
+    const { pin } = req.params;
+
+    namespace = io.of(`/${pin}`);
+    console.log(namespace.state);
+    namespace.counter = 0;
+
+    namespace.on('connection', (socket) => {
+        namespace.counter += 1;
+        if (namespace.counter === 1) {
+            console.log('Profesor conectado!');
+            socket.host = true;
+        }
+
+        if (!socket.host) {
+            console.log('Estudiante conectado!');
+        }
+    });
+
+    res.json({ connected: true });
+});
+
+
+
+
+// app.get('/start-game', (req, res) => {
+//     console.log('emiting a game!');
+//     const { questionNumber } = req.query;
+
+//     socket.broadcast.emit('question', {
+//         question: trivia[questionNumber].question,
+//         options: trivia[questionNumber].options,
+//     });
+//     res.json({ gameStarted: true });
+// });
 
 
 server.listen(

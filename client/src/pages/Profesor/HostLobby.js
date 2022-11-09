@@ -33,21 +33,26 @@ const HostLobby = (props) => {
 
     useEffect(() => {
 
-            socket.on("users-on", (list) => {
-                setUsersOnline(list);
-            });
+        socket.on("users-on", (list) => {
+            setUsersOnline(list);
+        });
 
-            socket.on('playerName', (user) => {
-                //setUser(user);
-            });
+        socket.on('playerName', (user) => {
+            //setUser(user);
+        });
 
-            socket.on('question', (triviaData) => {
-                const newTriviaData = triviaData;
-                setTriviaData(newTriviaData);
-            });
+        socket.on('question', (triviaData) => {
+            const newTriviaData = triviaData;
+            setTriviaData(newTriviaData);
+        });
 
     },);    
 
+
+    const startGame = () => {
+        socket.emit("start-game");
+
+    };
     
     return (
         <React.Fragment>
@@ -63,7 +68,7 @@ const HostLobby = (props) => {
                 </h2>
                 <Link to="/host/trivia">
                     <button
-                    onClick={() => socket.emit('start-game')}
+                    onClick={startGame}
                     className="btn btn-primary"
                     >
                     Iniciar Juego

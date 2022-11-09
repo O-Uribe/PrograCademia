@@ -9,7 +9,7 @@ import HostChooseTrivia from './pages/Profesor/HostChooseTrivia';
 import HostLobby from './pages/Profesor/HostLobby';
 import Podium from './pages/General/Podium';
 import Trivia from './pages/Profesor/Trivia';
-import TriviaUser from './pages/TriviaUser';
+import TriviaUser from './pages/Estudiante/TriviaUser';
 import UserHome from './pages/Estudiante/Logeado/UserHome';
 import UserLobby from './pages/Estudiante/Logeado/UserLobby';
 import UserHomesr from './pages/Estudiante/NoLogeado/UserHomesr';
@@ -32,7 +32,10 @@ import Particle from "./components/Particle";
 import Cards from "./pages/Profesor/cards";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import Chat2 from "./components/Chat2";
-import Profile from "./pages/Estudiante/Logeado/Profile"
+import Profile from "./pages/Profile"
+import Game from "./pages/Estudiante/Game";
+import Race from "./pages/Profesor/race";
+
 let BASE_URL = "http://localhost:5000";
 
 function App() {
@@ -98,9 +101,14 @@ function App() {
                     socket={socket}/> 
                 } />
 
+                <Route path="/race" element={<Race/>} />
+
 
                 <Route exact path="/user" element={<UserHome />} />
                 <Route exact path="/usersr" element={<UserHomesr />} />
+
+                <Route path ="/game" element={<Game/>}/>
+
 
                 <Route exact path="/" element={<Start/>} />
 
