@@ -15,7 +15,28 @@ export const Loginestudiante = () => {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
+  const [tablaUsuarios, setTablaUsuarios] = React.useState([]);
+  React.useEffect(() => {
+    fetch("http://localhost:5000/estudiante")
+        .then((response) => response.json())
+        .then((data) => {
+            setTablaUsuarios(data)
+        });
+  }, []);
+  function filtrar  ()  {
+      var resultadosBusqueda = tablaUsuarios.filter((elemento) => {
+          if (
+              elemento.email.toLowerCase().includes(email.toLowerCase())
+          ) {
+              return elemento; 
+          }
+      });
+      resultadosBusqueda.map((Alumno)=>(
+          localStorage.setItem("AlumNombre", Alumno.nombre),
+          localStorage.setItem("AlumApellido", Alumno.apellido)
+      ))
+      
+  };
   // Funcion para autenticar al usuario con tokens hacia post /auth/estudiante
   /*
   const auth = async () => {
@@ -137,7 +158,7 @@ export const Loginestudiante = () => {
                 </label>
               </div>
               <div className="form-control mt-6"> 
-                <button type='submit' className="btn btn-outline">
+                <button type='submit' className="btn btn-outline" onClick={filtrar}>
                   Login
                 </button>
               </div>
@@ -145,7 +166,7 @@ export const Loginestudiante = () => {
           </form>
           <button onClick={auth}>
                   Test
-                </button>
+          </button>
         </div>
       </div>
     </React.Fragment>

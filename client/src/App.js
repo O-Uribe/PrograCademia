@@ -32,6 +32,7 @@ import Particle from "./components/Particle";
 import Cards from "./pages/cards";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import Chat2 from "./components/Chat2";
+import Profile from "./pages/Profile"
 let BASE_URL = "http://localhost:5000";
 
 function App() {
@@ -87,7 +88,7 @@ function App() {
                 } />
 
                 <Route path="/pruebas" element={<Pruebas/>} />
-
+                <Route path="/profile" element={<Profile/>} />
                 <Route path="/host/lobby" element={
                 <HostLobby
                     BASE_URL={BASE_URL}

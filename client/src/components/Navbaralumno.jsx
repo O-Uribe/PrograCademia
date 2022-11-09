@@ -8,6 +8,8 @@ const sound = new Howl({
 });
 function cerrarsesion(){
     localStorage.removeItem("loginalum")
+    localStorage.removeItem("AlumNombre")
+    localStorage.removeItem("AlumApellido")
     window.location.href = '/';  
 }
 const Navbaral=()=>{
