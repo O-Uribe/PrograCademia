@@ -1,22 +1,7 @@
-import React, {useState} from 'react';
-import {Button, Modal, ModalHeader, ModalBody, FormGroup, Label, ModalFooter} from 'reactstrap'
-//import 'bootstrap/dist/css/bootstrap.css'
-import pre from '../assets/pre.webp';
+import React from 'react';
+import {Button, ModalHeader, ModalBody, FormGroup, Label, ModalFooter} from 'reactstrap'
 
 function Modals(titulo){
-  const [state, setState] = useState(false);
-
-  function abrirModal(){
-    setState(!state);
-  }
-
-  const modalStyles={
-    position: "absolute",
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%'
-  }
-
   var op2tr, op3tr, op2ic, op3ic;
 
   function opc(){
@@ -34,12 +19,11 @@ function Modals(titulo){
 
   return(
     <>
-      <div className='principal'>
-        <div className='secundario'>
-          <img src={pre} onClick={abrirModal}/>
-        </div>
-      </div>
-      <Modal isOpen={state} style={modalStyles}>
+      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+    <div className="modal">
+    <div className="modal-box relative">
+    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <div>
         <ModalHeader>
           <h3>{JSON.stringify(titulo.titulo)}</h3>
         </ModalHeader>
@@ -65,10 +49,11 @@ function Modals(titulo){
           </FormGroup>
         </ModalBody>
         <ModalFooter>
-          <Button color='primary'>Modificar</Button>
-          <Button color='secondary' onClick={abrirModal}>Cerrar</Button>
+          <button className='btn btn-primary'>Modificar</button>
         </ModalFooter>
-      </Modal>
+      </div>
+      </div>
+  </div>
     </>
   )
 }

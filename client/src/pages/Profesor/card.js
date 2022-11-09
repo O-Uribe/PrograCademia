@@ -1,9 +1,9 @@
 import React from 'react'
 import swal from 'sweetalert2';
-
-function Card({titulo, categoria, id}) {
+import Modals from '../../components/modals';
+function Card(p) {
     function borrar(){
-        fetch('https://restapi-progracademia.herokuapp.com/api/preguntas/'+id,{
+        fetch('https://restapi-progracademia.herokuapp.com/api/preguntas/'+p._id,{
             method: 'DELETE',
             mode: 'cors',
         }).then((response) =>{
@@ -37,16 +37,27 @@ function Card({titulo, categoria, id}) {
     }
 
     return (
-        <div className='card text-center' style={{width:'20rem'}}>
-            <div className='card-body bg-dark text-light'>
-                <h4 className='card-title'>{titulo}</h4>
-                <p className='card-text'>{categoria}</p>
-                <button className='btn btn-outline-secondary border-0' onClick={() => {
+        <>
+        <div className="card w-96 bg-base-100 shadow-xl">
+        <label htmlFor="my-modal-3">
+            <figure className="px-10 pt-10">
+                <img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668033693/Imagenes%20Generales/pre_us7tza.webp" alt="Shoes" className="rounded-xl" />
+            </figure>
+        </label>
+            <div className="card-body items-center text-center">
+                <h4 className='card-title'>{p.titulo}</h4>
+                <p className='card-text'>{p.categoria}</p>
+                <div className="card-actions">
+                <button className='btn btn-primary' onClick={() => {
                         seguro();
                     }}>Borrar
                 </button>
+                </div>
             </div>
         </div>
+        <div className="lg:divider-vertical"></div> 
+        <Modals titulo={p.titulo} categoria={p.categoria} tipoPre={p.tipo_Pregunta} dif={p.dificultad} id={p._id} opciones={p.opciones}/>
+        </>
     )
 }
 
