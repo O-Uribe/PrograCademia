@@ -3,6 +3,8 @@ import io from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../../../components/Footer';
 import { Link } from 'react-router-dom';
+
+
 const socket = io("http://localhost:5000");
 
 
@@ -17,15 +19,15 @@ const UserLobbysr = (props) => {
 
 
     useEffect(() => {
-        socket.on('question', (data) => {
+        socket.on('startGame', (data) => {
             console.log(data);
             props.setTriviaDataUser(data);
-            navigate('/user/game');
+            navigate('/game');
         });
         localStorage.setItem("chatConnected", "true");
     });
-    
-    
+       
+
     const submitNickname = () => {
         socket.emit("user nickname", playerName);
     };

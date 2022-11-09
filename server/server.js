@@ -59,7 +59,8 @@ const trivia = [
 
 //Chat
 let usersConnected = new Map();
-let contador;
+
+let contador = 0;
 
 io.on("connection", (socket) => {
     let { id } = socket.client;
@@ -88,13 +89,16 @@ io.on("connection", (socket) => {
             question: trivia[contador].question,
             options: trivia[contador].options,
         });
+
+        socket.broadcast.emit('startGame', {});
     });
+
 
     socket.on('next-question', () => {
         contador++;
         socket.emit('question', {
-            question: trivia[2].question,
-            options: trivia[2].options,
+            question: trivia[contador].question,
+            options: trivia[contador].options,
         });
     });
 
@@ -136,7 +140,6 @@ app.get('/trivia/:pin/:selectedTrivia', (req, res) => {
     const { pin } = req.params;
 
     namespace = io.of(`/${pin}`);
-    console.log(namespace.state);
     namespace.counter = 0;
 
     namespace.on('connection', (socket) => {

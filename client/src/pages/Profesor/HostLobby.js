@@ -51,7 +51,6 @@ const HostLobby = (props) => {
 
     const startGame = () => {
         socket.emit("start-game");
-
     };
     
     return (
@@ -66,7 +65,7 @@ const HostLobby = (props) => {
                 <h2 className="pin-host-lobby masthead-heading text-uppercase mb-0 text-white">
                     El PIN es {pin}
                 </h2>
-                <Link to="/host/trivia">
+                <Link to="/race">
                     <button
                     onClick={startGame}
                     className="btn btn-primary"
