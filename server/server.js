@@ -45,17 +45,6 @@ const io = new SocketServer(server, {
 
 let namespace;
 
-const trivia = [
-{
-    question: 'Which is the biggest planet in the Solar System?',
-    options: [
-    { id: 1, description: 'Venus' },
-    { id: 2, description: 'JUPITER' },
-    { id: 3, description: 'Mercury' },
-    { id: 4, description: 'Mars' },
-    ],
-},];
-
 
 //Chat
 let usersConnected = new Map();
@@ -67,7 +56,6 @@ io.on("connection", (socket) => {
 
     socket.on("user nickname", (nickname) => {
         usersConnected.set(nickname, [socket.client.id, socket.id]);
-        console.log(nickname)
         io.emit("users-on", Array.from(usersConnected.keys()));
 
         io.emit("playerName", nickname);
@@ -85,12 +73,10 @@ io.on("connection", (socket) => {
 
     socket.on('start-game', (Alumnos) => {
         console.log('Game started!');
-        socket.broadcast.emit('question', {
-            question: trivia[contador].question,
-            options: trivia[contador].options,
-        });
 
-        socket.emit('Alumnos', Alumnos);
+        socket.broadcast.emit('question', {});
+
+        socket.broadcast.emit('Alumnos', Alumnos);
 
         socket.broadcast.emit('startGame');
     });
@@ -132,8 +118,10 @@ io.on("connection", (socket) => {
 app.get('/list', (req, res) => {
     const triviaData = {
         triviaList: [
-        { id: 1, name: 'trivia1' },
-        { id: 2, name: 'trivia2' },
+        { id: 1, name: 'Cuestionario 1' },
+        { id: 2, name: 'Cuestionario 2' },
+        { id: 3, name: 'Cuestionario 3' },
+        { id: 4, name: 'Cuestionario 4' },
         ],
         pin: Math.floor(Math.random() * 10),
     };

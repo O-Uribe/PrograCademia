@@ -13,40 +13,45 @@ const socket = io("http://localhost:5000");
 const Race = () => {
     const data = useLocation();
     const alumnos = data.state;
-
+    const [alumnosConectados, setAlumnosConectados] = React.useState([]);
     let contador = 0;
 
+
+
     useEffect(() => {
-        socket.on("question", (triviaData) => {
-            const newTriviaData = triviaData;
+        socket.on("question", () => {
         });
 
+
         
-        socket.on("correct-answer", (data) => {
+        socket.on("correct-answer", () => {
             contador++;
             console.log(contador);
         });
 
-        socket.on("wrong-answer", (data) => {  
+        socket.on("wrong-answer", () => {  
             contador--
             console.log(contador);
             return contador;
         });
 
+        
+    socket.on("Alumnos", (alu) => {
+        setAlumnosConectados(alu);
+    });
+
     },[]);
 
-
-
-    function alumnosSeparados() {
-        const map = new Map();
-        for (const item of alumnos) {
-            if(!map.has(item.playerName)){
-                map.set(item.playerName, true);    // set any value to Map
-            }
-        }
-        const alumnoSeparado = [...map.keys()];
-        return alumnoSeparado;
-    }
+    // function alumnosSeparados() {
+    //     const map = new Map();
+    //     for (const item of alumnos) {
+    //         if(!map.has(item.playerName)){
+    //             map.set(item.playerName, true);    // set any value to Map
+    //         }
+    //     }
+    //     const alumnoSeparado = [...map.keys()];
+    //     return alumnoSeparado;
+    // }
 
 
     return (
@@ -71,7 +76,6 @@ const Race = () => {
                     </div>
 
                 {/* GRAFICO */}
-                {alumnosSeparados()}
                     <br />
                     <div className="w-full absolute inset-x-0 bottom-0">
                         <Footer/>

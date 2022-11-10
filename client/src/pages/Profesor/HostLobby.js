@@ -51,11 +51,23 @@ const HostLobby = (props) => {
     },);    
 
 
+    let id = 0;
+
+    let map = new Map();
+    for (const item of usersOnline) {
+        id++;
+        map.set("nombre", item.playerName); 
+        map.set("id", id);
+    }
+    const estudiantes = [...map.values()];
+
+
     const startGame = () => {
         socket.emit("start-game", {
-            usuarios: usersOnline,
+            estudiantes: estudiantes,
         });
     };
+
     
     return (
         <React.Fragment>
