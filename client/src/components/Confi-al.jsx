@@ -4,9 +4,14 @@ import Dropzone from 'react-dropzone'
 
 
 const Config = (props)=>{
-    const nombre=localStorage.getItem("AlumNombre")
-    const apellido=localStorage.getItem("AlumApellido")
-    const correo=localStorage.getItem("loginalum")
+
+    const loginAlumJSON = localStorage.getItem('loginalum')
+    const alumno = JSON.parse(loginAlumJSON)
+              
+    const nombre=alumno.nombre
+    const apellido=alumno.apellido
+    const correo=alumno.email
+
     const img=localStorage.getItem("Alum_URL")
     const img2="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668005667/Imagenes%20Generales/sin_fpbfcs.jpg"
     const [image,setImage]=React.useState({Array:[]})

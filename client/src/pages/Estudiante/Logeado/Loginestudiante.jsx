@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useEffect } from 'react';
 /*
   Inputs para Login de Estudiante
 
@@ -23,6 +24,7 @@ export const Loginestudiante = () => {
             setTablaUsuarios(data)
         });
   }, []);
+  /*
   function filtrar  ()  {
       var resultadosBusqueda = tablaUsuarios.filter((elemento) => {
           if (
@@ -37,6 +39,7 @@ export const Loginestudiante = () => {
       ))
       
   };
+  */
   // Funcion para autenticar al usuario con tokens hacia post /auth/estudiante
   /*
   const auth = async () => {
@@ -60,27 +63,27 @@ export const Loginestudiante = () => {
               credentials : 'include'
             }
           };
-          console.log(config);
-          //axios.post no envia el header Authorization
           axios.request(config).then((response) => {
-            console.log(response.data);
+            localStorage.setItem("loginalum", JSON.stringify(response.data.user));
+            localStorage.setItem("token", JSON.stringify(response.data.token));
+            window.location.href ='/mainalumno'
           }).catch((error) => {
-            console.log(error.response.data);
+            console.log(error);
           });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    //limpia los datos de la cookie
+    
     axios.post('http://localhost:5000/login/estudiante', {
       email,
       password
     })
       .then((response) => {
         if(response.status === 200){
+          alert("Logeado")
           document.cookie = `token=${response.data.token}; path=/; samesite=strict`;
-          localStorage.setItem("loginalum", email);
-          //window.location.href = '/mainalumno'; 
-          console.log(document.cookie);
-          //auth();
+          auth();
         }
       }, (error) => {
         alert(error.response.data);
@@ -151,15 +154,12 @@ export const Loginestudiante = () => {
                 </label>
               </div>
               <div className="form-control mt-6"> 
-                <button type='submit' className="btn btn-outline" onClick={filtrar}>
+                <button type='submit' className="btn btn-outline">
                   Login
                 </button>
               </div>
             </div>
           </form>
-          <button onClick={auth}>
-                  Test
-          </button>
         </div>
       </div>
     </React.Fragment>

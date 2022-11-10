@@ -19,9 +19,6 @@ const comprobar=()=>{
 
 function cerrarsesion(){
     localStorage.removeItem("loginalum")
-    localStorage.removeItem("AlumNombre")
-    localStorage.removeItem("AlumApellido")
-    localStorage.removeItem("Alum_URL")
     window.location.href = '/';  
 }
 const Navbaral=()=>{

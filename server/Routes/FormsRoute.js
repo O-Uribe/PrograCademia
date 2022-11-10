@@ -149,7 +149,8 @@ router.route("/login/estudiante").post(async (req, res) => {
     const userForToken = {
         id: emailExists._id,
     }
-    const token = jsw.sign(userForToken, process.env.SECRET);
+    // Generar token que expira en 1 hora
+    const token = jsw.sign(userForToken, process.env.SECRET, { expiresIn: '1h' });
 
     res.status(200).send({ token, email: email });
     
@@ -161,7 +162,7 @@ router.route("/auth/estudiante").post(async (req, res) => {
     const autorization = req.get('authorization');
     //console.log(autorization); // <-- Genera undefined ya que no lee el header
     if (!autorization) {
-        return res.status(401).json({ error: 'Falta Token' });
+        return res.status(401).json({ message: 'Falta Token' });
     }
     if (autorization && autorization.toLowerCase().startsWith('bearer ')) {
         const token = autorization.substring(7);
@@ -170,9 +171,8 @@ router.route("/auth/estudiante").post(async (req, res) => {
             return res.status(401).json({ error: 'Falta Token o es inválido' });
         }
         const user = await FormEstu.findOne({ _id: decodedToken.id });
-        /*
-        */
-        res.status(200).send({ user });
+        //enviar datos del usuario y token
+        res.status(200).send({ token, user });
     }
 });
 /*
