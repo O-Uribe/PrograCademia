@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form";
 import UseFetch from '../../components/UseFetch';
-import { useHistory } from 'use-history';
+import { useNavigate } from "react-router-dom";
 
 const Formulario = () => {
 
@@ -9,7 +9,7 @@ const Formulario = () => {
     const estado = UseFetch(url);
     const { cargando, dato } = estado;
 
-    let history = useHistory();
+    let navigate = useNavigate();
 
     const { register, handleSubmit } = useForm(
         {
@@ -60,7 +60,7 @@ const Formulario = () => {
         })
             .then(res => res.jons())
         //console.log(JSON.stringify(newData));
-        history.push("/mainprofe");
+        navigate("/mainprofe");
     }
 
     return (

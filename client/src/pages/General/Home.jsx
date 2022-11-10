@@ -13,72 +13,69 @@ const Home = () => {
     <>
         <main className="h-screen w-screen">
             <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
-            <Link className="text-center btn-ghost normal-case text-xl w-full bg-base-200 " to="/">
-                Progracademia!
-            </Link>
-            <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">
-                <div className="card shadow-xl image-full">
-                    <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png" alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Profesor!</h2>
-                        <p></p>
-                        <div className="card-actions justify-end">
-                        <Link to="/loginprofe">
-                            <button className="btn btn-primary text-white" onClick={()=>sound.play()}>
+                <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">
+                    <div className="card shadow-xl image-full">
+                        <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png" alt="Shoes" /></figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Profesor!</h2>
+                            <p></p>
+                            <div className="card-actions justify-end">
+                            <Link to="/loginprofe">
+                                <button className="btn btn-primary text-white" onClick={()=>sound.play()}>
+                                    Ingresar
+                                </button>
+                            </Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="lg:divider-horizontal"></div> 
+                    <div className="card shadow-xl image-full">
+                        <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png"alt="Shoes" /></figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Estudiante!</h2>
+                            <p></p>
+                            <div className="card-actions justify-end">
+                            <Link to="/loginalu">
+                                <button className="btn btn-primary"  onClick={()=>sound.play()}>
                                 Ingresar
-                            </button>
-                        </Link>
+                                </button>
+                            </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="lg:divider-horizontal"></div> 
-                <div className="card shadow-xl image-full">
-                    <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png"alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Estudiante!</h2>
-                        <p></p>
-                        <div className="card-actions justify-end">
-                        <Link to="/loginalu">
-                            <button className="btn btn-primary"  onClick={()=>sound.play()}>
-                            Ingresar
-                            </button>
-                        </Link>
+                    <div className="lg:divider-horizontal"></div> 
+                    <div className="card  shadow-xl image-full">
+                        <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png" alt="Shoes" /></figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Estudiante!</h2>
+                            <p></p>
+                            <div className="card-actions justify-end">
+                            <Link to="/usersr">
+                                <button className="btn btn-primary"  onClick={()=>sound.play()}>
+                                Sin Registro
+                                </button>
+                            </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="lg:divider-horizontal"></div> 
-                <div className="card  shadow-xl image-full">
-                    <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png" alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Estudiante!</h2>
-                        <p></p>
-                        <div className="card-actions justify-end">
-                        <Link to="/usersr">
-                            <button className="btn btn-primary"  onClick={()=>sound.play()}>
-                            Sin Registro
-                            </button>
-                        </Link>
+                    <div className="lg:divider-horizontal"></div> 
+                    <div className="card  shadow-xl image-full">
+                        <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png" alt="Shoes" /></figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Estadistica!</h2>
+                            <p></p>
+                            <div className="card-actions justify-end">
+                            <Link to="/admin/stats">
+                                <button className="btn btn-primary"  onClick={()=>sound.play()}>
+                                    Estadísticas
+                                </button>
+                            </Link>
+                            </div>
                         </div>
                     </div>
+                            
                 </div>
-                <div className="lg:divider-horizontal"></div> 
-                <div className="card  shadow-xl image-full">
-                    <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png" alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Estadistica!</h2>
-                        <p></p>
-                        <div className="card-actions justify-end">
-                        <Link to="/admin/stats">
-                            <button className="btn btn-primary"  onClick={()=>sound.play()}>
-                                Estadísticas
-                            </button>
-                        </Link>
-                        </div>
-                    </div>
-                </div>
-                        
-            </div>
-            <Footer className="w-full absolute inset-x-0 bottom-0"/>
+                <Footer className="w-full absolute inset-x-0 bottom-0"/>
             </div>
     </main>
     </>

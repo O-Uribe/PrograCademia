@@ -83,20 +83,22 @@ io.on("connection", (socket) => {
         io.to(socketId).emit("private msg", { id, nickname, msg });
     });
 
-    socket.on('start-game', () => {
+    socket.on('start-game', (Alumnos) => {
         console.log('Game started!');
-        socket.emit('question', {
+        socket.broadcast.emit('question', {
             question: trivia[contador].question,
             options: trivia[contador].options,
         });
 
-        socket.broadcast.emit('startGame', {});
+        socket.emit('Alumnos', Alumnos);
+
+        socket.broadcast.emit('startGame');
     });
 
 
     socket.on('next-question', () => {
         contador++;
-        socket.emit('question', {
+        socket.broadcast.emit('question', {
             question: trivia[contador].question,
             options: trivia[contador].options,
         });
