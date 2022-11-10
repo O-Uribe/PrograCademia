@@ -52,6 +52,8 @@ export const Loginestudiante = () => {
   const auth = () => {
     const token = document.cookie.split('=')[1];
           const config = {
+            method: 'POST',
+            url: 'http://localhost:5000/auth/estudiante',
             headers: {
               "content-type": 'application/json',
               Authorization: `Bearer ${token}`,
@@ -60,23 +62,14 @@ export const Loginestudiante = () => {
           };
           console.log(config);
           //axios.post no envia el header Authorization
-          
-          axios.post('http://localhost:5000/auth/estudiante', config
-          ).then((response) => {
+          axios.request(config).then((response) => {
             console.log(response.data);
-          }
-          )
-          .catch((error) => {
+          }).catch((error) => {
             console.log(error.response.data);
-          }
-          );
+          });
   };
-  function clearCookie() {
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    clearCookie();
     axios.post('http://localhost:5000/login/estudiante', {
       email,
       password
@@ -85,7 +78,7 @@ export const Loginestudiante = () => {
         if(response.status === 200){
           document.cookie = `token=${response.data.token}; path=/; samesite=strict`;
           localStorage.setItem("loginalum", email);
-          window.location.href = '/mainalumno'; 
+          //window.location.href = '/mainalumno'; 
           console.log(document.cookie);
           //auth();
         }
