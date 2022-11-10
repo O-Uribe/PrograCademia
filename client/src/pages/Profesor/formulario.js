@@ -1,12 +1,15 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form";
 import UseFetch from '../../components/UseFetch';
+import { useHistory } from 'use-history';
 
 const Formulario = () => {
 
     const [url] = useState("https://restapi-progracademia.herokuapp.com/api/preguntas");
     const estado = UseFetch(url);
     const { cargando, dato } = estado;
+
+    let history = useHistory();
 
     const { register, handleSubmit } = useForm(
         {
@@ -56,13 +59,9 @@ const Formulario = () => {
             }
         })
             .then(res => res.jons())
-
-
         //console.log(JSON.stringify(newData));
-        alert("La pregunta fue enviada con exito.")
-        
+        history.push("/mainprofe");
     }
-
 
     return (
         <>
@@ -136,7 +135,7 @@ const Formulario = () => {
                             </div>
                         </div>
                         <input class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                        type="submit" value="enviar" />
+                        type="submit" value="enviar"/>
                     </form>
                 }
             </div>    
