@@ -37,7 +37,6 @@ const HostLobby = (props) => {
         socket.on("users-on", (list) => {
             setUsersOnline(list);
             contadorEstudiantes = list.length;
-            console.log(contadorEstudiantes);
         });
 
         socket.on('playerName', (user) => {
