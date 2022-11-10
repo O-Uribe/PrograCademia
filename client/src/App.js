@@ -37,6 +37,7 @@ import Game from "./pages/Estudiante/Game";
 import Race from "./pages/Profesor/race";
 import Profile2 from './pages/Profesor/Profile2'
 import Pruebas2 from "./pages/Pruebas2"
+import Quienessomos from "./pages/General/Quienessomos"
 let BASE_URL = "http://localhost:5000";
 
 function App() {
@@ -122,6 +123,7 @@ function App() {
                 <Route exact path="/loginprofe" element={<ProtectedRoute user={userpr} children={<Loginprofe/>} redirectTo="/mainprofe" val={2}/>} />
                 <Route exact path="/loginalu" element={<ProtectedRoute user={useral} children={<Loginestudiante/>} redirectTo="/mainalumno" val={2}/>} />
                 <Route exact path="/recursos" element={<Recursos/>} />
+                <Route exact path="/about" element={<Quienessomos/>} />
                 
                 <Route path="/user/lobby" element={
                 <UserLobby
