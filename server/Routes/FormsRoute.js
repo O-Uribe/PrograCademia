@@ -159,6 +159,7 @@ router.route("/login/estudiante").post(async (req, res) => {
 router.route("/auth/estudiante").post(async (req, res) => {
     // No se obtiene el token del header porque el cliente no lo envia
     const autorization = req.get('authorization');
+    //console.log(autorization); // <-- Genera undefined ya que no lee el header
     if (!autorization) {
         return res.status(401).json({ error: 'Falta Token' });
     }
