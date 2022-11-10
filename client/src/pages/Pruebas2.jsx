@@ -23,7 +23,14 @@ export const Pruebas2 = () => {
             <div>
               <button onClick={()=>{
                 dato.map((dato)=>{
-                  console.log(dato.categoria)
+                if (dato.categoria==="java"){
+                    console.log(dato.titulo,dato.opciones)
+
+                }
+                    
+                  
+
+
                 })
               }}>hola</button>
             </div>
