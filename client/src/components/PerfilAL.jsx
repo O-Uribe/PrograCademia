@@ -27,7 +27,7 @@ const Perfil = (props)=>{
         <div className="flex p-5 bg-base-200 rounded-2xl" onLoad={comprobar()}>
                 <div className="flex flex-col relative w-full ">
                     <div className="mb-4">
-                        <img src={url} className="rounded-full"/>
+                        <img src={url} className="rounded-full" alt="profile_img"/>
                     </div>
                 </div>
                 <div className="lg:divider-horizontal"></div>

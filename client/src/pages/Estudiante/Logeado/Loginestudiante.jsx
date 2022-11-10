@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect } from 'react';
 /*
   Inputs para Login de Estudiante
 
@@ -16,42 +15,7 @@ export const Loginestudiante = () => {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [tablaUsuarios, setTablaUsuarios] = React.useState([]);
-  React.useEffect(() => {
-    fetch("http://localhost:5000/estudiante")
-        .then((response) => response.json())
-        .then((data) => {
-            setTablaUsuarios(data)
-        });
-  }, []);
-  /*
-  function filtrar  ()  {
-      var resultadosBusqueda = tablaUsuarios.filter((elemento) => {
-          if (
-              elemento.email.toLowerCase().includes(email.toLowerCase())
-          ) {
-              return elemento; 
-          }
-      });
-      resultadosBusqueda.map((Alumno)=>(
-          localStorage.setItem("AlumNombre", Alumno.nombre),
-          localStorage.setItem("AlumApellido", Alumno.apellido)
-      ))
-      
-  };
-  */
-  // Funcion para autenticar al usuario con tokens hacia post /auth/estudiante
-  /*
-  const auth = async () => {
-    const token = document.cookie.split('=')[1];
-    const config = {
-      headers: { 
-        Authorization: `Bearer ${token}` 
-      }
-    };
-    
-  };
-*/
+
   const auth = () => {
     const token = document.cookie.split('=')[1];
           const config = {
