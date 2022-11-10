@@ -28,6 +28,7 @@
     "socket.io-client": "^4.5.2",
     "sweetalert2": "^11.6.5",
     "tsparticles": "^2.5.1",
+    "use-history": "^1.4.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

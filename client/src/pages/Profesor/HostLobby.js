@@ -33,8 +33,11 @@ const HostLobby = (props) => {
 
     useEffect(() => {
 
+        let contadorEstudiantes = 0;
         socket.on("users-on", (list) => {
             setUsersOnline(list);
+            contadorEstudiantes = list.length;
+            console.log(contadorEstudiantes);
         });
 
         socket.on('playerName', (user) => {
@@ -50,7 +53,9 @@ const HostLobby = (props) => {
 
 
     const startGame = () => {
-        socket.emit("start-game");
+        socket.emit("start-game", {
+            usuarios: usersOnline,
+        });
     };
     
     return (
@@ -65,7 +70,7 @@ const HostLobby = (props) => {
                 <h2 className="pin-host-lobby masthead-heading text-uppercase mb-0 text-white">
                     El PIN es {pin}
                 </h2>
-                <Link to="/race">
+                <Link to="/race" state={usersOnline}>
                     <button
                     onClick={startGame}
                     className="btn btn-primary"

@@ -13,7 +13,11 @@ function Quiz() {
   const [areDisabled, setAreDisabled] = useState(false);
   const [answersShown, setAnswersShown] = useState(false);
 
+
+  
   function handleAnswerSubmit(isCorrect, e){
+
+    
     // añadir puntuacion
     if(isCorrect) setPuntuacion(puntuacion + 1);
     // añadir estilos de pregunta

@@ -12,19 +12,37 @@ export const Pruebas2 = () => {
     const estado = UseFetch(url);
     const { cargando, dato } = estado;
 
-  return (
-    <div>
-        
-        
-        
-       
-       {JSON.stringify(dato[1].categoria)}
-        
-        
-        
-        
+    return (
+      <>
+        <div>
+          {
+            cargando
+            ?
+            <p>...Cargando</p>
+            :
+            <div>
+              <button onClick={()=>{
+                dato.map((dato)=>{
+                if (dato.categoria==="java"){
+                    console.log(dato.titulo,dato.opciones)
+
+                }
+                    
+                  
+
+
+                })
+              }}>hola</button>
+            </div>
+          }
         </div>
-  )
+      </>
+    )
 }
 
 export default Pruebas2
+
+
+              /*<button onClick={dato.map((dato)=>{
+                alert(dato.categoria)
+              })}>hola</button>*/
