@@ -56,8 +56,13 @@ const Formulario = () => {
             }
         })
             .then(res => res.jons())
+
+
         //console.log(JSON.stringify(newData));
+        alert("La pregunta fue enviada con exito.")
+        
     }
+
 
     return (
         <>
@@ -131,7 +136,7 @@ const Formulario = () => {
                             </div>
                         </div>
                         <input class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                        type="submit" value="enviar"/>
+                        type="submit" value="enviar" />
                     </form>
                 }
             </div>    

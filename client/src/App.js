@@ -36,6 +36,7 @@ import Profile from "./pages/Estudiante/Logeado/Profile";
 import Game from "./pages/Estudiante/Game";
 import Race from "./pages/Profesor/race";
 import Profile2 from './pages/Profesor/Profile2'
+import Pruebas2 from "./pages/Pruebas2"
 let BASE_URL = "http://localhost:5000";
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
                 <Route path="/pruebas" element={<Pruebas/>} />
                 <Route path="/profile" element={<Profile/>} />
                 <Route path="/profile2" element={<Profile2/>} />
+                <Route path="/pruebas2" element={<Pruebas2/>} />
                 <Route path="/host/lobby" element={
                 <HostLobby
                     BASE_URL={BASE_URL}
