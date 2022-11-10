@@ -96,13 +96,16 @@ io.on("connection", (socket) => {
     });
 
 
-    socket.on('next-question', () => {
-        contador++;
-        socket.broadcast.emit('question', {
-            question: trivia[contador].question,
-            options: trivia[contador].options,
-        });
+    socket.on('correct-answer', (data) => {
+        console.log(data);
+        socket.broadcast.emit('correct-answer', data);
     });
+
+    socket.on('wrong-answer', (data) => {
+        console.log(data);
+        socket.broadcast.emit('wrong-answer', data);
+    });
+    
 
 
     socket.on("disconnect", () => {
@@ -172,6 +175,16 @@ app.get('/trivia/:pin/:selectedTrivia', (req, res) => {
 //     });
 //     res.json({ gameStarted: true });
 // });
+
+
+// socket.on('next-question', () => {
+//     contador++;
+//     socket.broadcast.emit('question', {
+//         question: trivia[contador].question,
+//         options: trivia[contador].options,
+//     });
+// });
+
 
 
 server.listen(

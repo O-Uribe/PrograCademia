@@ -1,7 +1,8 @@
 import React, { useEffect} from 'react';
-import {useLocation, useState} from 'react-router-dom';
-import io from 'socket.io-client';
+import {useLocation} from 'react-router-dom';
 import UserOnline from '../../components/UserOnline';
+import io from 'socket.io-client';
+
 import Navbarpr from '../../components/Navbarprofe';
 import Footer from '../../components/Footer'; 
 
@@ -13,11 +14,28 @@ const Race = () => {
     const data = useLocation();
     const alumnos = data.state;
 
+    let contador = 0;
+
     useEffect(() => {
-        socket.on('question', (triviaData) => {
+        socket.on("question", (triviaData) => {
             const newTriviaData = triviaData;
         });
+
+        
+        socket.on("correct-answer", (data) => {
+            contador++;
+            console.log(contador);
+        });
+
+        socket.on("wrong-answer", (data) => {  
+            contador--
+            console.log(contador);
+            return contador;
+        });
+
     },[]);
+
+
 
     function alumnosSeparados() {
         const map = new Map();
@@ -30,7 +48,9 @@ const Race = () => {
         return alumnoSeparado;
     }
 
+
     return (
+        
         <div id="page-top"> 
             <div className='bg-base-200 rounded-md pt-6 px-6'>
                 <div className='artboard artboard-horizontal phone-5'>
@@ -39,20 +59,19 @@ const Race = () => {
                         <h3>Carrera</h3>
                     </div>
                     <div className='inline-flex flex-col'>
-                        {/* <div className="flex space-x-4...">
+                        <div className="flex space-x-4...">
                             {alumnos.map((el, index) => (
                                 <div key={index} className="block focus:outline-none">
                                     <br/>
-                                    <UserOnline nickname={el.playerName}/> 
+                                    <UserOnline nickname={el.playerName}/>
                                 </div>
                                 ))
                             }
-                        </div> */}
+                        </div> 
                     </div>
-                    <div>
 
-                    </div>
-                    {alumnosSeparados()}
+                {/* GRAFICO */}
+                {alumnosSeparados()}
                     <br />
                     <div className="w-full absolute inset-x-0 bottom-0">
                         <Footer/>
