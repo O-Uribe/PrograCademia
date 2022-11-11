@@ -7,10 +7,8 @@ const sound = new Howl({
   volume:0.2
 });
 function cerrarsesion(){
-    localStorage.removeItem("loginprofe")
-    localStorage.removeItem("ProfeNombre")
-    localStorage.removeItem("ProfeApellido")
-    localStorage.removeItem("Profe_URL")
+    localStorage.removeItem("loginpro")
+    localStorage.removeItem("token")
     window.location.href = '/';  
 }
 const img=localStorage.getItem("Profe_URL")

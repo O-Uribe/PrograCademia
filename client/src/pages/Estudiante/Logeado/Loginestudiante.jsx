@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useState } from 'react';
 /*
   Inputs para Login de Estudiante
 
@@ -12,9 +13,14 @@ import axios from 'axios';
 
 
 export const Loginestudiante = () => {
+  //borrar localStorage de profesor
+  useState (()=>{
+    localStorage.removeItem("loginpro")
+  })
 
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const auth = () => {
     const token = document.cookie.split('=')[1];
@@ -38,6 +44,7 @@ export const Loginestudiante = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //limpia los datos de la cookie
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
     
     axios.post('http://localhost:5000/login/estudiante', {
       email,

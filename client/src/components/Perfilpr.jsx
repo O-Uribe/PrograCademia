@@ -2,9 +2,13 @@ import React from "react";
 
 
 const Perfil = (props)=>{
-    const nombre=localStorage.getItem("ProfeNombre")
-    const apellido=localStorage.getItem("ProfeApellido")
-    const correo=localStorage.getItem("loginprofe")
+
+    const loginProJSON = localStorage.getItem('loginpro')
+    const profesor = JSON.parse(loginProJSON)
+
+    const nombre=profesor.nombre
+    const apellido=profesor.apellido
+    const correo=profesor.email
     const img=localStorage.getItem("Profe_URL")
     const img2="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668005667/Imagenes%20Generales/sin_fpbfcs.jpg"
     let url=""

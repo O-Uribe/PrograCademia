@@ -1,13 +1,15 @@
 import axios from "axios";
 import React from "react";
 import Dropzone from 'react-dropzone'
-import { Link } from "react-router-dom";
-
 
 const Config = (props)=>{
-    const nombre=localStorage.getItem("ProfeNombre")
-    const apellido=localStorage.getItem("ProfeApellido")
-    const correo=localStorage.getItem("loginprofe")
+
+    const loginProJSON = localStorage.getItem('loginpro')
+    const profesor = JSON.parse(loginProJSON)
+
+    const nombre=profesor.nombre
+    const apellido=profesor.apellido
+    const correo=profesor.email
     const img=localStorage.getItem("Profe_URL")
     const img2="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668005667/Imagenes%20Generales/sin_fpbfcs.jpg"
     const [image,setImage]=React.useState({Array:[]})

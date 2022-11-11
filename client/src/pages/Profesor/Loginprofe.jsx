@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useState } from 'react';
 /*
   Inputs para Login de profesor
 
@@ -12,49 +13,51 @@ import axios from 'axios';
 
 
 export const Loginprofe = () => {
+  //borrar localStorage de estudiante
+  useState (()=>{
+    localStorage.removeItem("loginalum")
+  })
 
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [tablaUsuarios, setTablaUsuarios] = React.useState([]);
-  React.useEffect(() => {
-    fetch("http://localhost:5000/profesor")
-        .then((response) => response.json())
-        .then((data) => {
-            setTablaUsuarios(data)
-        });
-  }, []);
-  function filtrar  ()  {
-      var resultadosBusqueda = tablaUsuarios.filter((elemento) => {
-          if (
-              elemento.email.toLowerCase().includes(email.toLowerCase())
-          ) {
-              return elemento; 
-          }
-      });
-      resultadosBusqueda.map((Alumno)=>(
-          localStorage.setItem("ProfeNombre", Alumno.nombre),
-          localStorage.setItem("ProfeApellido", Alumno.apellido)
-      ))
-      
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const auth = () => {
+    const token = document.cookie.split('=')[1];
+          const config = {
+            method: 'POST',
+            url: 'http://localhost:5000/auth/profesor',
+            headers: {
+              "content-type": 'application/json',
+              Authorization: `Bearer ${token}`,
+              credentials : 'include'
+            }
+          };
+          axios.request(config).then((response) => {
+            localStorage.setItem("loginpro", JSON.stringify(response.data.user));
+            localStorage.setItem("token", JSON.stringify(response.data.token));
+            window.location.href ='/mainprofe'
+          }).catch((error) => {
+            console.log(error);
+          });
   };
 
   const handleSubmit = (e) => {
  ///if login is succes redirect to mainprofe
     e.preventDefault();
-
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
 
     axios.post('http://localhost:5000/login/profesor', {
       email,
       password
     })
       .then((response) => {
-        if (response.data === 'Profesor logueado'){
-          localStorage.setItem("loginprofe", email);
-          alert(response.data)
-          window.location.href = '/mainprofe';  //revisar 
+        if(response.status === 200){
+          alert("Logeado")
+          document.cookie = `token=${response.data.token}; path=/; samesite=strict`;
+          auth();
         }
         }).catch(err => {
-        alert("err.response.data")
+        alert(err.response.data)
       })
     }
 
@@ -82,7 +85,7 @@ export const Loginprofe = () => {
 
 
   return (
-    <>
+    <React.Fragment>
       <div className="hero min-h-screen absolute">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
@@ -123,7 +126,7 @@ export const Loginprofe = () => {
                 </label>
               </div>
               <div className="form-control mt-6"> 
-                <button type='submit' className="btn btn-outline" onClick={filtrar}>
+                <button type='submit' className="btn btn-outline">
                   Login
                 </button>
               </div>
@@ -131,7 +134,7 @@ export const Loginprofe = () => {
           </form>
         </div>
       </div>
-    </>
+    </React.Fragment>
     
   )
 }

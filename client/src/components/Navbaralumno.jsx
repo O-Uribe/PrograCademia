@@ -19,6 +19,7 @@ const comprobar=()=>{
 
 function cerrarsesion(){
     localStorage.removeItem("loginalum")
+    localStorage.removeItem("token")
     window.location.href = '/';  
 }
 const Navbaral=()=>{

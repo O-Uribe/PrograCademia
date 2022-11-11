@@ -47,7 +47,9 @@ function App() {
     const [triviaData, setTriviaData] = useState(null);
     const [triviaDataUser, setTriviaDataUser] = useState({ options: [] });
     const [podium,] = useState([]);
-    const userpr=localStorage.getItem("loginprofe");
+
+
+    const userpr=localStorage.getItem("loginpro");
     const useral=localStorage.getItem("loginalum");
     //const [podium, setPodium] = useState([]);
     /*
