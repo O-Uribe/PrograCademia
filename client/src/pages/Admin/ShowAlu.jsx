@@ -11,6 +11,7 @@
 */
 
 import React from "react";
+import EditForm from "../../components/editForm";
 
 export const ShowEstudiante = () => {
     
@@ -45,8 +46,9 @@ export const ShowEstudiante = () => {
             }
         }
 
-        function handleEdit(id) {
-            
+        function handleEdit(estudiante) {
+            // Despliega el componente de editar estudiante con los datos del estudiante seleccionado
+            return <EditForm estudiante={estudiante} />
         }
         //handlechange para buscar por nombre o apellido
         function handleChange(e) {
@@ -61,6 +63,7 @@ export const ShowEstudiante = () => {
                 ) {
                     return elemento;
                 }
+                return null;
             });
             setEstudiantes(resultadosBusqueda);
         };
@@ -68,18 +71,25 @@ export const ShowEstudiante = () => {
 
     return (
         <>
+        <div className="overflow-auto">
+            <h1 class="font-medium leading-tight text-4xl mt-0 mb-2">Estudiantes</h1>
+        </div>
         {/* Tabla de Estudiantes */}
         <div class="overflow-x-auto">
-            <h1>Estudiantes</h1>
             {/* Buscador de Estudiante */}
-            <div className="container">
-                <input type="text" 
-                placeholder="Buscar Estudiante por Nombre o Apellido" 
-                onChange={handleChange} 
-                value={busqueda} 
-                style={{color : "black"}}/>
+            <div className="form-control">
+                <div className="input-group">
+                    <input type="text" 
+                    placeholder="Buscar Estudiante por Nombre o Apellido"
+                    onChange={handleChange} 
+                    value={busqueda} 
+                    className="input input-bordered w-96" />
+                    <span className="btn btn-square">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </span>
+                </div>
             </div>
-            <table class="table w-full">
+            <table className="table table-zebra w-full">
                 <thead>
                     <tr>
                         <th>Rut</th>
@@ -88,6 +98,8 @@ export const ShowEstudiante = () => {
                         <th>Email</th>
                         <th>Contraseña</th>
                         <th>Año de Ingreso</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,7 +115,7 @@ export const ShowEstudiante = () => {
                                 <button onClick={() => handleDelete(estudiante._id)}>Eliminar</button>
                             </td>
                             <td>
-                                <button onClick={() => handleEdit(estudiante._id)}>Editar</button>
+                                <EditForm estudiante={estudiante} />
                             </td>
                         </tr>
                     ))}
