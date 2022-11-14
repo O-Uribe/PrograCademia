@@ -20,13 +20,16 @@ function Quiz() {
     
     function handleAnswerSubmit(isCorrect, e){ 
         // añadir puntuacion
+        console.log(socket.id);
         if(isCorrect) {
             setPuntuacion(puntuacion + 1);
             socket.emit("correct-answer", {
+                id: socket.id,
                 playername: "Gonzalo",
             });
         } else {
             socket.emit("wrong-answer", {
+                id: socket.id,
                 playername: "Gonzalo",
             });
         }
@@ -130,7 +133,10 @@ function Quiz() {
             {
             cargando
             ?
-            <p>Cargando...</p>
+            <button type="button" className="bg-indigo-500 ..." disabled>
+                <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
+                Cargando ...
+            </button>
             :
             <main className='app'>
                 <div className="flex flex-col justify-around relative w-full">
