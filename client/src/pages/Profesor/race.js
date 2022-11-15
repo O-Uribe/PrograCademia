@@ -17,10 +17,11 @@ const Race = () => {
     const [jugadores, setJugadores] = useState([]);
 
     //const [alumnosConectados, setAlumnosConectados] = React.useState([]);
-    let contador = 0;
 
 
     useEffect(() => {
+
+        console.log(alumnos);
         let identificacion = alumnosSeparados();
         console.log("Jugadores desde lobby",identificacion);
 
@@ -29,32 +30,37 @@ const Race = () => {
 
 
         socket.on("correct-answer", (data) => {
-            setJugadores(data);
-            contador++;
-            console.log(contador,data);
+            setJugadores([data]);
+            console.log(jugadores);
         });
 
 
         socket.on("wrong-answer", (data) => {  
-            setJugadores(data);
-            contador--
-            console.log(contador);
-            return contador;
+            setJugadores([data]);
+            console.log(jugadores);
         });
              
         // socket.on("Alumnos", (alu) => {
         //     setAlumnosConectados(alu);
         // });
-
-        console.log("Jugadores desde Game",jugadoresConectados());
     },[]);
 
 
-    function jugadoresConectados() {
+    // function jugadoresConectados() {
+    //     let jugadores = [];
+    //     for (let i = 0; i < alumnos.length; i++) {
+    //         jugadores.push(alumnos[i].playerName);
+    //     }
+    //     return jugadores;
+    // }
+
+    const muestraJugadores = () => {
         let jugadores = [];
         for (let i = 0; i < alumnos.length; i++) {
             jugadores.push(alumnos[i].playerName);
         }
+        
+        console.log("Jugadores desde muestraJugadores",jugadores);
         return jugadores;
     }
 
@@ -69,6 +75,8 @@ const Race = () => {
         const alumnoSeparado = [...map.keys()];
         return alumnoSeparado;
     }
+
+        
 
     return (
         
@@ -90,8 +98,10 @@ const Race = () => {
                             }
                         </div> 
                     </div>
+                    
+                    {/* Puntos de jugadore */}
 
-                {/* GRAFICO */}
+
                     <br />
                     <div className="w-full absolute inset-x-0 bottom-0">
                         <Footer/>
