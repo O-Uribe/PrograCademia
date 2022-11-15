@@ -49,8 +49,6 @@ let namespace;
 //Chat
 let usersConnected = new Map();
 
-let contador = 0;
-
 io.on("connection", (socket) => {
     let { id } = socket.client;
 
@@ -73,8 +71,6 @@ io.on("connection", (socket) => {
 
     socket.on('start-game', (Alumnos) => {
         console.log('Game started!');
-
-        socket.broadcast.emit('question', {});
 
         socket.broadcast.emit('Alumnos', Alumnos);
 

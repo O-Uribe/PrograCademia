@@ -6,6 +6,7 @@ import io from 'socket.io-client';
 
 import Navbarpr from '../../components/Navbarprofe';
 import Footer from '../../components/Footer'; 
+import Bar from '../../components/Bar';
 
 const socket = io("http://localhost:5000");
 
@@ -16,34 +17,23 @@ const Race = () => {
     const alumnos = data.state;
     const [jugadores, setJugadores] = useState([]);
 
-    //const [alumnosConectados, setAlumnosConectados] = React.useState([]);
+    //const [alumnosConectados, setAlumnosConectados] = useState([]);
 
 
     useEffect(() => {
 
-        console.log(alumnos);
         let identificacion = alumnosSeparados();
         console.log("Jugadores desde lobby",identificacion);
 
-        socket.on("question", () => {
-        });
-
-
         socket.on("correct-answer", (data) => {
-            setJugadores([data]);
-            console.log(jugadores);
+            setJugadores(data);
         });
-
 
         socket.on("wrong-answer", (data) => {  
-            setJugadores([data]);
-            console.log(jugadores);
+            setJugadores(data);
         });
              
-        // socket.on("Alumnos", (alu) => {
-        //     setAlumnosConectados(alu);
-        // });
-    },[]);
+    });
 
 
     // function jugadoresConectados() {
@@ -53,17 +43,6 @@ const Race = () => {
     //     }
     //     return jugadores;
     // }
-
-    const muestraJugadores = () => {
-        let jugadores = [];
-        for (let i = 0; i < alumnos.length; i++) {
-            jugadores.push(alumnos[i].playerName);
-        }
-        
-        console.log("Jugadores desde muestraJugadores",jugadores);
-        return jugadores;
-    }
-
 
     function alumnosSeparados() {
         const map = new Map();
@@ -76,6 +55,7 @@ const Race = () => {
         return alumnoSeparado;
     }
 
+
         
 
     return (
@@ -86,22 +66,13 @@ const Race = () => {
                     <div className="w-full absolute inset-x-0 top-0"><Navbarpr/></div>
                     <div className="flex flex-col items-center text-2xl font-bold">
                         <h3>Carrera</h3>
-                    </div>
+                    </div>                    
+                    {/* Puntos de jugadores */}
                     <div className='inline-flex flex-col'>
                         <div className="flex space-x-4...">
-                            {alumnos.map((el, index) => (
-                                <div key={index} className="block focus:outline-none">
-                                    <br/>
-                                    <UserOnline nickname={el.playerName}/>
-                                </div>
-                                ))
-                            }
-                        </div> 
+                            <Bar jugadores={jugadores}/>
+                        </div>
                     </div>
-                    
-                    {/* Puntos de jugadore */}
-
-
                     <br />
                     <div className="w-full absolute inset-x-0 bottom-0">
                         <Footer/>
