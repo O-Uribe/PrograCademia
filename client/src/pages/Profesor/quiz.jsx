@@ -15,17 +15,14 @@ function Quiz() {
 
 
   
-  function handleAnswerSubmit(isCorrect, e){
+  function handleAnswerSubmit(isCorrect, e,rp){
+    if(isCorrect) {
+      e.target.classList.add("correct");
+      setPuntuacion(puntuacion + 1)
+    }else{
+      e.target.classList.add("incorrect");
+    }
 
-    
-    // añadir puntuacion
-    if(isCorrect) setPuntuacion(puntuacion + 1);
-    // añadir estilos de pregunta
-    e.target.classList.add(isCorrect 
-      ? "correct" 
-      : "incorrect"
-      );
-    // cambiar a la siguiente pregunta
     setTimeout(() => {
       if (preguntaActual === dato.length - 1) {
         setIsFinished(true);
@@ -33,8 +30,10 @@ function Quiz() {
       } else {
         setPreguntaActual(preguntaActual + 1);
         setTiempoRespuesta(15);
+        e.target.classList.remove("incorrect");
+        e.target.classList.remove("correct");
       }
-    }, 1000);
+    }, 1000);   
   }
 
   useEffect(() => {
@@ -49,7 +48,6 @@ function Quiz() {
   if (isFinished) return (
     <>
     <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
-    <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
       <main className='app'>
         <div className="bg-no-repeat  justify-center mb-6 col-lg-3 col-md-3 rounded  m-1 py-2">
           <h2>
@@ -70,7 +68,6 @@ function Quiz() {
           </button>
         </div>
       </main>
-    </div>
     </div>
     </>
   )
@@ -113,22 +110,18 @@ function Quiz() {
 
   return (
     <>
-    <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
-    <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-      <div className="App">
+    <div className='relative w-fit h-fit max-h max-w-5xl dark:bg-gray-800 rounded-2xl'>
         {
           cargando
           ?
           <p>Cargando...</p>
           :
-          <main className='app'>
-            <div className="flex flex-col justify-around relative w-full">
-              <div className="mb-5">
-                <span>Pregunta {preguntaActual + 1} de</span> {dato.length}
-              </div>
-              <div className="mb-3">
+          <main className=''>
+            <div className="flex flex-col  inset-x-0 top-0">
+              <div className="mb-3 text-center ">
                 {dato[preguntaActual].titulo}
               </div>
+              <br></br>
               <div>{!areDisabled ? (
                 <span className='tiempo-restante'>
                   Tiempo restante: {tiempoRespuesta}
@@ -146,23 +139,30 @@ function Quiz() {
                 )}
               </div>
             </div>
-            <div className="flex flex-col justify-between w-full">
+            <br></br>
+            <div className='inset-x-0 bottom-0'>
+            <div className="grid grid-cols-2">
               {dato[preguntaActual].opciones.map((respuesta) => (
                 <button
-                    className='btnquiz' 
+                    className='btnquiz'
                     disabled={areDisabled}
                     key={respuesta.textoRespuesta} 
-                    onClick={(e) => handleAnswerSubmit(respuesta.isCorrect, e)}
+                    onClick={(e) => handleAnswerSubmit(respuesta.isCorrect,e,respuesta)}
                     >
                   {respuesta.textoRespuesta}
                   
                 </button>
               ))}
             </div>
+            <div className='text-center'>
+              <br></br>
+            <div>
+                <span>Pregunta {preguntaActual + 1} de</span> {dato.length}
+              </div>
+            </div>
+            </div>
           </main>
         }
-      </div>
-    </div>
     </div>
     </>
   );
