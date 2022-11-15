@@ -10,19 +10,22 @@ const socket = io("http://localhost:5000");
 
 const UserLobbysr = (props) => {
     const data = useLocation();
-    const [playerNameState, pinState] = data.state;
+    const [playerNameState, pinState, identificadorState] = data.state;
 
+    console.log(data);
     const playerName = playerNameState.playerName;
     const pin = pinState.pin;
+    const identificador = identificadorState.indeticador; 
     const navigate = useNavigate();
     const handleOnClick = () => navigate(`/chat2/${playerName}`);
 
+    console.log("Console desde UserLobby: ", identificador);
 
     useEffect(() => {
         socket.on('startGame', (data) => {
             console.log(data);
             props.setTriviaDataUser(data);
-            navigate('/game');
+            navigate('/game', {state: playerName});
         });
         localStorage.setItem("chatConnected", "true");
     });
@@ -44,14 +47,17 @@ const UserLobbysr = (props) => {
                                         El PIN de la sala es {pin}
                                         <br/>
                                         Hola {playerName} has entrado a la sala con éxito!
+
+                                        <br/>
+                                        Tu idSocket es: {identificador}
                                     </p>
                                     <br/>
-                                    <button className="btn btn-warning"
+                                    <button className="btn btn-primary"
                                             onClick={()=>{
                                                 handleOnClick();
                                                 submitNickname();}}
                                             >
-                                            chat
+                                            Entrar al chat
                                     </button>
                                     <br/>
                                     <div className="card-actions justify-center">

@@ -1,5 +1,6 @@
-import React, { useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useLocation} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import UserOnline from '../../components/UserOnline';
 import io from 'socket.io-client';
 
@@ -13,46 +14,61 @@ const socket = io("http://localhost:5000");
 const Race = () => {
     const data = useLocation();
     const alumnos = data.state;
-    const [alumnosConectados, setAlumnosConectados] = React.useState([]);
+    const [jugadores, setJugadores] = useState([]);
+
+    //const [alumnosConectados, setAlumnosConectados] = React.useState([]);
     let contador = 0;
 
 
-
     useEffect(() => {
+        let identificacion = alumnosSeparados();
+        console.log("Jugadores desde lobby",identificacion);
+
         socket.on("question", () => {
         });
 
 
-        
-        socket.on("correct-answer", () => {
+        socket.on("correct-answer", (data) => {
+            setJugadores(data);
             contador++;
-            console.log(contador);
+            console.log(contador,data);
         });
 
-        socket.on("wrong-answer", () => {  
+
+        socket.on("wrong-answer", (data) => {  
+            setJugadores(data);
             contador--
             console.log(contador);
             return contador;
         });
+             
+        // socket.on("Alumnos", (alu) => {
+        //     setAlumnosConectados(alu);
+        // });
 
-        
-    socket.on("Alumnos", (alu) => {
-        setAlumnosConectados(alu);
-    });
-
+        console.log("Jugadores desde Game",jugadoresConectados());
     },[]);
 
-    // function alumnosSeparados() {
-    //     const map = new Map();
-    //     for (const item of alumnos) {
-    //         if(!map.has(item.playerName)){
-    //             map.set(item.playerName, true);    // set any value to Map
-    //         }
-    //     }
-    //     const alumnoSeparado = [...map.keys()];
-    //     return alumnoSeparado;
-    // }
 
+    function jugadoresConectados() {
+        let jugadores = [];
+        for (let i = 0; i < alumnos.length; i++) {
+            jugadores.push(alumnos[i].playerName);
+        }
+        return jugadores;
+    }
+
+
+    function alumnosSeparados() {
+        const map = new Map();
+        for (const item of alumnos) {
+            if(!map.has(item.playerName)){
+                map.set(item.playerName, true);    // set any value to Map
+            }
+        }
+        const alumnoSeparado = [...map.keys()];
+        return alumnoSeparado;
+    }
 
     return (
         
@@ -81,6 +97,13 @@ const Race = () => {
                         <Footer/>
                     </div>
                 </div>
+            </div>
+
+            <div className='Volver'>
+                <Link to="/host/chooseTrivia">
+                    <button type="button" className="btn btn-primary">Volver</button>
+                </Link>
+
             </div>
         </div>    
     );

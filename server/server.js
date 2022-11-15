@@ -58,7 +58,7 @@ io.on("connection", (socket) => {
         usersConnected.set(nickname, [socket.client.id, socket.id]);
         io.emit("users-on", Array.from(usersConnected.keys()));
 
-        io.emit("playerName", nickname);
+        io.emit("playerName", nickname, socket.client.id);
 
     });
   
@@ -84,12 +84,12 @@ io.on("connection", (socket) => {
 
     socket.on('correct-answer', (data) => {
         console.log(data);
-        socket.broadcast.emit('correct-answer', data);
+        socket.broadcast.emit('correct-answer',data);
     });
 
     socket.on('wrong-answer', (data) => {
         console.log(data);
-        socket.broadcast.emit('wrong-answer', data);
+        socket.broadcast.emit('wrong-answer',data);
     });
     
 

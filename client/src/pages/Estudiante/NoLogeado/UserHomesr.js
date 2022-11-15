@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../../components/Footer';
 import io from 'socket.io-client';
@@ -8,21 +8,25 @@ const socket = io("http://localhost:5000");
 const UserHomesr = () => {
     const [pin, setPin] = useState('');
     const [playerName, setPlayerName] = useState('');
+    const [identificador, setIdentificador] = useState('');
 
     const handlePINChange = (event) => {
-        setPin({
-            ...pin,
-            [event.target.name]: event.target.value,
-        });
+        setPin({...pin,[event.target.name]: event.target.value});
     };
 
     const handlePlayerNameChange = (event) => {
         setPlayerName({ ...playerName, [event.target.name]: event.target.value });
     };
 
+    const handleIdentificadorChange = (event) => {
+        setIdentificador({ ...identificador, [event.target.name]: event.target.value });
+    };
+
+
     const handleSubmit = () => {
         socket.emit('user nickname', playerName);
     };
+
 
     return (
         <React.Fragment>
@@ -41,8 +45,8 @@ const UserHomesr = () => {
             </div>
             <div>
                 <br/>
-                <Link to="/user/lobbysr" state = {[playerName, pin]}>
-                <button type="submit" onClick={handleSubmit} className="btn btn-primary btn-sm">
+                <Link to="/user/lobbysr" state={[playerName, pin, identificador]}>
+                <button type="submit" onClick={handleSubmit}className="btn btn-primary btn-sm">
                     Ir a la sala de espera
                 </button>
                 </Link>

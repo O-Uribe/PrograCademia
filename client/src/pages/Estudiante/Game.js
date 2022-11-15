@@ -1,6 +1,9 @@
 import UseFetch from '../../components/UseFetch';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import {Link, useLocation } from 'react-router-dom';
 import io from 'socket.io-client';
+
+
 
 const socket = io("http://localhost:5000");
 
@@ -16,7 +19,9 @@ function Quiz() {
     const [areDisabled, setAreDisabled] = useState(false);
     const [answersShown, setAnswersShown] = useState(false);
 
-
+    const data = useLocation();
+    const identificador = data.state;
+    
     
     function handleAnswerSubmit(isCorrect, e){ 
         // añadir puntuacion
@@ -24,13 +29,13 @@ function Quiz() {
         if(isCorrect) {
             setPuntuacion(puntuacion + 1);
             socket.emit("correct-answer", {
-                id: socket.id,
-                playername: "Gonzalo",
+                playername: identificador,
+                points: puntuacion
             });
         } else {
             socket.emit("wrong-answer", {
-                id: socket.id,
-                playername: "Gonzalo",
+                playername: identificador,
+                points: puntuacion
             });
         }
         // añadir estilos de pregunta
@@ -38,6 +43,7 @@ function Quiz() {
         ? "correct" 
         : "incorrect"
         );
+
 
         // cambiar a la siguiente pregunta
         setTimeout(() => {
@@ -178,6 +184,12 @@ function Quiz() {
                 </div>
             </main>
             }
+            <Link to="/usersr">
+                <button className='btnquiz'>
+                    Salir
+                </button>
+            </Link>
+        
         </div>
         </div>
         </div>
