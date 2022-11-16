@@ -69,6 +69,12 @@ io.on("connection", (socket) => {
         io.to(socketId).emit("private msg", { id, nickname, msg });
     });
 
+    socket.on('categoria', (categoria) => {
+        console.log(categoria);
+        socket.broadcast.emit('categoria', categoria);
+    });
+
+
     socket.on('start-game', (Alumnos) => {
         console.log('Game started!');
 
@@ -76,7 +82,6 @@ io.on("connection", (socket) => {
 
         socket.broadcast.emit('startGame');
     });
-
 
     socket.on('correct-answer', (data) => {
         console.log(data);
@@ -121,53 +126,6 @@ app.get('/list', (req, res) => {
     };
     res.json(triviaData);
 });
-
-
-app.get('/trivia/:pin/:selectedTrivia', (req, res) => {
-    const { pin } = req.params;
-
-    namespace = io.of(`/${pin}`);
-    namespace.counter = 0;
-
-    namespace.on('connection', (socket) => {
-        namespace.counter += 1;
-        if (namespace.counter === 1) {
-            console.log('Profesor conectado!');
-            socket.host = true;
-        }
-
-        if (!socket.host) {
-            console.log('Estudiante conectado!');
-        }
-    });
-
-    res.json({ connected: true });
-});
-
-
-
-
-// app.get('/start-game', (req, res) => {
-//     console.log('emiting a game!');
-//     const { questionNumber } = req.query;
-
-//     socket.broadcast.emit('question', {
-//         question: trivia[questionNumber].question,
-//         options: trivia[questionNumber].options,
-//     });
-//     res.json({ gameStarted: true });
-// });
-
-
-// socket.on('next-question', () => {
-//     contador++;
-//     socket.broadcast.emit('question', {
-//         question: trivia[contador].question,
-//         options: trivia[contador].options,
-//     });
-// });
-
-
 
 server.listen(
     port, () => {

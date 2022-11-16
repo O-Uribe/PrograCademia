@@ -20,21 +20,24 @@ function Quiz() {
     const [answersShown, setAnswersShown] = useState(false);
 
     const data = useLocation();
-    const identificador = data.state;
+    const from = data.state;
+    const identificador = from[0];
+    const categoria = from[1];
 
+    
     let dat = [];
+    console.log(categoria)
     function llenado(dato) {
-      for (let i = 0; i < dato.length; i++) {
-        if (dato[i].categoria === "Science:Computers") {
-          dat.push(dato[i])
+        for (let i = 0; i < dato.length; i++) {
+            if (dato[i].categoria === categoria) {
+            dat.push(dato[i])
+            }
         }
-      }
     }
     
     
     function handleAnswerSubmit(isCorrect, e){ 
         // añadir puntuacion
-        console.log(socket.id);
         if(isCorrect) {
             setPuntuacion(puntuacion + 1);
             socket.emit("correct-answer", {
@@ -67,6 +70,7 @@ function Quiz() {
     }
 
     useEffect(() => {
+
         const intervalo = setInterval(() => {
             if(tiempoRespuesta > 0) setTiempoRespuesta((prev) => prev - 1);
             if(tiempoRespuesta === 0) setAreDisabled(true);
@@ -74,7 +78,7 @@ function Quiz() {
 
         return () => clearInterval(intervalo);
     }, [tiempoRespuesta]);
-
+  
     if (isFinished) return (
         <>
         <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>

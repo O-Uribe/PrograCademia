@@ -8,37 +8,25 @@ import { Link, useLocation } from 'react-router-dom';
 const socket = io("http://localhost:5000");
 
 const HostLobby = (props) => {
-    //const [usersOnline, setPlayers] = useState([]);
-    const data = useLocation();
-    const pin = data.state;
-    const {setTriviaData, BASE_URL } = props;
-    //const [user, setUser] = useState("");
+    const {setTriviaData} = props;
     const [usersOnline, setUsersOnline] = useState([]);
+
+    const [triviaList, setTriviaList] = useState([]);
+    const [pin, setPin] = useState('');
+
     
     useEffect(() => {
-        if (!props.socket) {
-        fetch(`http://localhost:5000/trivia/${pin}/${props.trivia}`).then(() => {
-            let newSocketHost;
-            if (BASE_URL === 'http://localhost:5000') {
-            newSocketHost = io(`/${pin}`);
-            } else {
-            newSocketHost = io(`${BASE_URL}/${pin}`);
-            }
-            props.setSocket(newSocketHost);
-        });
-        }
-    }, [pin, props, BASE_URL]);
+        fetch('http://localhost:5000/list')
+        .then((res) => res.json())
+        .then((result) => {
+            setTriviaList(result.triviaList);
+            setPin(result.pin);
+        })
+    }, []);
 
     useEffect(() => {
-
-        let contadorEstudiantes = 0;
         socket.on("users-on", (list) => {
             setUsersOnline(list);
-            contadorEstudiantes = list.length;
-        });
-
-        socket.on('playerName', (user) => {
-            //setUser(user);
         });
 
         socket.on('question', (triviaData) => {
@@ -48,19 +36,25 @@ const HostLobby = (props) => {
 
     },);    
 
-
     let map = new Map();
     for (const item of usersOnline) {
         map.set("nombre", item.playerName); 
     }
-
     const startGame = () => {
         socket.emit("start-game", {
             map: map,
         });
     };
 
-    
+    const selectCategoria = (src) => {
+        socket.emit("categoria", {
+            categoria: src,
+        });
+    };
+
+    function handleChange(src) {
+        selectCategoria(src);
+    }
     
     return (
         <React.Fragment>
@@ -81,10 +75,23 @@ const HostLobby = (props) => {
                                             <h2 className="text-2xl font-bold">Pin de la sala: {pin}</h2>
                                         </div>
                                     </div>
+                                    <div>
+                                        <div className = 'inline-block w-1/2' >
+                                            <br/>
+                                            <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                                                <input id="bordered-radio-1" type="radio" name="bordered-radio" value=''className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onClick={() => handleChange(triviaList[0].name)}/>
+                                                <label for="bordered-radio-1" className="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Logica de Programación</label>
+                                            </div>
+                                            <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                                                <input checked id="bordered-radio-2" type="radio" name="bordered-radio" value='' className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"onClick={() => handleChange(triviaList[1].name)}/>
+                                                <label for="bordered-radio-2" className="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Science:Computers</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div className="row">
                                         <div className="col-12">
                                             <br/>
-                                            <h2 className="text-2xl font-bold"> Lista de estudiantes conectados:</h2>
+                                            <h2 className="text-2xl font-bold">Lista de estudiantes conectados:</h2>
                                             <br/>
                                             <div className="container d-flex align-items-center justify-content-center flex-column">
                                                 {usersOnline.map((el, index) => (

@@ -15,6 +15,9 @@ const socket = io("http://localhost:5000");
 const Race = () => {
     const data = useLocation();
     const alumnos = data.state;
+
+    console.log(alumnos);
+
     const [jugadores, setJugadores] = useState([]);
 
     //const [alumnosConectados, setAlumnosConectados] = useState([]);

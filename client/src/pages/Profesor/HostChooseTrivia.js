@@ -22,6 +22,7 @@ const HostChooseTrivia = (props) => {
         });
     }, []);
 
+
     if (error) {
         return (
             <>
@@ -39,7 +40,7 @@ const HostChooseTrivia = (props) => {
     } else {
         const buttons = triviaList.map((trivia, i) => (
             <div key={`item-${i + 1}`}>
-                <Link to="/host/lobby" state={pin} className="btn btn-primary">
+                <Link to="/host/lobby" state={[trivia.name]} className="btn btn-primary">
                     {trivia.name}
                 </Link>
             </div>

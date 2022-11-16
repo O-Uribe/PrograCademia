@@ -14,7 +14,7 @@ export const MainProfe = () => {
                     <div className="card-body">
                         <p></p>
                         <div className="card-actions justify-end">
-                        <Link to="/host/chooseTrivia" className="btn btn-primary"> Iniciar un quiz </Link>
+                        <Link to="/host/lobby" className="btn btn-primary"> Iniciar un quiz </Link>
                         </div>
                     </div>
                 </div>

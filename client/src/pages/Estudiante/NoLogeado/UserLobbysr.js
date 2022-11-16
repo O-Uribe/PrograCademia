@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import io from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../../../components/Footer';
-import { Link } from 'react-router-dom';
-
 
 const socket = io("http://localhost:5000");
 
@@ -12,21 +10,24 @@ const UserLobbysr = (props) => {
     const data = useLocation();
     const [playerNameState, pinState, identificadorState] = data.state;
 
-    console.log(data);
     const playerName = playerNameState.playerName;
     const pin = pinState.pin;
-    const identificador = identificadorState.indeticador; 
     const navigate = useNavigate();
     const handleOnClick = () => navigate(`/chat2/${playerName}`);
 
-    console.log("Console desde UserLobby: ", identificador);
+    const [categoria, setCategoria] = React.useState("Lógica de Programacion");
 
     useEffect(() => {
         socket.on('startGame', (data) => {
-            console.log(data);
             props.setTriviaDataUser(data);
-            navigate('/game', {state: playerName});
+            navigate('/game', {state: [playerName, categoria]});
         });
+
+        socket.on('categoria', (data) => {
+            props.setTriviaDataUser(data);
+            setCategoria(data.categoria);
+        });
+
         localStorage.setItem("chatConnected", "true");
     });
        
@@ -41,29 +42,27 @@ const UserLobbysr = (props) => {
                 <div className='ark:bg-gray-800 dark:border-gray-700'>
                     <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row">
                         <div className="lg:divider-horizontal"></div>
-                        <div className="card shadow-xl image-full">
-                                <div className="card-body">
-                                    <p className="ml-2 text-ml font-bold text-black-500"> 
-                                        El PIN de la sala es {pin}
+                        <div className="card bg-gray-800 w-full p-6 rounded-lg shadow-xl">
+                                <div className="card-body text-center">
+                                    <p className="ml-2 text-2xl font-bold text-white">
+                                        El PIN de la sala es <span className=' inline text-sky-400'>{pin} </span>
                                         <br/>
-                                        Hola {playerName} has entrado a la sala con éxito!
-
-                                        <br/>
-                                        Tu idSocket es: {identificador}
+                                        Hola <span className=' inline text-sky-400'>{playerName} </span> has entrado a la sala con éxito!
                                     </p>
                                     <br/>
-                                    <button className="btn btn-primary"
-                                            onClick={()=>{
-                                                handleOnClick();
-                                                submitNickname();}}
-                                            >
-                                            Entrar al chat
-                                    </button>
+                                    <span className="ml-2 text-xl font-bold text-white">
+                                        La categoría seleccionada es: 
+                                        <div className='text-sky-400 text-3xl font-bold text-white'>
+                                            {categoria}
+                                        </div>
+
+                                    </span>
                                     <br/>
                                     <div className="card-actions justify-center">
-                                        <p className= "ml-2 text-ml font-bold text-black-500"> 
-                                            El profesor iniciará la partida cuando todos los jugadores esten listos. 
-                                        </p>
+                                    <p className="ml-2 text-2xl font-bold text-white">
+                                        El juego comenzará cuando el profesor lo inicie
+                                    </p>
+                                    <br/>
                                     </div>
                                 </div>
                         </div>
