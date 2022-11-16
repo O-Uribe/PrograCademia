@@ -15,7 +15,7 @@ export const Recursos = () => {
               <h1 className="text-5xl font-bold">Recursos</h1>
               <p className="py-6">En este sitio podras encontrar todo lo que necesitas saber para aprobar los quiz.</p>
               <a href="https://www.w3schools.com/">
-                <button className="btn btn-primary">Ir al sitio</button>
+                <button className="btn1 btn-primary">Ir al sitio</button>
               </a> 
             </div>
           </div>

@@ -61,7 +61,7 @@ const Config = (props)=>{
                     <div className="mb-4">
                         <img src={url} className="rounded-full"/>
                     </div>
-                    <div className="btn bg-primary inset-x-0 bottom-0 ">
+                    <div className="btn1 bg-primary inset-x-0 bottom-0 ">
                         <Dropzone
                         onDrop={handleDrop}
                         onchage={(e)=>setImage(e.target.value)}
@@ -89,7 +89,7 @@ const Config = (props)=>{
                     
                 </div>
         </div>
-            <button className="btn w-full bg-primary" onClick={()=>volver()}>Volver</button>
+            <button className="btn1 w-full bg-primary" onClick={()=>volver()}>Volver</button>
         </div>
         </>
     )

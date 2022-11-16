@@ -14,14 +14,13 @@ const Home = () => {
         <main className="h-screen w-screen">
             <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
                 <div className="mx-auto flex-1 flex flex-col items-center justify-center px-2 lg:flex-row ">
-                    <div className="card shadow-xl image-full">
-                        <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png" alt="Shoes" /></figure>
+                    <div className="card shadow-xl w-fit dark:bg-gray-800 dark:border-gray-700">
                         <div className="card-body">
                             <h2 className="card-title">Profesor!</h2>
                             <p></p>
                             <div className="card-actions justify-end">
                             <Link to="/loginprofe">
-                                <button className="btn btn-primary text-white" onClick={()=>sound.play()}>
+                                <button className="btn1 btn-primary text-white" onClick={()=>sound.play()}>
                                     Ingresar
                                 </button>
                             </Link>
@@ -29,14 +28,14 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="lg:divider-horizontal"></div> 
-                    <div className="card shadow-xl image-full">
-                        <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png"alt="Shoes" /></figure>
+                    <div className="card shadow-xl w-fit dark:bg-gray-800 dark:border-gray-700">
+                        
                         <div className="card-body">
                             <h2 className="card-title">Estudiante!</h2>
                             <p></p>
                             <div className="card-actions justify-end">
                             <Link to="/loginalu">
-                                <button className="btn btn-primary"  onClick={()=>sound.play()}>
+                                <button className="btn1 btn-primary"  onClick={()=>sound.play()}>
                                 Ingresar
                                 </button>
                             </Link>
@@ -44,14 +43,14 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="lg:divider-horizontal"></div> 
-                    <div className="card  shadow-xl image-full">
-                        <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png" alt="Shoes" /></figure>
+                    <div className="card shadow-xl w-fit dark:bg-gray-800 dark:border-gray-700">
+                        
                         <div className="card-body">
                             <h2 className="card-title">Estudiante!</h2>
                             <p></p>
                             <div className="card-actions justify-end">
                             <Link to="/usersr">
-                                <button className="btn btn-primary"  onClick={()=>sound.play()}>
+                                <button className="btn1 btn-primary"  onClick={()=>sound.play()}>
                                 Sin Registro
                                 </button>
                             </Link>
@@ -59,14 +58,14 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="lg:divider-horizontal"></div> 
-                    <div className="card  shadow-xl image-full">
-                        <figure><img src="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/fondoCard_vtzyli.png" alt="Shoes" /></figure>
+                    <div className="card shadow-xl w-fit dark:bg-gray-800 dark:border-gray-700">
+                    
                         <div className="card-body">
                             <h2 className="card-title">Estadistica!</h2>
                             <p></p>
                             <div className="card-actions justify-end">
                             <Link to="/admin/stats">
-                                <button className="btn btn-primary"  onClick={()=>sound.play()}>
+                                <button className="btn1 btn-primary"  onClick={()=>sound.play()}>
                                     Estadísticas
                                 </button>
                             </Link>

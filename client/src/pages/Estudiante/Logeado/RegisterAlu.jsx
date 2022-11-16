@@ -299,7 +299,7 @@ export const RegisterAlu = () => {
             <div className="form-control bg-base-100">
               <button 
                 onClick={handleClick}
-                className="btn btn-outline"
+                className="btn1 btn-outline"
               >
                 Enviar
               </button>

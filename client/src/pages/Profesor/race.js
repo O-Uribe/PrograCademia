@@ -84,8 +84,8 @@ const Race = () => {
             </div>
 
             <div className='Volver'>
-                <Link to="/host/chooseTrivia">
-                    <button type="button" className="btn btn-primary">Volver</button>
+                <Link to="/mainprofe">
+                    <button type="button" className="btn1">Volver</button>
                 </Link>
 
             </div>

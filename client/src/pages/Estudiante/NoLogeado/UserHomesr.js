@@ -30,29 +30,30 @@ const UserHomesr = () => {
 
     return (
         <React.Fragment>
-            <div className="flex flex-col items-center justify-center h-full absolute top-0 text-white w-full">
-            <div className="form-control w-full max-w-xs">
-                <label className="label">
-                <span className="label-text ">Ingrese un nombre</span>
-                </label>
+            <main className="h-screen w-screen">
+            <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
+            <div className="absolute dark:bg-gray-800 dark:border-gray-700 rounded-2xl w-2/6 text-center">
+            
+            <div>
+                <h1 className="text-white">Ingrese un nombre</h1>
                 <input type="text" name="playerName" className="input input-sm w-full max-w-xs input-bordered" onChange={handlePlayerNameChange} />
             </div>
-            <div className="form-control w-full max-w-xs">
-                <label className="label">
-                <span className="label-text ">Ingrese el PIN</span>
-                </label>
+            <div>
+                <h1 className=" text-white">Ingrese el PIN</h1>
                 <input type="text" name="pin" className="input input-sm w-full max-w-xs input-bordered" onChange={handlePINChange} />
             </div>
             <div>
                 <br/>
                 <Link to="/user/lobbysr" state={[playerName, pin, identificador]}>
-                <button type="submit" onClick={handleSubmit}className="btn btn-primary btn-sm">
+                <button type="submit" onClick={handleSubmit} className="btn1">
                     Ir a la sala de espera
                 </button>
                 </Link>
+                </div>
             </div>
             <div className="w-full absolute inset-x-0 bottom-0"><Footer/></div>
             </div>
+            </main>
         </React.Fragment>
     );
 };

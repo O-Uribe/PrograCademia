@@ -24,7 +24,7 @@ const Perfil = (props)=>{
         <input type="checkbox" id="my-modal-4" className="modal-toggle " />
         <div className="modal ">
         <div className="modal-box relative bg-base-200"> 
-        <label htmlFor="my-modal-4" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        <label htmlFor="my-modal-4" className="btn-sm btn-circle absolute right-2 top-2">✕</label>
         <div className="flex p-5 bg-base-200 rounded-2xl" onLoad={comprobar()}>
                 <div className="flex flex-col relative w-full ">
                     <div className="mb-4">

@@ -48,7 +48,7 @@ function Card(p) {
                 <h4 className='card-title'>{p.titulo}</h4>
                 <p className='card-text'>{p.categoria}</p>
                 <div className="card-actions">
-                <button className='btn btn-primary' onClick={() => {
+                <button className='btn1 btn-primary' onClick={() => {
                         seguro();
                     }}>Borrar
                 </button>

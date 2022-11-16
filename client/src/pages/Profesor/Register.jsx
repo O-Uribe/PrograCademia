@@ -256,7 +256,7 @@ export const Register = () => {
             <div className="form-control">
             <button 
               onClick={handleClick}
-              className="btn btn-outline"
+              className="btn1 btn-outline"
             >
               Enviar
             </button>

@@ -52,7 +52,7 @@ export const Loginestudiante = () => {
     })
       .then((response) => {
         if(response.status === 200){
-          alert("Logeado")
+          //alert("Logeado")
           document.cookie = `token=${response.data.token}; path=/; samesite=strict`;
           auth();
         }
@@ -91,7 +91,7 @@ export const Loginestudiante = () => {
             <h1 className="text-5xl font-bold">Inicia sesión!</h1>
             <p className="py-6">Para poder obtener muchos mas beneficios, y una mejor calidad de juego por favor inicia sesion.</p>
           </div>
-          <form onSubmit={handleSubmit} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <form onSubmit={handleSubmit} className="card flex-shrink-0 w-full max-w-sm shadow-2xl  dark:bg-gray-800 dark:border-gray-700">
             <div className="card-body">
               <div className="form-control">
                 <label className="label" htmlFor='email'>
@@ -125,7 +125,7 @@ export const Loginestudiante = () => {
                 </label>
               </div>
               <div className="form-control mt-6"> 
-                <button type='submit' className="btn btn-outline">
+                <button type='submit' className="btn1 btn-outline">
                   Login
                 </button>
               </div>

@@ -45,7 +45,7 @@ const Navbaral=()=>{
                 </label>
                 <ul
                     tabIndex={0}
-                    className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52'
+                    className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
                 >
                     <li>
                     <Link to='/MainAlumno' onClick={()=>sound.play()}>Inicio</Link>
@@ -63,13 +63,13 @@ const Navbaral=()=>{
                 </div>
             </div>
             <div className='navbar-center'>
-                <Link to='/' className='btn btn-ghost text-xl text-center normal-case md:text-3xl' onClick={()=>sound.play()}>
+                <Link to='/' className='btn-ghost text-xl text-center normal-case md:text-3xl' onClick={()=>sound.play()}>
                 Progracademia!
                 </Link>
             </div>
             <div className='navbar-end'>
             <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <label tabIndex={0} className="btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full" onLoad={comprobar()}>
                     <img src={url} alt="profile_img"/>
                     </div>

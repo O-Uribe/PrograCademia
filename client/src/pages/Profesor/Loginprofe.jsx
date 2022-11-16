@@ -52,7 +52,7 @@ export const Loginprofe = () => {
     })
       .then((response) => {
         if(response.status === 200){
-          alert("Logeado")
+          //alert("Logeado")
           document.cookie = `token=${response.data.token}; path=/; samesite=strict`;
           auth();
         }
@@ -92,14 +92,14 @@ export const Loginprofe = () => {
             <h1 className="text-5xl font-bold">Inicia sesión!</h1>
             <p className="py-6">Para poder obtener muchos mas beneficios, y una mejor calidad de enseñanza por favor inicia sesion.</p>
           </div>
-          <form onSubmit={handleSubmit} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <form onSubmit={handleSubmit} className="card flex-shrink-0 w-full max-w-sm shadow-2xl  dark:bg-gray-800 dark:border-gray-700">
             <div className="card-body">
               <div className="form-control">
                 <label className="label" htmlFor='email'>
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  className='input input-bordered'
+                  className='input input-bordered bg-base-200'
                   id='email'
                   onChange={(e) => setEmail(e.target.value)}
                   onBlur={validateInput}
@@ -113,7 +113,7 @@ export const Loginprofe = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  className='input input-bordered'
+                  className='input input-bordered bg-base-200'
                   id='password'
                   onChange={(e) => setPassword(e.target.value)}
                   onBlur={validateInput}
@@ -126,7 +126,7 @@ export const Loginprofe = () => {
                 </label>
               </div>
               <div className="form-control mt-6"> 
-                <button type='submit' className="btn btn-outline">
+                <button type='submit' className="btn1 btn-outline">
                   Login
                 </button>
               </div>
