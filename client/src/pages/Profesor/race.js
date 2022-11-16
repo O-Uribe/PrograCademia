@@ -68,7 +68,7 @@ const Race = () => {
                         <h3>Carrera</h3>
                     </div>                    
                     {/* Puntos de jugadores */}
-                    <div className='inline-flex flex-col'>
+                    <div className="flex flex-col items-center text-2xl font-bold">
                         <div className="flex space-x-4...">
                             <Bar jugadores={jugadores}/>
                         </div>
