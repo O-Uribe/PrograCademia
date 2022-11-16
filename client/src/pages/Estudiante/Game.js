@@ -21,6 +21,15 @@ function Quiz() {
 
     const data = useLocation();
     const identificador = data.state;
+
+    let dat = [];
+    function llenado(dato) {
+      for (let i = 0; i < dato.length; i++) {
+        if (dato[i].categoria === "Science:Computers") {
+          dat.push(dato[i])
+        }
+      }
+    }
     
     
     function handleAnswerSubmit(isCorrect, e){ 
@@ -47,7 +56,7 @@ function Quiz() {
 
         // cambiar a la siguiente pregunta
         setTimeout(() => {
-        if (preguntaActual === dato.length - 1) {
+        if (preguntaActual === dat.length - 1) {
             setIsFinished(true);
             setTiempoRespuesta(15);
         } else {
@@ -70,10 +79,10 @@ function Quiz() {
         <>
         <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-        <main className='app'>
+        <main className='app' onBeforeInput={llenado(dato)}>
             <div className="bg-no-repeat  justify-center mb-6 col-lg-3 col-md-3 rounded  m-1 py-2">
             <h2>
-                Obtuviste {puntuacion} de {dato.length}
+                Obtuviste {puntuacion} de {dat.length}
             </h2>
             <br/>
             <button onClick={() => (window.location.href = '/host/quiz')} className='btnter'>
@@ -99,22 +108,22 @@ function Quiz() {
         <>
         <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-        <main className='app'>
+        <main className='app' onBeforeInput={llenado(dato)}>
             <div className="flex flex-col justify-around relative w-full">
             <div className="mb-5">
-                <span>Pregunta {preguntaActual + 1} de</span> {dato.length}
+                <span>Pregunta {preguntaActual + 1} de</span> {dat.length}
             </div>
             <div className="mb-3">
-                {dato[preguntaActual].titulo}
+                {dat[preguntaActual].titulo}
             </div>
             <div>
-                {dato[preguntaActual].opciones.filter(
+                {dat[preguntaActual].opciones.filter(
                 (opcion) => opcion.isCorrect
                 )[0].textoRespuesta
                 }
             </div>
             <button onClick={() => {
-                if (preguntaActual === dato.length - 1) {
+                if (preguntaActual === dat.length - 1) {
                 window.location.href = '/mainprofe';
                 } else {
                 setPreguntaActual(preguntaActual + 1);
@@ -144,13 +153,13 @@ function Quiz() {
                 Cargando ...
             </button>
             :
-            <main className='app'>
+            <main className='app' onBeforeInput={llenado(dato)}>
                 <div className="flex flex-col justify-around relative w-full">
                 <div className="mb-5">
-                    <span>Pregunta {preguntaActual + 1} de</span> {dato.length}
+                    <span>Pregunta {preguntaActual + 1} de</span> {dat.length}
                 </div>
                 <div className="mb-3">
-                    {dato[preguntaActual].titulo}
+                    {dat[preguntaActual].titulo}
                 </div>
                 <div>{!areDisabled ? (
                     <span className='tiempo-restante'>
@@ -170,7 +179,7 @@ function Quiz() {
                 </div>
                 </div>
                 <div className="flex flex-col justify-between w-full">
-                {dato[preguntaActual].opciones.map((respuesta) => (
+                {dat[preguntaActual].opciones.map((respuesta) => (
                     <button
                         className='btnquiz' 
                         disabled={areDisabled}

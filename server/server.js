@@ -114,10 +114,8 @@ io.on("connection", (socket) => {
 app.get('/list', (req, res) => {
     const triviaData = {
         triviaList: [
-        { id: 1, name: 'Cuestionario 1' },
-        { id: 2, name: 'Cuestionario 2' },
-        { id: 3, name: 'Cuestionario 3' },
-        { id: 4, name: 'Cuestionario 4' },
+        { id: 1, name: 'Logica de Programación' },
+        { id: 2, name: 'Science:Computers' },
         ],
         pin: Math.floor(Math.random() * 10),
     };
