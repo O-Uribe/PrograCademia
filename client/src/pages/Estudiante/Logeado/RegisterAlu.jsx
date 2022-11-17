@@ -1,6 +1,5 @@
 import  React, { useState } from 'react'
 import axios from 'axios'
-import Footer from '../../../components/Footer';
 /*
   Inputs para register de profesor
 
@@ -132,11 +131,11 @@ export const RegisterAlu = () => {
   return (
     <>
     
-      <div className="container h-full lg:flex-row absolute">
-        <div className="container m-auto max-w-lg">
-          <form className="card flex-shrink-0 w-full shadow-2xl">
+      <div className="flex flex-col h-full absolute w-2/6">
+          <br/>
+          <form className="card flex-shrink-0 bg-base-100">
           <div className="shadow sm:rounded-md">
-              <div className="px-1 py-2 bg-base-100">
+              <div className="px-1 py-2 ">
                 {/*nombre*/}
                 <div className="form-control">
                   
@@ -306,8 +305,7 @@ export const RegisterAlu = () => {
             </div>
             </div>
           </form>
-        </div>
-        <Footer className="w-full h-full"/>
+          <br/>
       </div>
       
     </>  
