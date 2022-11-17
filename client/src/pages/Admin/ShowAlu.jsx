@@ -67,6 +67,9 @@ export const ShowEstudiante = () => {
             });
             setEstudiantes(resultadosBusqueda);
         };
+        function test(estudiante) {
+            console.log(estudiante);
+        }
 
 
     return (
@@ -115,7 +118,9 @@ export const ShowEstudiante = () => {
                                 <button onClick={() => handleDelete(estudiante._id)}>Eliminar</button>
                             </td>
                             <td>
+                                {/* Utilizar componente editform para editar los estudiantes */}
                                 <EditForm estudiante={estudiante} />
+                                <button onClick={()=> test(estudiante)}>TEST</button>
                             </td>
                         </tr>
                     ))}

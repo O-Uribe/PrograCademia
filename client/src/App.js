@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 //import {useNavigate } from 'react-router-dom';
 
 //Importamos paginas
-import DashBoard from './pages/Admin/DashBoard';
+import MainAdmin from './pages/Admin/mainAdmin';
 import Home from './pages/General/Home';
 import HostChooseTrivia from './pages/Profesor/HostChooseTrivia';
 import HostLobby from './pages/Profesor/HostLobby';
@@ -161,7 +161,7 @@ function App() {
                     setSocketUser={setSocketUser}
                     setSocket={setSocket}/>
                 } />
-                <Route path="/admin/stats" element={<DashBoard />} />
+                <Route path="/admin" element={<MainAdmin/>} />
                 <Route path="/admin/mostrar/profesor" element={<ShowProfesor/>} />
                 <Route path="/admin/mostrar/alumno" element={<ShowEstudiante/>} />
                 </Routes>

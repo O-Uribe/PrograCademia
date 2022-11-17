@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{ useEffect } from "react";
 
 
 // Formulario para editar un estudiante en la base de datos
@@ -18,15 +18,22 @@ export const EditForm = ({ estudiante }) => {
 
     // Estado para guardar los datos del estudiante
     const [datos, setDatos] = React.useState({
-        rut: estudiante.rut,
-        nombre: estudiante.nombre,
-        apellido: estudiante.apellido,
-        email: estudiante.email,
-        password: estudiante.password,
-        ingreso: estudiante.ingreso,
+        estudiantes: [
+            {
+                rut: "",
+                nombre: "",
+                apellido: "",
+                email: "",
+                password: "",
+                año_ingreso: "",
+            },
+        ],
     });
 
-
+    // Actualizar los datos del estudiante en el estado cada vez que se renderiza el componente
+    useEffect(() => {
+        setDatos(estudiante);
+    }, [estudiante]);
 
 
     // Estado para guardar el mensaje de error
@@ -36,7 +43,7 @@ export const EditForm = ({ estudiante }) => {
     const handleInputChange = (event) => {
         setDatos({
             ...datos,
-            [event.target.name]: event.target.value,
+            [event.target.id]: event.target.value,
         });
     };
 
@@ -44,24 +51,10 @@ export const EditForm = ({ estudiante }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(datos);
-        /*
-        // Validar que los datos no estén vacíos
-        if (
-            !datos.rut ||
-            !datos.nombre ||
-            !datos.apellido ||
-            !datos.email ||
-            !datos.password ||
-            !datos.anio_ingreso
-        ) {
-            setError("Todos los campos son obligatorios");
-            return;
-        }
-        // Enviar los datos al servidor
-        console.log(datos);
-        */
     };
-
+    function test() {
+        console.log(estudiante);
+    }
     return (
         <React.Fragment>
             <label htmlFor="my-modal-5" className="btn">Editar</label>
@@ -90,7 +83,7 @@ export const EditForm = ({ estudiante }) => {
                                     </label>
                                     <input type="text"
                                     placeholder="Nombre"
-                                    id = "Nombre"
+                                    id = "nombre"
                                     value={datos.nombre}
                                     onChange= {handleInputChange}
                                     className="input input-bordered w-full max-w-xs" />
@@ -146,6 +139,7 @@ export const EditForm = ({ estudiante }) => {
                             </div>
                             <div className="form-control w-full max-w-xs overflow-auto ">
                                 <button className="btn btn-primary" onClick={handleSubmit}>Editar</button>
+                                <button onClick={()=>test()}>test</button>
                             </div>
                         </div>
                     </div>
