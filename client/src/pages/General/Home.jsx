@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
+import LoginAdmin from '../../components/loginAdmin';
 
 const Home = () => {
   
@@ -57,14 +58,29 @@ const Home = () => {
                     <div className="card shadow-xl w-fit dark:bg-gray-800 dark:border-gray-700">
                     
                         <div className="card-body">
-                            <h2 className="card-title">Estadistica!</h2>
+                            <h2 className="card-title">Admin</h2>
                             <p></p>
                             <div className="card-actions justify-end">
+<<<<<<< Updated upstream
                             <Link to="/admin/stats">
                                 <button className="btn1 btn-primary"  >
                                     Estadísticas
                                 </button>
                             </Link>
+=======
+
+                            {/* The button to open modal */}
+                            <label htmlFor="my-modal" className="btn1 btn-primary">Ingresar</label>
+
+                            {/* Put this part before </body> tag */}
+                            <input type="checkbox" id="my-modal" className="modal-toggle" />
+                            <div className="modal">
+                                <div className="modal-box">
+                                    <label htmlFor="my-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                    <LoginAdmin/>
+                                </div>
+                            </div>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>

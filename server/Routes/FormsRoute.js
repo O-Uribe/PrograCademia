@@ -4,6 +4,7 @@ import jsw from 'jsonwebtoken';
 
 import FormProfe from '../models/FormProfeModel.js';
 import FormEstu from '../models/FormEstuModel.js';
+import FormAdmin from '../models/FormAdmin.js';
 
 
 //import { checkRut } from '../actions/existeRut.js';  // para un futuro
@@ -231,5 +232,22 @@ router.route("/estudiante/:id").put(async (req, res) => {
     } catch (error) {
         res.status(500).send(error.message);
     }
+});
+
+
+// @route   POST login/admin
+router.route("/login/admin").post(async (req, res) => {
+    const { username, password } = req.body;
+    // verificar que el username exista
+    const usernameExists = await FormAdmin
+        .findOne
+        ({
+            username: username
+        });
+    if (!(usernameExists && usernameExists.password === password)) {
+        return res.status(400).send("Username o Password incorrecto");
+    }
+    // no usar token
+    res.status(200).send("Login exitoso");
 });
 export default router;
