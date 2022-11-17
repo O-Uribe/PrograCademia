@@ -18,9 +18,13 @@ function Quiz() {
   function handleAnswerSubmit(isCorrect, e,rp){
     if(isCorrect) {
       e.target.classList.add("correct");
+      e.target.classList.remove("btnquiz");
       setPuntuacion(puntuacion + 1)
+      setAreDisabled(true)
     }else{
       e.target.classList.add("incorrect");
+      e.target.classList.remove("btnquiz");
+      setAreDisabled(true)
     }
 
     setTimeout(() => {
@@ -32,6 +36,8 @@ function Quiz() {
         setTiempoRespuesta(15);
         e.target.classList.remove("incorrect");
         e.target.classList.remove("correct");
+        e.target.classList.add("btnquiz");
+        setAreDisabled(false)
       }
     }, 1000);   
   }

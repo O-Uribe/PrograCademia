@@ -1,12 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {Howl} from 'howler';
 import Perfil from './Perfilpr';
-const sound = new Howl({
-  src: ['sonidos/mario.mp3'],
-  volume:0.2
-});
+
 function cerrarsesion(){
     localStorage.removeItem("loginpro")
     localStorage.removeItem("token")
@@ -48,19 +44,19 @@ const Navbarpr=()=>{
                     className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
                 >
                     <li>
-                    <Link to='/mainprofe' onClick={()=>sound.play()}>Inicio</Link>
+                    <Link to='/mainprofe' >Inicio</Link>
                     </li>
                     <li>
-                    <Link to='/host/chooseTrivia' onClick={()=>sound.play()}>Iniciar Quiz</Link>
+                    <Link to='/host/chooseTrivia' >Iniciar Quiz</Link>
                     </li>
                     <li>
-                    <a href='https://restapi-progracademia.herokuapp.com/new-entry' onClick={()=>sound.play()}>Crear quiz</a>
+                    <a href='https://restapi-progracademia.herokuapp.com/new-entry'>Crear quiz</a>
                     </li>
                 </ul>
                 </div>
             </div>
             <div className='navbar-center'>
-                <Link to='/' className=' btn-ghost text-xl normal-case md:text-3xl' onClick={()=>sound.play()}>
+                <Link to='/' className=' btn-ghost text-xl normal-case md:text-3xl' >
                 Progracademia!
                 </Link>
             </div>

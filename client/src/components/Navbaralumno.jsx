@@ -1,11 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {Howl} from 'howler';
 import Perfil from './PerfilAL'
-const sound = new Howl({
-  src: ['sonidos/mario.mp3'],
-  volume:0.2
-});
 const img=localStorage.getItem("Alum_URL")
 const img2="https://res.cloudinary.com/dyewwjcfi/image/upload/v1668001820/Imagenes%20Generales/alumno_gw2ns4.png" 
 let url=""
@@ -48,22 +43,22 @@ const Navbaral=()=>{
                     className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
                 >
                     <li>
-                    <Link to='/MainAlumno' onClick={()=>sound.play()}>Inicio</Link>
+                    <Link to='/MainAlumno' >Inicio</Link>
                     </li>
                     <li>
-                    <Link to='/user' onClick={()=>sound.play()}>Jugar</Link>
+                    <Link to='/user' >Jugar</Link>
                     </li>
                     <li>
-                    <Link to='/MainAlumno' onClick={()=>sound.play()}>Historial</Link>
+                    <Link to='/MainAlumno' >Historial</Link>
                     </li>
                     <li>
-                    <Link to='/Recursos' onClick={()=>sound.play()}>Recursos</Link>
+                    <Link to='/Recursos' >Recursos</Link>
                     </li>
                 </ul>
                 </div>
             </div>
             <div className='navbar-center'>
-                <Link to='/' className='btn-ghost text-xl text-center normal-case md:text-3xl' onClick={()=>sound.play()}>
+                <Link to='/' className='btn-ghost text-xl text-center normal-case md:text-3xl' >
                 Progracademia!
                 </Link>
             </div>

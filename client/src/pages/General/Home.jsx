@@ -1,12 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Howl} from 'howler';
 import Footer from '../../components/Footer';
 
-const sound = new Howl({
-  src: ['sonidos/mario.mp3'],
-  volume:0.2
-});
 const Home = () => {
   
   return (
@@ -21,7 +16,7 @@ const Home = () => {
                             <p></p>
                             <div className="card-actions justify-end">
                             <Link to="/loginprofe">
-                                <button className="btn1 btn-primary text-white" onClick={()=>sound.play()}>
+                                <button className="btn1 btn-primary text-white" >
                                     Ingresar
                                 </button>
                             </Link>
@@ -36,7 +31,7 @@ const Home = () => {
                             <p></p>
                             <div className="card-actions justify-end">
                             <Link to="/loginalu">
-                                <button className="btn1 btn-primary"  onClick={()=>sound.play()}>
+                                <button className="btn1 btn-primary"  >
                                 Ingresar
                                 </button>
                             </Link>
@@ -51,7 +46,7 @@ const Home = () => {
                             <p></p>
                             <div className="card-actions justify-end">
                             <Link to="/usersr">
-                                <button className="btn1 btn-primary"  onClick={()=>sound.play()}>
+                                <button className="btn1 btn-primary"  >
                                 Sin Registro
                                 </button>
                             </Link>
@@ -66,7 +61,7 @@ const Home = () => {
                             <p></p>
                             <div className="card-actions justify-end">
                             <Link to="/admin/stats">
-                                <button className="btn1 btn-primary"  onClick={()=>sound.play()}>
+                                <button className="btn1 btn-primary"  >
                                     Estadísticas
                                 </button>
                             </Link>

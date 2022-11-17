@@ -36,12 +36,14 @@
   color: rgba(252, 191, 61, 1);
 }
 .correct{
-  @apply hover:bg-green-700;
-  background-color: rgba(47, 146, 47, 1);
+  @apply cursor-not-allowed hover:bg-green-600 bg-green-700 focus:outline-none border-solid border-4  flex items-center justify-start text-base p-1 text-white mr-1;
+  border-radius: 15px;
+  border-color: rgba(47, 146, 47, 1);
 }
 .incorrect{
-  @apply hover:bg-red-600;
-  background-color: rgba(255, 51, 51, 1);
+  @apply cursor-not-allowed hover:bg-red-600 bg-red-700  focus:outline-none border-solid border-4  flex items-center justify-start text-base p-1 text-white mr-1;
+  border-radius: 15px;
+  border-color: rgba(255, 51, 51, 1);
 }
 .player_container {
   @apply bg-black border-solid border flex flex-col items-center justify-between p-4 w-1/2;
