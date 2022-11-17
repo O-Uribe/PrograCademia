@@ -1,6 +1,6 @@
 import UseFetch from '../../components/UseFetch';
 import React, { useState, useEffect} from 'react';
-import {Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import io from 'socket.io-client';
 
 const socket = io("http://localhost:5000");
@@ -24,11 +24,13 @@ function Quiz() {
 
     
     let dat = [];
-    console.log(categoria)
+    //console.log(categoria)
+    
     function llenado(dato) {
+        
         for (let i = 0; i < dato.length; i++) {
             if (dato[i].categoria === categoria) {
-            dat.push(dato[i])
+                dat.push(dato[i])
             }
         }
     }
@@ -58,11 +60,6 @@ function Quiz() {
                 points: puntuacion
             });
         }
-        // añadir estilos de pregunta
-        e.target.classList.add(isCorrect 
-        ? "correct" 
-        : "incorrect"
-        );
 
 
         // cambiar a la siguiente pregunta
@@ -163,10 +160,10 @@ function Quiz() {
                 ?
                 <p>Cargando...</p>
                 :
-                <main className='p-4'>
+                <main className='p-4' onBeforeInput={llenado(dato)}>
                     <div className="flex flex-col  inset-x-0 top-0">
                         <div className="p-3 mb-3 text-center font-bold text-2xl">
-                            {dato[preguntaActual].titulo}
+                            {dat[preguntaActual].titulo}
                         </div>
                         <br></br>
                         <div>{!areDisabled ? (
@@ -191,7 +188,7 @@ function Quiz() {
                     <br></br>
                     <div className='inset-x-0 bottom-0'>
                         <div className="grid grid-cols-2">
-                            {dato[preguntaActual].opciones.map((respuesta) => (
+                            {dat[preguntaActual].opciones.map((respuesta) => (
                                 <button
                                     className='btnquiz'
                                     disabled={areDisabled}
@@ -206,7 +203,7 @@ function Quiz() {
                         <div className='text-center'>
                             <br></br>
                             <div className='text-center mb-3 text-white text-2xl font-bold '>
-                                <span>Pregunta {preguntaActual + 1} de</span> {dato.length}
+                                <span>Pregunta {preguntaActual + 1} de</span> {dat.length}
                             </div>
                         </div>
                     </div>

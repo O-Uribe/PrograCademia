@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import socketIO from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Navbaral from '../../../components/Navbaralumno';
 import Footer from '../../../components/Footer';
-import { Link } from 'react-router-dom';
 import io from 'socket.io-client';
 const socket = io("http://localhost:5000");
 

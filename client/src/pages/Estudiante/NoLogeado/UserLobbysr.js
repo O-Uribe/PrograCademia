@@ -8,12 +8,11 @@ const socket = io("http://localhost:5000");
 
 const UserLobbysr = (props) => {
     const data = useLocation();
-    const [playerNameState, pinState, identificadorState] = data.state;
+    const [playerNameState, pinState] = data.state;
 
     const playerName = playerNameState.playerName;
     const pin = pinState.pin;
     const navigate = useNavigate();
-    const handleOnClick = () => navigate(`/chat2/${playerName}`);
 
     const [categoria, setCategoria] = React.useState("Lógica de Programacion");
 
@@ -31,10 +30,6 @@ const UserLobbysr = (props) => {
         localStorage.setItem("chatConnected", "true");
     });
        
-
-    const submitNickname = () => {
-        socket.emit("user nickname", playerName);
-    };
     
     return (
         <>
@@ -52,7 +47,7 @@ const UserLobbysr = (props) => {
                                     <br/>
                                     <span className="ml-2 text-xl font-bold text-white">
                                         La categoría seleccionada es: 
-                                        <div className='text-sky-400 text-3xl font-bold text-white'>
+                                        <div className=' text-3xl font-bold text-white'>
                                             {categoria}
                                         </div>
 
