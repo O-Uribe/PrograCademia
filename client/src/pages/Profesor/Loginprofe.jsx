@@ -35,7 +35,7 @@ export const Loginprofe = () => {
           axios.request(config).then((response) => {
             localStorage.setItem("loginpro", JSON.stringify(response.data.user));
             localStorage.setItem("token", JSON.stringify(response.data.token));
-            window.location.href ='/'
+            window.location.href ='loginprofe'
           }).catch((error) => {
             console.log(error);
           });
