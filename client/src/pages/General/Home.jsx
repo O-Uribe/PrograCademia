@@ -77,7 +77,11 @@ const Home = () => {
                             
                 </div>
             </div>
-            
+            <Link to="/about">
+                                <button  className=" absolute btn btn-sm bottom-3 right-2"  >
+                                ¿Quienes somos?
+                                </button>
+                            </Link>
             
             </div>
             

@@ -1,5 +1,6 @@
 import React, {useState}from "react";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 //import {useNavigate } from 'react-router-dom';
 
 //Importamos paginas
@@ -165,6 +166,7 @@ function App() {
                 <Route path="/admin/mostrar/profesor" element={<ShowProfesor/>} />
                 <Route path="/admin/mostrar/alumno" element={<ShowEstudiante/>} />
                 </Routes>
+
             </main>
         </div>
     </Router>
