@@ -3,6 +3,8 @@ const app = express();
 import cors from 'cors';
 import mongoose from 'mongoose';
 
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import {Server as SocketServer} from 'socket.io';
 import http from 'http';
 
@@ -10,6 +12,8 @@ import config from './config.js';
 const port = config().PORT;
 
 //middleware
+
+
 app.use(cors());
 app.use(express());
 app.use(express.json());
@@ -122,6 +126,10 @@ app.get('/list', (req, res) => {
     };
     res.json(triviaData);
 });
+
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(join(__dirname, '../client/build')));
 
 server.listen(
     port, () => {

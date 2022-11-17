@@ -36,7 +36,7 @@ export const Loginestudiante = () => {
           axios.request(config).then((response) => {
             localStorage.setItem("loginalum", JSON.stringify(response.data.user));
             localStorage.setItem("token", JSON.stringify(response.data.token));
-            window.location.href ='/mainalumno'
+            window.location.href ='/'
           }).catch((error) => {
             console.log(error);
           });

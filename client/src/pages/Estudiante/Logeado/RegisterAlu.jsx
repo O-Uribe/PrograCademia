@@ -49,7 +49,7 @@ export const RegisterAlu = () => {
     .then(res => {
       if(res.data === 'Estudiante registrado'){
         alert(res.data)
-        window.location.href = '/loginalu';  //revisar
+        window.location.href ='/' //revisar
       }
     }).catch(err => {
       //si es status 500 usar console.log si es status 400 usar alert

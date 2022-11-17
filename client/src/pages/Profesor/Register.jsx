@@ -47,7 +47,7 @@ export const Register = () => {
     axios.post('http://localhost:5000/register/profesor', newUser)
     .then(res => {
       alert(res.data)
-      window.location.href = '/loginprofe';  //revisar
+      window.location.href = '/';  //revisar
     }).catch(err => {
       console.log(err.response.data)
     })
