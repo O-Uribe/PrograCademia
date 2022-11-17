@@ -16,7 +16,6 @@ const Race = () => {
     const data = useLocation();
     const alumnos = data.state;
 
-    console.log(alumnos);
 
     const [jugadores, setJugadores] = useState([]);
 
@@ -26,8 +25,7 @@ const Race = () => {
     useEffect(() => {
 
         let identificacion = alumnosSeparados();
-        console.log("Jugadores desde lobby",identificacion);
-
+          
         socket.on("correct-answer", (data) => {
             setJugadores(data);
         });

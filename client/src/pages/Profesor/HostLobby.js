@@ -46,15 +46,21 @@ const HostLobby = (props) => {
         });
     };
 
-    const selectCategoria = (src) => {
+    const selectCategoria1 = () => {
         socket.emit("categoria", {
-            categoria: src,
+            categoria: 'Logica de Programación',
         });
+        alert("Categoria seleccionada: Logica de Programación");
     };
 
-    function handleChange(src) {
-        selectCategoria(src);
-    }
+    const selectCategoria2 = () => {
+        socket.emit("categoria", {
+            categoria: 'Science:Computers',
+        });
+        alert("Categoria seleccionada: Science:Computers");
+    };
+
+
     
     return (
         <React.Fragment>
@@ -78,20 +84,14 @@ const HostLobby = (props) => {
                                     <div>
                                         <div className = 'inline-block w-1/2' >
                                             <br/>
-                                            <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
-                                                <input id="bordered-radio-1" type="radio" name="bordered-radio" value=''className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onClick={() => handleChange(triviaList[0].name)}/>
-                                                <label for="bordered-radio-1" className="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Logica de Programación</label>
-                                            </div>
-                                            <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
-                                                <input checked id="bordered-radio-2" type="radio" name="bordered-radio" value='' className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"onClick={() => handleChange(triviaList[1].name)}/>
-                                                <label for="bordered-radio-2" className="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Science:Computers</label>
-                                            </div>
+                                            <button className="btn btn-primary" onClick={selectCategoria1}>Logica de Programación</button>
+                                            <button className="btn btn-primary" onClick={selectCategoria2}>Science:Computers</button>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
                                             <br/>
-                                            <h2 className="text-2xl font-bold">Lista de estudiantes conectados:</h2>
+                                            <h2 className="text-2xl font-bold"> Lista de estudiantes conectados:</h2>
                                             <br/>
                                             <div className="container d-flex align-items-center justify-content-center flex-column">
                                                 {usersOnline.map((el, index) => (

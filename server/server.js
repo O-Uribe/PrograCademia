@@ -109,11 +109,7 @@ io.on("connection", (socket) => {
       
         socket.broadcast.emit("user-disconnected", tempUserNickname);
     });
-    
-
-
 });    
-
 
 //////////////////////////Trivia//////////////////////////
 app.get('/list', (req, res) => {

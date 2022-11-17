@@ -39,12 +39,22 @@ function Quiz() {
     function handleAnswerSubmit(isCorrect, e){ 
         // añadir puntuacion
         if(isCorrect) {
+            e.target.classList.add("correct");
+            e.target.classList.remove("btnquiz");
+            setPuntuacion(puntuacion + 1)
             setPuntuacion(puntuacion + 1);
+            
             socket.emit("correct-answer", {
                 playername: identificador,
                 points: puntuacion
             });
+
+            setAreDisabled(true)
         } else {
+            e.target.classList.add("incorrect");
+            e.target.classList.remove("btnquiz");
+            setAreDisabled(true)
+            
             socket.emit("wrong-answer", {
                 playername: identificador,
                 points: puntuacion
@@ -65,12 +75,15 @@ function Quiz() {
         } else {
             setPreguntaActual(preguntaActual + 1);
             setTiempoRespuesta(15);
+            e.target.classList.remove("incorrect");
+            e.target.classList.remove("correct");
+            e.target.classList.add("btnquiz");
+            setAreDisabled(false)
         }
         }, 1000);
     }
 
     useEffect(() => {
-
         const intervalo = setInterval(() => {
             if(tiempoRespuesta > 0) setTiempoRespuesta((prev) => prev - 1);
             if(tiempoRespuesta === 0) setAreDisabled(true);
@@ -146,68 +159,64 @@ function Quiz() {
 
     return (
         <>
-        <div className='flex flex-col items-center justify-center h-full absolute top-0 text-white w-full'>
-        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-        <div className="App">
+        <div className='relative w-fit h-fit max-h max-w-4xl dark:bg-gray-800 rounded-2xl'>
             {
-            cargando
-            ?
-            <button type="button" className="bg-indigo-500 ..." disabled>
-                <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
-                Cargando ...
-            </button>
-            :
-            <main className='app' onBeforeInput={llenado(dato)}>
-                <div className="flex flex-col justify-around relative w-full">
-                <div className="mb-5">
-                    <span>Pregunta {preguntaActual + 1} de</span> {dat.length}
-                </div>
-                <div className="mb-3">
-                    {dat[preguntaActual].titulo}
-                </div>
-                <div>{!areDisabled ? (
-                    <span className='tiempo-restante'>
-                    Tiempo restante: {tiempoRespuesta}
-                    </span>
-                    ) : (
-                    <button onClick={() => {
-                        setTiempoRespuesta(10);
-                        setAreDisabled(false);
-                        setPreguntaActual(preguntaActual + 1);
-                    }}
-                    className='btnquiz'
-                    >
-                        Continuar
-                    </button>
-                    )}
-                </div>
-                </div>
-                <div className="flex flex-col justify-between w-full">
-                {dat[preguntaActual].opciones.map((respuesta) => (
-                    <button
-                        className='btnquiz' 
-                        disabled={areDisabled}
-                        key={respuesta.textoRespuesta} 
-                        onClick={(e) => handleAnswerSubmit(respuesta.isCorrect, e)}
-                        >
-                    {respuesta.textoRespuesta}
-                    
-                    </button>
-                ))}
-                </div>
-            </main>
+                cargando
+                ?
+                <p>Cargando...</p>
+                :
+                <main className='p-4'>
+                    <div className="flex flex-col  inset-x-0 top-0">
+                        <div className="p-3 mb-3 text-center font-bold text-2xl">
+                            {dato[preguntaActual].titulo}
+                        </div>
+                        <br></br>
+                        <div>{!areDisabled ? (
+                            <span className='tiempo-restante'>
+                            Tiempo restante: {tiempoRespuesta}
+                            </span>
+                            ) : (
+                            <div className="flex flex-col items-center justify-center">
+                                <button onClick={() => {
+                                    setTiempoRespuesta(10);
+                                    setAreDisabled(false);
+                                    setPreguntaActual(preguntaActual + 1);
+                                }}
+                                className='btnquiz'
+                                >
+                                    <span className='font-bold'>Siguiente</span>
+                                </button>
+                            </div>
+                                )}
+                        </div>
+                    </div>
+                    <br></br>
+                    <div className='inset-x-0 bottom-0'>
+                        <div className="grid grid-cols-2">
+                            {dato[preguntaActual].opciones.map((respuesta) => (
+                                <button
+                                    className='btnquiz'
+                                    disabled={areDisabled}
+                                    key={respuesta.textoRespuesta} 
+                                    onClick={(e) => handleAnswerSubmit(respuesta.isCorrect,e,respuesta)}
+                                    >
+                                {respuesta.textoRespuesta}
+                                
+                                </button>
+                            ))}
+                        </div>
+                        <div className='text-center'>
+                            <br></br>
+                            <div className='text-center mb-3 text-white text-2xl font-bold '>
+                                <span>Pregunta {preguntaActual + 1} de</span> {dato.length}
+                            </div>
+                        </div>
+                    </div>
+                </main>
             }
-            <Link to="/usersr">
-                <button className='btnquiz'>
-                    Salir
-                </button>
-            </Link>
-        
-        </div>
-        </div>
         </div>
         </>
-    );
+      );
 }
 
 export default Quiz;
