@@ -8,7 +8,6 @@ export default function() {
         MONGO_URI: process.env.MONGO_URI,
         PROFE_COLLECTION: process.env.DB_COLLECTION_PROFESORES,
         ESTU_COLLECTION: process.env.DB_COLLECTION_ALUMNOS,
-        ADMIN_COLLECTION: process.env.DB_COLLECTION_ADMIN,
     }
 }
 

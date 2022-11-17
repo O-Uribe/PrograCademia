@@ -1,4 +1,4 @@
-import React ,{ useEffect } from "react";
+import React from "react";
 
 
 // Formulario para editar un estudiante en la base de datos
@@ -13,27 +13,21 @@ import React ,{ useEffect } from "react";
     - Contraseña
     - Año de Ingreso
 */
-//<EditForm {...{[estudiante]: estudiante }}/>
 export const EditForm = ({ estudiante }) => {
+
 
     // Estado para guardar los datos del estudiante
     const [datos, setDatos] = React.useState({
-        estudiantes: [
-            {
-                rut: "",
-                nombre: "",
-                apellido: "",
-                email: "",
-                password: "",
-                año_ingreso: "",
-            },
-        ],
+        rut: estudiante.rut,
+        nombre: estudiante.nombre,
+        apellido: estudiante.apellido,
+        email: estudiante.email,
+        password: estudiante.password,
+        ingreso: estudiante.ingreso,
     });
 
-    // Actualizar los datos del estudiante en el estado cada vez que se renderiza el componente
-    useEffect(() => {
-        setDatos(estudiante);
-    }, [estudiante]);
+
+
 
     // Estado para guardar el mensaje de error
     const [error, setError] = React.useState("");
@@ -42,7 +36,7 @@ export const EditForm = ({ estudiante }) => {
     const handleInputChange = (event) => {
         setDatos({
             ...datos,
-            [event.target.id]: event.target.value,
+            [event.target.name]: event.target.value,
         });
     };
 
@@ -51,12 +45,22 @@ export const EditForm = ({ estudiante }) => {
         event.preventDefault();
         console.log(datos);
         /*
+        // Validar que los datos no estén vacíos
+        if (
+            !datos.rut ||
+            !datos.nombre ||
+            !datos.apellido ||
+            !datos.email ||
+            !datos.password ||
+            !datos.anio_ingreso
+        ) {
+            setError("Todos los campos son obligatorios");
+            return;
+        }
         // Enviar los datos al servidor
+        console.log(datos);
         */
     };
-    function test() {
-        console.log(estudiante);
-    }
 
     return (
         <React.Fragment>
@@ -86,7 +90,7 @@ export const EditForm = ({ estudiante }) => {
                                     </label>
                                     <input type="text"
                                     placeholder="Nombre"
-                                    id = "nombre"
+                                    id = "Nombre"
                                     value={datos.nombre}
                                     onChange= {handleInputChange}
                                     className="input input-bordered w-full max-w-xs" />
@@ -142,7 +146,6 @@ export const EditForm = ({ estudiante }) => {
                             </div>
                             <div className="form-control w-full max-w-xs overflow-auto ">
                                 <button className="btn btn-primary" onClick={handleSubmit}>Editar</button>
-                                <button onClick={()=>test()}>test</button>
                             </div>
                         </div>
                     </div>

@@ -46,6 +46,10 @@ export const ShowEstudiante = () => {
             }
         }
 
+        function handleEdit(estudiante) {
+            // Despliega el componente de editar estudiante con los datos del estudiante seleccionado
+            return <EditForm estudiante={estudiante} />
+        }
         //handlechange para buscar por nombre o apellido
         function handleChange(e) {
             setBusqueda(e.target.value);
@@ -63,10 +67,6 @@ export const ShowEstudiante = () => {
             });
             setEstudiantes(resultadosBusqueda);
         };
-
-        function test(estudiante) {
-            console.log(estudiante);
-        }
 
 
     return (
@@ -112,12 +112,10 @@ export const ShowEstudiante = () => {
                             <td>{estudiante.password}</td>
                             <td>{estudiante.ingreso}</td>
                             <td>
-                                {/* Utilizar componente editform para editar los estudiantes */}
-                                <EditForm estudiante={estudiante} />
-                                <button onClick={()=> test(estudiante)}>TEST</button>
+                                <button onClick={() => handleDelete(estudiante._id)}>Eliminar</button>
                             </td>
                             <td>
-                                <button className="btn" onClick={() => handleDelete(estudiante._id)}>Eliminar</button>
+                                <EditForm estudiante={estudiante} />
                             </td>
                         </tr>
                     ))}
