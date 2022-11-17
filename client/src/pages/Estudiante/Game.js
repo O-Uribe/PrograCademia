@@ -41,7 +41,6 @@ function Quiz() {
         if(isCorrect) {
             e.target.classList.add("correct");
             e.target.classList.remove("btnquiz");
-            setPuntuacion(puntuacion + 1)
             setPuntuacion(puntuacion + 1);
             
             socket.emit("correct-answer", {
@@ -65,8 +64,8 @@ function Quiz() {
         // cambiar a la siguiente pregunta
         setTimeout(() => {
         if (preguntaActual === dat.length - 1) {
-            setIsFinished(true);
             setTiempoRespuesta(15);
+            setIsFinished(true);
         } else {
             setPreguntaActual(preguntaActual + 1);
             setTiempoRespuesta(15);
@@ -75,7 +74,7 @@ function Quiz() {
             e.target.classList.add("btnquiz");
             setAreDisabled(false)
         }
-        }, 1000);
+        }, 500);
     }
 
     useEffect(() => {
@@ -97,7 +96,7 @@ function Quiz() {
                 Obtuviste {puntuacion} de {dat.length}
             </h2>
             <br/>
-            <button onClick={() => (window.location.href = '/host/quiz')} className='btnter'>
+            <button onClick={() => (window.location.href = '/game')} className='btnter'>
                 Volver a Jugar
             </button>
             <button onClick={() => {
@@ -136,7 +135,7 @@ function Quiz() {
             </div>
             <button onClick={() => {
                 if (preguntaActual === dat.length - 1) {
-                window.location.href = '/mainprofe';
+                window.location.href = '/home';
                 } else {
                 setPreguntaActual(preguntaActual + 1);
                 }
