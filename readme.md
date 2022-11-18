@@ -35,14 +35,7 @@ npm run dev
 
 
 
-![](Assets/logo.png)
-
 Este sitio se crea en base a una problematica muy comun en este mundo, la poca didactica en este aprendizaje, ya que debido a esto, los conceptos basicos que son muy importantes para este mundo se llegan a omitir lo cual es algo que podria perjudicar a esta persona en un futuro.
 
 PrograCademia es un sitio web responsivo , por lo cual se puede adaptar a cualquier dispositivo, ya sea un computador, tablet, smartphone, etc.
 
-
-
-
-
-![](Assets/dibujo1.png)
